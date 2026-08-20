@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>PhishGuard | URL Scanner</title>
+
+    <link
+        rel="stylesheet"
+        href="../style.css"
+    >
+
+    <style>
+
+        .scanner-container {
+            max-width: 1100px;
+        }
+
+        .scanner-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .scanner-input-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .scanner-input {
+            flex: 1;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: #080c12;
+            color: var(--text);
+            outline: none;
+        }
+
+        .scanner-input:focus {
+            border-color: #5778ff;
+        }
+
+        .scan-btn {
+            padding: 15px 28px;
+            border: none;
+            border-radius: 10px;
+            background: #5778ff;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .scan-btn:hover {
+            background: #4869ef;
+        }
+
+        .scan-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .result-card {
+            display: none;
+            margin-top: 22px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .result-card.show {
+            display: block;
+        }
+
+        .risk-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .risk-label {
+            color: #8993a4;
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+
+        .risk-status {
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        .risk-score {
+            font-size: 42px;
+            font-weight: 700;
+        }
+
+        .risk-score span {
+            color: #8993a4;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .risk-bar {
+            height: 8px;
+            background: #202938;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        #riskBar {
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .result-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 22px;
+        }
+
+        .info-box {
+            padding: 15px;
+            background: #080c12;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .info-title {
+            color: #8993a4;
+            font-size: 11px;
+            margin-bottom: 6px;
+        }
+
+        .info-value {
+            font-size: 14px;
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        .indicators-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .indicator {
+            padding: 13px;
+            margin-bottom: 8px;
+            border-left: 3px solid #ff4d67;
+            background: rgba(255, 77, 103, 0.06);
+            border-radius: 6px;
+        }
+
+        .indicator strong {
+            display: block;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .indicator span {
+            color: #8993a4;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .safe-message {
+            padding: 13px;
+            border-left: 3px solid #26d07c;
+            background: rgba(38, 208, 124, 0.06);
+            color: #26d07c;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        .error-message {
+            display: none;
+            margin-top: 15px;
+            padding: 13px;
+            border: 1px solid rgba(255, 77, 103, 0.3);
+            background: rgba(255, 77, 103, 0.06);
+            color: #ff4d67;
+            border-radius: 8px;
+            font-size: 12px;
+        }
+
+        @media (max-width: 700px) {
+
+            .scanner-input-row {
+                flex-direction: column;
+            }
+
+            .result-info {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                🛡
+            </div>
+
+            <div>
+
+                <h2>PhishGuard</h2>
+
+                <span>
+                    Threat Intelligence
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <a
+                href="../index.html"
+                class="nav-item"
+            >
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a
+                href="scanner.html"
+                class="nav-item active"
+            >
+                <span>🔗</span>
+                URL Scanner
+            </a>
+
+            <a
+                href="email-analyzer.html"
+                class="nav-item"
+            >
+                <span>✉</span>
+                Email Analyzer
+            </a>
+
+            <a
+                href="simulation.html"
+                class="nav-item"
+            >
+                <span>⚡</span>
+                Attack Simulation
+            </a>
+
+            <a
+                href="leaderboard.html"
+                class="nav-item"
+            >
+                <span>🏆</span>
+                Leaderboard
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="system-status">
+
+                <span class="status-dot"></span>
+
+                System Online
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    URL Scanner
+                </h1>
+
+                <p>
+                    Analyze suspicious URLs using PhishGuard's threat detection engine.
+                </p>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="live-status">
+
+                    <span class="status-dot"></span>
+
+                    Detection Engine Active
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <div class="scanner-container">
+
+
+            <!-- SCANNER -->
+
+            <div class="scanner-card">
+
+                <h2>
+                    Phishing URL Scanner
+                </h2>
+
+                <p>
+                    Enter a URL and PhishGuard will analyze it for phishing indicators,
+                    typosquatting, suspicious domains and URL obfuscation.
+                </p>
+
+
+                <div class="scanner-input-row">
+
+                    <input
+                        type="text"
+                        id="urlInput"
+                        class="scanner-input"
+                        placeholder="https://example.com/login"
+                    >
+
+                    <button
+                        id="scanBtn"
+                        class="scan-btn"
+                    >
+                        Scan URL
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="errorMessage"
+                    class="error-message"
+                ></div>
+
+            </div>
+
+
+            <!-- RESULT -->
+
+            <div
+                id="resultCard"
+                class="result-card"
+            >
+
+                <div class="risk-header">
+
+                    <div>
+
+                        <div class="risk-label">
+                            Risk Assessment
+                        </div>
+
+                        <div
+                            id="riskStatus"
+                            class="risk-status"
+                        >
+                            Safe
+                        </div>
+
+                    </div>
+
+
+                    <div class="risk-score">
+
+                        <span id="riskScore">
+                            0
+                        </span>
+
+                        <span>
+                            /100
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="risk-bar">
+
+                    <div id="riskBar"></div>
+
+                </div>
+
+
+                <div class="result-info">
+
+                    <div class="info-box">
+
+                        <div class="info-title">
+                            URL
+                        </div>
+
+                        <div
+                            id="scannedURL"
+                            class="info-value"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <div class="info-title">
+                            Risk Level
+                        </div>
+
+                        <div
+                            id="riskLevel"
+                            class="info-value"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="indicators-title">
+                    Detected Indicators
+                </div>
+
+
+                <div id="indicators"></div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        const urlInput =
+            document.getElementById("urlInput");
+
+        const scanBtn =
+            document.getElementById("scanBtn");
+
+        const resultCard =
+            document.getElementById("resultCard");
+
+        const riskStatus =
+            document.getElementById("riskStatus");
+
+        const riskScore =
+            document.getElementById("riskScore");
+
+        const riskLevel =
+            document.getElementById("riskLevel");
+
+        const riskBar =
+            document.getElementById("riskBar");
+
+        const scannedURL =
+            document.getElementById("scannedURL");
+
+        const indicators =
+            document.getElementById("indicators");
+
+        const errorMessage =
+            document.getElementById("errorMessage");
+
+
+        // ========================================
+        // SCAN BUTTON
+        // ========================================
+
+        scanBtn.addEventListener(
+            "click",
+            scanURL
+        );
+
+
+        // Allow Enter key
+
+        urlInput.addEventListener(
+            "keydown",
+            event => {
+
+                if (event.key === "Enter") {
+
+                    scanURL();
+
+                }
+
+            }
+        );
+
+
+        // ========================================
+        // SCAN URL
+        // ========================================
+
+        async function scanURL() {
+
+            const url =
+                urlInput.value.trim();
+
+
+            if (!url) {
+
+                showError(
+                    "Please enter a URL to scan."
+                );
+
+                return;
+            }
+
+
+            hideError();
+
+
+            scanBtn.disabled = true;
+
+            scanBtn.textContent =
+                "Scanning...";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/scan-url",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                url: url
+                            })
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (
+                    !response.ok ||
+                    !data.success
+                ) {
+
+                    throw new Error(
+                        data.error ||
+                        "URL scan failed."
+                    );
+
+                }
+
+
+                displayResult(
+                    data.url,
+                    data.result
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "URL scan error:",
+                    error
+                );
+
+                showError(
+                    error.message
+                );
+
+
+            } finally {
+
+                scanBtn.disabled = false;
+
+                scanBtn.textContent =
+                    "Scan URL";
+
+            }
+
+        }
+
+
+        // ========================================
+        // DISPLAY RESULT
+        // ========================================
+
+        function displayResult(
+            url,
+            scanResult
+        ) {
+
+            resultCard.classList.add(
+                "show"
+            );
+
+
+            scannedURL.textContent =
+                url;
+
+
+            riskScore.textContent =
+                scanResult.score;
+
+
+            riskStatus.textContent =
+                scanResult.status;
+
+
+            riskLevel.textContent =
+                scanResult.level;
+
+
+            // Risk colors
+
+            if (scanResult.score >= 70) {
+
+                riskStatus.style.color =
+                    "#ff4d67";
+
+                riskBar.style.background =
+                    "#ff4d67";
+
+            } else if (
+                scanResult.score >= 35
+            ) {
+
+                riskStatus.style.color =
+                    "#ffae42";
+
+                riskBar.style.background =
+                    "#ffae42";
+
+            } else {
+
+                riskStatus.style.color =
+                    "#26d07c";
+
+                riskBar.style.background =
+                    "#26d07c";
+            }
+
+
+            riskBar.style.width =
+                scanResult.score + "%";
+
+
+            // Indicators
+
+            indicators.innerHTML = "";
+
+
+            if (
+                !scanResult.flags ||
+                scanResult.flags.length === 0
+            ) {
+
+                const safe =
+                    document.createElement("div");
+
+                safe.className =
+                    "safe-message";
+
+                safe.textContent =
+                    "✓ No major phishing indicators detected.";
+
+                indicators.appendChild(
+                    safe
+                );
+
+                return;
+            }
+
+
+            scanResult.flags.forEach(
+                flag => {
+
+                    const indicator =
+                        document.createElement("div");
+
+                    indicator.className =
+                        "indicator";
+
+
+                    const title =
+                        document.createElement("strong");
+
+                    title.textContent =
+                        flag.type.replace(
+                            /_/g,
+                            " "
+                        );
+
+
+                    const message =
+                        document.createElement("span");
+
+                    message.textContent =
+                        flag.message;
+
+
+                    indicator.appendChild(
+                        title
+                    );
+
+                    indicator.appendChild(
+                        message
+                    );
+
+
+                    indicators.appendChild(
+                        indicator
+                    );
+
+                }
+            );
+
+        }
+
+
+        // ========================================
+        // ERROR
+        // ========================================
+
+        function showError(message) {
+
+            errorMessage.textContent =
+                message;
+
+            errorMessage.style.display =
+                "block";
+
+        }
+
+
+        function hideError() {
+
+            errorMessage.style.display =
+                "none";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

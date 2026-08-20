@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>PhishGuard | Attack Simulation</title>
+
+    <link
+        rel="stylesheet"
+        href="../style.css"
+    >
+
+    <style>
+
+        .simulation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .simulation-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 25px;
+        }
+
+        .simulation-card h2 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .simulation-card > p {
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 22px;
+        }
+
+        .simulation-warning {
+            padding: 14px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 174, 66, 0.35);
+            background: rgba(255, 174, 66, 0.06);
+            border-radius: 10px;
+            color: #ffae42;
+            font-size: 12px;
+        }
+
+        .scenario-list {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .scenario-btn {
+            width: 100%;
+            padding: 14px;
+            text-align: left;
+            border: 1px solid var(--border);
+            background: #0a0e15;
+            color: var(--text);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .scenario-btn:hover {
+            border-color: var(--primary);
+        }
+
+        .scenario-btn.active {
+            border-color: var(--primary);
+            background: rgba(87, 120, 255, 0.08);
+        }
+
+        .scenario-title {
+            display: block;
+            font-weight: 600;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .scenario-description {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .generate-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .email-preview {
+            display: none;
+        }
+
+        .email-preview.show {
+            display: block;
+        }
+
+        .email-header {
+            padding: 15px;
+            background: #0a0e15;
+            border: 1px solid var(--border);
+            border-radius: 10px 10px 0 0;
+        }
+
+        .email-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+
+        .email-label {
+            color: var(--muted);
+            min-width: 70px;
+        }
+
+        .email-value {
+            word-break: break-word;
+        }
+
+        .email-body {
+            padding: 20px;
+            min-height: 230px;
+            background: #0a0e15;
+            border: 1px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+            font-size: 13px;
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
+
+        .analyze-simulation-btn {
+            width: 100%;
+            margin-top: 15px;
+            padding: 13px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: transparent;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .analyze-simulation-btn:hover {
+            border-color: var(--primary);
+        }
+
+        .simulation-result {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .simulation-result.show {
+            display: block;
+        }
+
+        .score-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .score-number {
+            font-size: 34px;
+            font-weight: 700;
+        }
+
+        .score-number small {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .simulation-bar {
+            height: 7px;
+            background: #1b2330;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 18px;
+        }
+
+        #simulationRiskBar {
+            height: 100%;
+            width: 0%;
+            background: #ff4d67;
+            transition: width 0.5s;
+        }
+
+        .simulation-status {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .indicator {
+            padding: 11px;
+            margin-bottom: 7px;
+            border-left: 3px solid #ff4d67;
+            background: rgba(255, 77, 103, 0.06);
+            border-radius: 5px;
+        }
+
+        .indicator strong {
+            display: block;
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .indicator span {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .chain {
+            margin-top: 20px;
+        }
+
+        .chain h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .chain-item {
+            padding: 10px;
+            margin-bottom: 6px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: #0a0e15;
+            font-size: 12px;
+        }
+
+        .chain-item.detected {
+            border-color: #ff4d67;
+            background: rgba(255, 77, 103, 0.08);
+            color: #ff4d67;
+        }
+
+        @media (max-width: 900px) {
+
+            .simulation-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                🛡
+            </div>
+
+            <div>
+
+                <h2>PhishGuard</h2>
+
+                <span>
+                    Threat Intelligence
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <a
+                href="../index.html"
+                class="nav-item"
+            >
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a
+                href="scanner.html"
+                class="nav-item"
+            >
+                <span>🔗</span>
+                URL Scanner
+            </a>
+
+            <a
+                href="email-analyzer.html"
+                class="nav-item"
+            >
+                <span>✉</span>
+                Email Analyzer
+            </a>
+
+            <a
+                href="simulation.html"
+                class="nav-item active"
+            >
+                <span>⚡</span>
+                Attack Simulation
+            </a>
+
+            <a
+                href="leaderboard.html"
+                class="nav-item"
+            >
+                <span>🏆</span>
+                Leaderboard
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="system-status">
+
+                <span class="status-dot"></span>
+
+                System Online
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Attack Simulation
+                </h1>
+
+                <p>
+                    Generate safe local phishing scenarios for demonstrations.
+                </p>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="live-status">
+
+                    <span class="status-dot"></span>
+
+                    Live Protection
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="simulation-grid">
+
+
+            <!-- SCENARIO SELECTION -->
+
+            <div class="simulation-card">
+
+                <h2>
+                    Simulation Scenarios
+                </h2>
+
+                <p>
+                    Select a scenario to generate a mock phishing email.
+                </p>
+
+
+                <div class="simulation-warning">
+
+                    ⚠️ <strong>Demo Mode:</strong>
+                    These emails are generated locally.
+                    PhishGuard never sends real emails.
+
+                </div>
+
+
+                <div class="scenario-list">
+
+
+                    <button
+                        class="scenario-btn active"
+                        data-scenario="paypal"
+                    >
+
+                        <span class="scenario-title">
+                            PayPal Account Alert
+                        </span>
+
+                        <span class="scenario-description">
+                            Fake account suspension and verification attempt.
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="scenario-btn"
+                        data-scenario="bank"
+                    >
+
+                        <span class="scenario-title">
+                            Banking Security Alert
+                        </span>
+
+                        <span class="scenario-description">
+                            Fake banking security verification email.
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="scenario-btn"
+                        data-scenario="microsoft"
+                    >
+
+                        <span class="scenario-title">
+                            Microsoft Account Warning
+                        </span>
+
+                        <span class="scenario-description">
+                            Fake Microsoft account security notification.
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+                <button
+                    class="generate-btn"
+                    id="generateBtn"
+                >
+                    Generate Mock Attack
+                </button>
+
+            </div>
+
+
+            <!-- EMAIL PREVIEW -->
+
+            <div class="simulation-card">
+
+                <h2>
+                    Generated Attack
+                </h2>
+
+                <p>
+                    Local mock email generated for demonstration.
+                </p>
+
+
+                <div
+                    class="email-preview"
+                    id="emailPreview"
+                >
+
+                    <div class="email-header">
+
+                        <div class="email-row">
+
+                            <span class="email-label">
+                                From
+                            </span>
+
+                            <span
+                                class="email-value"
+                                id="simSender"
+                            ></span>
+
+                        </div>
+
+
+                        <div class="email-row">
+
+                            <span class="email-label">
+                                Reply-To
+                            </span>
+
+                            <span
+                                class="email-value"
+                                id="simReplyTo"
+                            ></span>
+
+                        </div>
+
+
+                        <div class="email-row">
+
+                            <span class="email-label">
+                                Subject
+                            </span>
+
+                            <span
+                                class="email-value"
+                                id="simSubject"
+                            ></span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="email-body"
+                        id="simBody"
+                    ></div>
+
+
+                    <button
+                        class="analyze-simulation-btn"
+                        id="analyzeSimulationBtn"
+                    >
+                        Analyze Generated Email
+                    </button>
+
+                </div>
+
+
+                <!-- RESULT -->
+
+                <div
+                    class="simulation-result"
+                    id="simulationResult"
+                >
+
+                    <div class="score-box">
+
+                        <div>
+
+                            <span
+                                class="simulation-status"
+                                id="simulationStatus"
+                            >
+                                Dangerous
+                            </span>
+
+                        </div>
+
+                        <div class="score-number">
+
+                            <span
+                                id="simulationScore"
+                            >
+                                0
+                            </span>
+
+                            <small>
+                                /100
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="simulation-bar">
+
+                        <div
+                            id="simulationRiskBar"
+                        ></div>
+
+                    </div>
+
+
+                    <div
+                        id="simulationIndicators"
+                    ></div>
+
+
+                    <div class="chain">
+
+                        <h3>
+                            Attack Chain
+                        </h3>
+
+                        <div
+                            id="simulationChain"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../simulate.js"></script>
+
+</body>
+
+</html>

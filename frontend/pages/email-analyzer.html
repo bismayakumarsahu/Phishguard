@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>PhishGuard | Email Analyzer</title>
+
+    <link
+        rel="stylesheet"
+        href="../style.css"
+    >
+
+    <style>
+
+        .email-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .email-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 25px;
+        }
+
+        .email-card h2 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .email-card p {
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .field {
+            margin-bottom: 15px;
+        }
+
+        .field label {
+            display: block;
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            background: #0a0e15;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 13px;
+            color: var(--text);
+            outline: none;
+            font-family: inherit;
+            font-size: 13px;
+        }
+
+        .field textarea {
+            min-height: 240px;
+            resize: vertical;
+        }
+
+        .field input:focus,
+        .field textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .analyze-btn {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .analyze-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .email-result {
+            display: none;
+        }
+
+        .email-result.show {
+            display: block;
+        }
+
+        .risk-display {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .risk-display h3 {
+            font-size: 22px;
+            margin-top: 5px;
+        }
+
+        .email-score {
+            font-size: 34px;
+            font-weight: 700;
+        }
+
+        .email-score small {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .email-risk-bar {
+            height: 7px;
+            background: #1b2330;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 22px;
+        }
+
+        #emailRiskBar {
+            height: 100%;
+            width: 0%;
+            background: var(--red);
+            transition: width 0.5s;
+        }
+
+        .indicator {
+            padding: 12px;
+            margin-bottom: 8px;
+            background: rgba(255, 77, 103, 0.06);
+            border-left: 3px solid var(--red);
+            border-radius: 5px;
+        }
+
+        .indicator strong {
+            display: block;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .indicator span {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .safe-message {
+            padding: 14px;
+            border-left: 3px solid var(--green);
+            background: rgba(38, 208, 124, 0.06);
+            color: var(--green);
+            font-size: 12px;
+        }
+
+        .chain {
+            margin-top: 25px;
+        }
+
+        .chain h3 {
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .chain-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            margin-bottom: 7px;
+            background: #0a0e15;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 12px;
+        }
+
+        .chain-item .number {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        @media (max-width: 900px) {
+
+            .email-layout {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                🛡
+            </div>
+
+            <div>
+
+                <h2>PhishGuard</h2>
+
+                <span>
+                    Threat Intelligence
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <a
+                href="../index.html"
+                class="nav-item"
+            >
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a
+                href="scanner.html"
+                class="nav-item"
+            >
+                <span>🔗</span>
+                URL Scanner
+            </a>
+
+            <a
+                href="email-analyzer.html"
+                class="nav-item active"
+            >
+                <span>✉</span>
+                Email Analyzer
+            </a>
+
+            <a
+                href="simulation.html"
+                class="nav-item"
+            >
+                <span>⚡</span>
+                Attack Simulation
+            </a>
+
+            <a
+                href="leaderboard.html"
+                class="nav-item"
+            >
+                <span>🏆</span>
+                Leaderboard
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="system-status">
+
+                <span class="status-dot"></span>
+
+                System Online
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main -->
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Email Analyzer
+                </h1>
+
+                <p>
+                    Analyze suspicious emails for phishing indicators.
+                </p>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="live-status">
+
+                    <span class="status-dot"></span>
+
+                    Live Protection
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="email-layout">
+
+
+            <!-- INPUT -->
+
+            <div class="email-card">
+
+                <h2>
+                    Analyze Email
+                </h2>
+
+                <p>
+                    Paste the email details below to detect
+                    phishing indicators.
+                </p>
+
+
+                <div class="field">
+
+                    <label>
+                        Sender Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="senderName"
+                        placeholder="Example: PayPal Support"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Sender Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="senderEmail"
+                        placeholder="Example: support@example.com"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Reply-To
+                    </label>
+
+                    <input
+                        type="email"
+                        id="replyTo"
+                        placeholder="Optional"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Email Subject
+                    </label>
+
+                    <input
+                        type="text"
+                        id="emailSubject"
+                        placeholder="Example: Urgent account verification"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Email Content
+                    </label>
+
+                    <textarea
+                        id="emailBody"
+                        placeholder="Paste the suspicious email content here..."
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    class="analyze-btn"
+                    id="analyzeEmailBtn"
+                >
+                    Analyze Email
+                </button>
+
+            </div>
+
+
+            <!-- RESULT -->
+
+            <div
+                class="email-card email-result"
+                id="emailResult"
+            >
+
+                <h2>
+                    Threat Assessment
+                </h2>
+
+                <p>
+                    PhishGuard analysis results
+                </p>
+
+
+                <div class="risk-display">
+
+                    <div>
+
+                        <span
+                            class="result-label"
+                        >
+                            Risk Assessment
+                        </span>
+
+                        <h3 id="emailRiskStatus">
+                            Analyzing...
+                        </h3>
+
+                    </div>
+
+
+                    <div class="email-score">
+
+                        <span id="emailRiskScore">
+                            0
+                        </span>
+
+                        <small>
+                            /100
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="email-risk-bar">
+
+                    <div
+                        id="emailRiskBar"
+                    ></div>
+
+                </div>
+
+
+                <div>
+
+                    <span class="result-label">
+                        Detected Indicators
+                    </span>
+
+                    <div
+                        id="emailIndicators"
+                        style="margin-top:12px;"
+                    >
+                    </div>
+
+                </div>
+
+
+                <div class="chain">
+
+                    <h3>
+                        Attack Chain
+                    </h3>
+
+
+                    <div class="chain-item">
+
+                        <span class="number">
+                            01
+                        </span>
+
+                        Suspicious Sender
+
+                    </div>
+
+
+                    <div class="chain-item">
+
+                        <span class="number">
+                            02
+                        </span>
+
+                        Urgency
+
+                    </div>
+
+
+                    <div class="chain-item">
+
+                        <span class="number">
+                            03
+                        </span>
+
+                        Malicious Link
+
+                    </div>
+
+
+                    <div class="chain-item">
+
+                        <span class="number">
+                            04
+                        </span>
+
+                        Credential Harvesting
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+
+
+    const analyzeEmailBtn =
+        document.getElementById("analyzeEmailBtn");
+
+    const emailResult =
+        document.getElementById("emailResult");
+
+    const emailRiskStatus =
+        document.getElementById("emailRiskStatus");
+
+    const emailRiskScore =
+        document.getElementById("emailRiskScore");
+
+    const emailRiskBar =
+        document.getElementById("emailRiskBar");
+
+    const emailIndicators =
+        document.getElementById("emailIndicators");
+
+
+    // ============================================
+    // ANALYZE EMAIL
+    // ============================================
+
+    analyzeEmailBtn.addEventListener(
+        "click",
+        analyzeEmail
+    );
+
+
+    async function analyzeEmail() {
+
+        const senderName =
+            document.getElementById("senderName").value.trim();
+
+        const senderEmail =
+            document.getElementById("senderEmail").value.trim();
+
+        const replyTo =
+            document.getElementById("replyTo").value.trim();
+
+        const subject =
+            document.getElementById("emailSubject").value.trim();
+
+        const body =
+            document.getElementById("emailBody").value.trim();
+
+
+        // Basic validation
+
+        if (!senderEmail && !subject && !body) {
+
+            alert(
+                "Please enter at least the sender email, subject, or email content."
+            );
+
+            return;
+        }
+
+
+        // Loading state
+
+        analyzeEmailBtn.disabled = true;
+
+        analyzeEmailBtn.textContent =
+            "Analyzing...";
+
+
+        try {
+
+            const response =
+                await fetch(
+                    "http://localhost:3001/api/analyze-email",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            senderName,
+                            senderEmail,
+                            replyTo,
+                            subject,
+                            body
+                        })
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok || !data.success) {
+
+                throw new Error(
+                    data.error ||
+                    "Email analysis failed."
+                );
+            }
+
+
+            // Display backend result
+
+            displayEmailResult(
+                data.result
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "Email analysis error:",
+                error
+            );
+
+            alert(
+                "Unable to connect to the PhishGuard backend.\n\n" +
+                "Make sure the backend is running at:\n" +
+                "http://localhost:3001"
+            );
+
+
+        } finally {
+
+            analyzeEmailBtn.disabled = false;
+
+            analyzeEmailBtn.textContent =
+                "Analyze Email";
+        }
+
+    }
+
+
+    // ============================================
+    // DISPLAY RESULT
+    // ============================================
+
+    function displayEmailResult(result) {
+
+        emailResult.classList.add("show");
+
+
+        // Score
+
+        emailRiskScore.textContent =
+            result.score;
+
+
+        // Status
+
+        emailRiskStatus.textContent =
+            result.status;
+
+
+        // Risk bar
+
+        emailRiskBar.style.width =
+            result.score + "%";
+
+
+        // Clear indicators
+
+        emailIndicators.innerHTML = "";
+
+
+        // No indicators
+
+        if (
+            !result.flags ||
+            result.flags.length === 0
+        ) {
+
+            const safeMessage =
+                document.createElement("div");
+
+            safeMessage.className =
+                "safe-message";
+
+            safeMessage.textContent =
+                "No major phishing indicators detected.";
+
+            emailIndicators.appendChild(
+                safeMessage
+            );
+
+        } else {
+
+            // Display indicators
+
+            result.flags.forEach(flag => {
+
+                const indicator =
+                    document.createElement("div");
+
+                indicator.className =
+                    "indicator";
+
+
+                const title =
+                    document.createElement("strong");
+
+                title.textContent =
+                    flag.type.replace(
+                        /_/g,
+                        " "
+                    );
+
+
+                const message =
+                    document.createElement("span");
+
+                message.textContent =
+                    flag.message;
+
+
+                indicator.appendChild(title);
+
+                indicator.appendChild(message);
+
+                emailIndicators.appendChild(
+                    indicator
+                );
+
+            });
+
+        }
+
+
+        // Update attack chain
+
+        updateAttackChain(
+            result.attackChain
+        );
+
+    }
+
+
+    // ============================================
+    // ATTACK CHAIN
+    // ============================================
+
+    function updateAttackChain(
+        attackChain
+    ) {
+
+        if (!attackChain) {
+            return;
+        }
+
+
+        const chainItems =
+            document.querySelectorAll(
+                ".chain-item"
+            );
+
+
+        attackChain.forEach(
+            (stage, index) => {
+
+                if (!chainItems[index]) {
+                    return;
+                }
+
+
+                const item =
+                    chainItems[index];
+
+
+                if (stage.detected) {
+
+                    item.style.borderColor =
+                        "#ff4d67";
+
+                    item.style.background =
+                        "rgba(255, 77, 103, 0.08)";
+
+                    item.style.color =
+                        "#ff4d67";
+
+                } else {
+
+                    item.style.borderColor =
+                        "#202938";
+
+                    item.style.background =
+                        "#0a0e15";
+
+                    item.style.color =
+                        "#8993a4";
+                }
+
+            }
+        );
+
+    }
+
+    </script>
+
+</body>
+
+</html>

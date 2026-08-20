@@ -1,0 +1,378 @@
+/* ============================================
+   PHISHGUARD EXTENSION POPUP
+   ============================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    width: 360px;
+    min-height: 450px;
+
+    background: #080c12;
+    color: #f1f5f9;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+.popup {
+    width: 100%;
+    padding: 18px;
+}
+
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 16px;
+}
+
+
+.logo {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: #111827;
+
+    border: 1px solid #263246;
+
+    font-size: 22px;
+}
+
+
+.header h1 {
+    font-size: 17px;
+    margin-bottom: 3px;
+}
+
+
+.header span {
+    color: #8993a4;
+    font-size: 10px;
+}
+
+
+/* ============================================
+   STATUS
+   ============================================ */
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 12px;
+
+    border-radius: 9px;
+
+    background: rgba(38, 208, 124, 0.07);
+
+    border: 1px solid rgba(38, 208, 124, 0.2);
+
+    color: #26d07c;
+
+    font-size: 11px;
+
+    margin-bottom: 18px;
+}
+
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #26d07c;
+
+    box-shadow:
+        0 0 8px rgba(38, 208, 124, 0.7);
+}
+
+
+/* ============================================
+   SECTION
+   ============================================ */
+
+.section {
+    margin-bottom: 15px;
+}
+
+
+.section-title {
+    color: #8993a4;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 7px;
+}
+
+
+.current-page {
+    padding: 11px;
+
+    border-radius: 8px;
+
+    background: #0e141d;
+
+    border: 1px solid #202938;
+
+    color: #cbd5e1;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* ============================================
+   SCAN BUTTON
+   ============================================ */
+
+.scan-btn {
+    width: 100%;
+
+    border: none;
+
+    border-radius: 9px;
+
+    padding: 12px;
+
+    background: #5778ff;
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    margin-bottom: 18px;
+}
+
+
+.scan-btn:hover {
+    background: #4869ef;
+}
+
+
+.scan-btn:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+/* ============================================
+   RESULT
+   ============================================ */
+
+.result {
+    display: none;
+
+    padding: 14px;
+
+    background: #0e141d;
+
+    border: 1px solid #202938;
+
+    border-radius: 11px;
+}
+
+
+.result.show {
+    display: block;
+}
+
+
+/* ============================================
+   RISK HEADER
+   ============================================ */
+
+.risk-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+}
+
+
+.label {
+    display: block;
+
+    color: #8993a4;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+
+    margin-bottom: 4px;
+}
+
+
+.risk-status {
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+
+.score {
+    font-size: 27px;
+
+    font-weight: 700;
+}
+
+
+.score small {
+    color: #8993a4;
+
+    font-size: 10px;
+
+    font-weight: 400;
+}
+
+
+/* ============================================
+   RISK BAR
+   ============================================ */
+
+.risk-bar {
+    height: 6px;
+
+    background: #202938;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    margin-bottom: 16px;
+}
+
+
+#riskBar {
+    height: 100%;
+
+    width: 0%;
+
+    background: #26d07c;
+
+    transition:
+        width 0.4s ease,
+        background 0.3s ease;
+}
+
+
+/* ============================================
+   FLAGS
+   ============================================ */
+
+.flags {
+    margin-top: 9px;
+}
+
+
+.flag {
+    padding: 9px;
+
+    margin-bottom: 6px;
+
+    border-left: 3px solid #ff4d67;
+
+    border-radius: 5px;
+
+    background: rgba(255, 77, 103, 0.06);
+}
+
+
+.flag strong {
+    display: block;
+
+    font-size: 10px;
+
+    margin-bottom: 3px;
+}
+
+
+.flag span {
+    color: #8993a4;
+
+    font-size: 9px;
+
+    line-height: 1.4;
+}
+
+
+.no-threats {
+    padding: 10px;
+
+    border-left: 3px solid #26d07c;
+
+    background: rgba(38, 208, 124, 0.06);
+
+    color: #26d07c;
+
+    font-size: 10px;
+
+    border-radius: 5px;
+}
+
+
+/*
+   FOOTER
+   ============================================ */
+
+.footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 18px;
+
+    padding-top: 12px;
+
+    border-top: 1px solid #202938;
+
+    color: #8993a4;
+
+    font-size: 9px;
+}
+
+
+.footer span {
+    color: #26d07c;
+}

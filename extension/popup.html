@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>PhishGuard</title>
+
+    <link
+        rel="stylesheet"
+        href="popup.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="popup">
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <div class="logo">
+                🛡
+            </div>
+
+            <div>
+
+                <h1>
+                    PhishGuard
+                </h1>
+
+                <span>
+                    Real-Time Protection
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div class="status">
+
+            <span class="status-dot"></span>
+
+            Protection Active
+
+        </div>
+
+
+        <!-- CURRENT PAGE -->
+
+        <div class="section">
+
+            <div class="section-title">
+                Current Page
+            </div>
+
+            <div
+                id="currentPage"
+                class="current-page"
+            >
+                Checking...
+            </div>
+
+        </div>
+
+
+        <!-- SCAN BUTTON -->
+
+        <button
+            id="scanPageBtn"
+            class="scan-btn"
+        >
+            🔍 Scan Current Page
+        </button>
+
+
+        <!-- RESULT -->
+
+        <div
+            id="result"
+            class="result"
+        >
+
+            <div class="risk-header">
+
+                <div>
+
+                    <span class="label">
+                        Risk Assessment
+                    </span>
+
+                    <div
+                        id="status"
+                        class="risk-status"
+                    >
+                        Safe
+                    </div>
+
+                </div>
+
+
+                <div class="score">
+
+                    <span id="score">
+                        0
+                    </span>
+
+                    <small>
+                        /100
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="risk-bar">
+
+                <div
+                    id="riskBar"
+                ></div>
+
+            </div>
+
+
+            <div class="label">
+                Detection Details
+            </div>
+
+            <div
+                id="flags"
+                class="flags"
+            >
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <div class="footer">
+
+            PhishGuard API
+
+            <span>
+                ● Online
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <script src="popup.js"></script>
+
+</body>
+
+</html>

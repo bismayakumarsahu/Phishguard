@@ -1,0 +1,1715 @@
+[
+  {
+    "id": "1787233147333",
+    "type": "url",
+    "target": "https://www.twilio.com/docs/messaging/tutorials/how-to-send-sms-messages?utm_source=chatgpt.com",
+    "score": 20,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      }
+    ],
+    "timestamp": "2026-08-20T13:39:07.333Z"
+  },
+  {
+    "id": "1787232981824",
+    "type": "url",
+    "target": "https://chatgpt.com/c/6a845de2-e7e8-83ee-b914-cf623626a24e",
+    "score": 20,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      }
+    ],
+    "timestamp": "2026-08-20T13:36:21.824Z"
+  },
+  {
+    "id": "1787232973040",
+    "type": "url",
+    "target": "https://chatgpt.com/",
+    "score": 20,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      }
+    ],
+    "timestamp": "2026-08-20T13:36:13.040Z"
+  },
+  {
+    "id": "1787232963178",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/da-python-os-imp/video/NTUwNg%3D%3D",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:36:03.178Z"
+  },
+  {
+    "id": "1787232661829",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/da-python-os-imp/video/NTUwNA%3D%3D",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:31:01.829Z"
+  },
+  {
+    "id": "1787232314035",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/da-python-os-imp",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:25:14.035Z"
+  },
+  {
+    "id": "1787232313334",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/da-python-os-imp",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:25:13.334Z"
+  },
+  {
+    "id": "1787232312915",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/da-python-Inventory-imp",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:25:12.915Z"
+  },
+  {
+    "id": "1787232312481",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/da-python-Inventory-imp",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:25:12.481Z"
+  },
+  {
+    "id": "1787232308495",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/special-functions-python-imp",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:25:08.495Z"
+  },
+  {
+    "id": "1787232308155",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/data-structures-python-imp",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:25:08.155Z"
+  },
+  {
+    "id": "1787232277016",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/da-python-inventory-json-imp/video/NTUwMg%3D%3D",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:24:37.016Z"
+  },
+  {
+    "id": "1787232240963",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/da-python-inventory-json-imp/video/NTQ5Ng%3D%3D",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:24:00.963Z"
+  },
+  {
+    "id": "1787232233673",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/da-python-inventory-json-imp/video/NTUwMg%3D%3D",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:23:53.673Z"
+  },
+  {
+    "id": "1787232225155",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/da-python-inventory-json-imp/video/NTQ5Ng%3D%3D",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:23:45.155Z"
+  },
+  {
+    "id": "1787232223658",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/da-python-inventory-json-imp/video/NTQ5OA%3D%3D",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:23:43.658Z"
+  },
+  {
+    "id": "1787232222123",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/da-python-inventory-json-imp/video/NTQ5Nw%3D%3D",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:23:42.123Z"
+  },
+  {
+    "id": "1787232220273",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/da-python-inventory-json-imp/video/NTQ5Ng%3D%3D",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:23:40.273Z"
+  },
+  {
+    "id": "1787232219331",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/da-python-inventory-json-imp/video/NTQ5Ng%3D%3D",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:23:39.331Z"
+  },
+  {
+    "id": "1787232218821",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/da-python-inventory-json-imp/video/NTQ5Nw%3D%3D",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:23:38.821Z"
+  },
+  {
+    "id": "1787232150945",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/batch/data-science-8/track/da-python-inventory-json-imp/video/NTUwMg%3D%3D",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:22:30.945Z"
+  },
+  {
+    "id": "1787232145406",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/myCourses",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T13:22:25.406Z"
+  },
+  {
+    "id": "1787202070557",
+    "type": "url",
+    "target": "https://www.flipkart.com/",
+    "score": 20,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      }
+    ],
+    "timestamp": "2026-08-20T05:01:10.557Z"
+  },
+  {
+    "id": "1787202040202",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-20T05:00:40.202Z"
+  },
+  {
+    "id": "1787163458403",
+    "type": "url",
+    "target": "https://www.google.com/search?sca_esv=8731fb38ab1cc8da&sxsrf=APpeQnv6ywubTFylGRPmxCDIYyVgftJzEQ:1787163436267&q=GfG+Practice&sa=X&ved=2ahUKEwiVt5jOpq2WAxWNjuEIHVHNBlQQ1QJ6BAg0EAE",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:38.403Z"
+  },
+  {
+    "id": "1787163457041",
+    "type": "url",
+    "target": "https://www.gfgsafety.com/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:37.041Z"
+  },
+  {
+    "id": "1787163456501",
+    "type": "url",
+    "target": "https://www.gfgsafety.com/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:36.501Z"
+  },
+  {
+    "id": "1787163455948",
+    "type": "url",
+    "target": "https://www.gfgsafety.com/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:35.948Z"
+  },
+  {
+    "id": "1787163454138",
+    "type": "url",
+    "target": "https://www.gfgalliance.com/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:34.138Z"
+  },
+  {
+    "id": "1787163452735",
+    "type": "url",
+    "target": "https://www.gfgalliance.com/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:32.735Z"
+  },
+  {
+    "id": "1787163451277",
+    "type": "url",
+    "target": "https://www.youtube.com/watch?v=f9S0kdeFr_s",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:31.277Z"
+  },
+  {
+    "id": "1787163450725",
+    "type": "url",
+    "target": "https://www.youtube.com/watch?v=f9S0kdeFr_s",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:30.725Z"
+  },
+  {
+    "id": "1787163449529",
+    "type": "url",
+    "target": "https://www.facebook.com/geeksforgeeks.org/videos/its-finally-here-gfg-connect-is-live-weve-been-working-on-this-for-a-while-and-i/854588780593398/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:29.529Z"
+  },
+  {
+    "id": "1787163447682",
+    "type": "url",
+    "target": "https://www.udemy.com/user/geeksforgeeks-2/?srsltid=AfmBOor1QeDdeEKSZE4WC0VlspeIlO71GiirjVdF1KtY0WhxCEKvl-0t",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:27.682Z"
+  },
+  {
+    "id": "1787163445793",
+    "type": "url",
+    "target": "https://www.youtube.com/channel/UC0RhatS1pyxInC00YKjjBqQ",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:25.793Z"
+  },
+  {
+    "id": "1787163443915",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/dsa/geeksforgeeks-practice-best-online-coding-platform/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:23.915Z"
+  },
+  {
+    "id": "1787163442822",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/problem-of-the-day",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:22.822Z"
+  },
+  {
+    "id": "1787163441846",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/explore",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:21.846Z"
+  },
+  {
+    "id": "1787163440629",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/myCourses",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:20.629Z"
+  },
+  {
+    "id": "1787163439391",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/profile/sampurnrattan",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:19.391Z"
+  },
+  {
+    "id": "1787163438267",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:17:18.267Z"
+  },
+  {
+    "id": "1787163218140",
+    "type": "url",
+    "target": "https://www.xnxx.tv/search/xnnx+porno+espanol+castellano",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:13:38.140Z"
+  },
+  {
+    "id": "1787163216097",
+    "type": "url",
+    "target": "https://www.sexvid.xxx/s/most-favourited/xnnx+video/41/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:13:36.097Z"
+  },
+  {
+    "id": "1787163214585",
+    "type": "url",
+    "target": "https://xhamster.desi/tags/xnnx-sex",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:13:34.585Z"
+  },
+  {
+    "id": "1787163213400",
+    "type": "url",
+    "target": "https://mcmcmg.apps.lixil.com/xob/video/Videos-SEXPorn-XNXX-indian-sexy-gf-bf-XnxXc-xxnx-xnxx-XnxXz-xxcx-S-E-X-top_1309.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:13:33.400Z"
+  },
+  {
+    "id": "1787163211866",
+    "type": "url",
+    "target": "https://www.xnxx.com/search/xnnx+com+vidoes",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:13:31.866Z"
+  },
+  {
+    "id": "1787163210922",
+    "type": "url",
+    "target": "https://xhamster1.desi/tags/sex-xnnx/3",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:13:30.922Z"
+  },
+  {
+    "id": "1787163208878",
+    "type": "url",
+    "target": "https://xnxx.health/search/xnnx+video+videos",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:13:28.878Z"
+  },
+  {
+    "id": "1787163207220",
+    "type": "url",
+    "target": "https://xhamster19.com/tags/sex-xnnx",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:13:27.220Z"
+  },
+  {
+    "id": "1787162964676",
+    "type": "email",
+    "target": "support@paypal-security-alert.xyz",
+    "subject": "URGENT: Your PayPal account will be suspended",
+    "score": 100,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "flags": [
+      {
+        "type": "SENDER_MISMATCH",
+        "message": "Sender claims to represent paypal, but the email domain is \"paypal-security-alert.xyz\"."
+      },
+      {
+        "type": "REPLY_TO_SPOOFING",
+        "message": "Reply-To domain \"random-mail.example\" differs from sender domain \"paypal-security-alert.xyz\"."
+      },
+      {
+        "type": "URGENCY",
+        "message": "Urgency language detected: urgent, immediate action, within 24 hours, suspended, action required."
+      },
+      {
+        "type": "CREDENTIAL_HARVESTING",
+        "message": "Email requests or references multiple sensitive credentials."
+      },
+      {
+        "type": "MALICIOUS_LINK",
+        "message": "1 suspicious link(s) detected in the email."
+      },
+      {
+        "type": "THREAT_LANGUAGE",
+        "message": "Email uses threatening or fear-based security language."
+      }
+    ],
+    "timestamp": "2026-08-19T18:09:24.676Z"
+  },
+  {
+    "id": "1787162908262",
+    "type": "url",
+    "target": "https://paypal-login-verify-example.xyz",
+    "score": 80,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "flags": [
+      {
+        "type": "SUSPICIOUS_TLD",
+        "message": "Suspicious top-level domain detected: .xyz"
+      },
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "message": "Multiple phishing-related keywords detected: login, verify"
+      },
+      {
+        "type": "BRAND_IMPERSONATION",
+        "message": "Possible paypal impersonation detected."
+      }
+    ],
+    "timestamp": "2026-08-19T18:08:28.262Z"
+  },
+  {
+    "id": "1787162693569",
+    "type": "url",
+    "target": "https://chatgpt.com/c/6a845de2-e7e8-83ee-b914-cf623626a24e",
+    "score": 20,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      }
+    ],
+    "timestamp": "2026-08-19T18:04:53.569Z"
+  },
+  {
+    "id": "1787162671427",
+    "type": "url",
+    "target": "https://chatgpt.com/",
+    "score": 20,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      }
+    ],
+    "timestamp": "2026-08-19T18:04:31.427Z"
+  },
+  {
+    "id": "1787162670101",
+    "type": "url",
+    "target": "https://chatgpt.com/auth/login",
+    "score": 20,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      }
+    ],
+    "timestamp": "2026-08-19T18:04:30.101Z"
+  },
+  {
+    "id": "1787162666875",
+    "type": "url",
+    "target": "https://www.google.com/search?sca_esv=8731fb38ab1cc8da&sxsrf=APpeQnvAr2NBjHtvrhINBimlHDlzONc8eA:1787162637569&q=GPT+chat+WhatsApp&sa=X&ved=2ahUKEwiB4KvRo62WAxXpk-EIHcWMK7MQ1QJ6BAgtEAE",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:04:26.875Z"
+  },
+  {
+    "id": "1787162665583",
+    "type": "url",
+    "target": "https://www.google.com/search?sca_esv=8731fb38ab1cc8da&sxsrf=APpeQnvAr2NBjHtvrhINBimlHDlzONc8eA:1787162637569&q=Gpt+download&sa=X&ved=2ahUKEwiB4KvRo62WAxXpk-EIHcWMK7MQ1QJ6BAguEAE",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:04:25.583Z"
+  },
+  {
+    "id": "1787162664938",
+    "type": "url",
+    "target": "https://www.google.com/search?sca_esv=8731fb38ab1cc8da&sxsrf=APpeQnvAr2NBjHtvrhINBimlHDlzONc8eA:1787162637569&q=Gpt+download&sa=X&ved=2ahUKEwiB4KvRo62WAxXpk-EIHcWMK7MQ1QJ6BAguEAE",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:04:24.938Z"
+  },
+  {
+    "id": "1787162663283",
+    "type": "url",
+    "target": "https://deepai.org/chat/gpt-chat",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:04:23.283Z"
+  },
+  {
+    "id": "1787162661732",
+    "type": "url",
+    "target": "https://www.instagram.com/p/DcLBgblgJda/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:04:21.732Z"
+  },
+  {
+    "id": "1787162658843",
+    "type": "url",
+    "target": "https://openai.com/index/gpt-4/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:04:18.843Z"
+  },
+  {
+    "id": "1787162657208",
+    "type": "url",
+    "target": "https://aws.amazon.com/what-is/gpt/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:04:17.208Z"
+  },
+  {
+    "id": "1787162656244",
+    "type": "url",
+    "target": "https://aws.amazon.com/what-is/gpt/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:04:16.244Z"
+  },
+  {
+    "id": "1787162655092",
+    "type": "url",
+    "target": "https://openai.com/index/introducing-gpt-live/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:04:15.092Z"
+  },
+  {
+    "id": "1787162653479",
+    "type": "url",
+    "target": "https://openai.com/index/chatgpt/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:04:13.479Z"
+  },
+  {
+    "id": "1787162652188",
+    "type": "url",
+    "target": "https://chatgpt.com/gpts",
+    "score": 20,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      }
+    ],
+    "timestamp": "2026-08-19T18:04:12.188Z"
+  },
+  {
+    "id": "1787162649137",
+    "type": "url",
+    "target": "https://www.google.com/search?sca_esv=8731fb38ab1cc8da&sxsrf=APpeQnvAr2NBjHtvrhINBimlHDlzONc8eA:1787162637569&udm=28&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cxpBkeIeqYwoCbfNVc4vKEzfJsZm6euHh2bPtNTAJBYC8Vz31UYvLg8iIP-9tnLhHTiLCOWrNdrqj6jnIDMtguI0aFTTL-rY2rSd-EuCbAvpOSf5kKIMwieAluDUAbRynIuamtCgtSInxbf6DCV1z-WrFRwrMT9SFg8L_dDLcvptv8PHpMjgt72OBnyfkRc-_1cARDA&q=gpt&ved=1t:220175&ictx=111",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:04:09.137Z"
+  },
+  {
+    "id": "1787162644972",
+    "type": "url",
+    "target": "https://chatgpt.com/",
+    "score": 20,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      }
+    ],
+    "timestamp": "2026-08-19T18:04:04.972Z"
+  },
+  {
+    "id": "1787162640853",
+    "type": "url",
+    "target": "https://www.google.com/search?sca_esv=8731fb38ab1cc8da&sxsrf=APpeQnvAr2NBjHtvrhINBimlHDlzONc8eA:1787162637569&udm=28&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cxpBkeIeqYwoCbfNVc4vKEzfJsZm6euHh2bPtNTAJBYC8Vz31UYvLg8iIP-9tnLhHTiLCOWrNdrqj6jnIDMtguI0aFTTL-rY2rSd-EuCbAvpOSf5kKIMwieAluDUAbRynIuamtCgtSInxbf6DCV1z-WrFRwrMT9SFg8L_dDLcvptv8PHpMjgt72OBnyfkRc-_1cARDA&q=gpt&ved=1t:220175&ictx=111",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:04:00.853Z"
+  },
+  {
+    "id": "1787162615952",
+    "type": "url",
+    "target": "https://moe_p34i.api-03.moengage.com/v1/emailclick?q=NbjBrVZYg6ZqCVU8aTBxcUuEyVLM_HAtnFVAMLCiMc2pivRRmQ-ufZX8qT33bLQN5RaM1VsHCmUrO4tpw8ofI.6315OObQdhlNMufetv4DDsU1rPdjs757AWpDdgl.zokFLUK4UVL6mzgd6L2.LZYhBDF6H8akCmJhUMuem0et.7c.jeTlZHj.JgfP0jZyTY4Q-.invuu13MnbRuGi9TbrQ0VR8auyvR.Aeg90OycXUUUead7BWqnkmdG8x1ipIfZKRYf4FNkddXQ-ZxePY7Xd5jBzk8sl6MTpZf.fSz0G3lL7IJWMgdV7X6X_8ob4IuoNnp_YFDLFWy3cS5wC7tB9kw-XRkXmjkkkAgM6nYYAXK6Ydi8CW_5k2WDDToHvHNP9cE.-sqnNQMB4sYpPSgbdgavnzAVCrtyd09UvA4RjWtKdLl_a_ZfR0coUCDSmqSMQy14Ibmz3f96JbuZcZbACVInre_Yxz3NeWmgIUmKiLb69deGUoXcHuT5EGzM5t8yJCZ3g1AHuerPhDRwgB6vDA5IGI9ymeYgQQ1Gm2qM1PQ06uT984yw7kFaVbYReIS1wHcUb_Qts9BEKrnp7qbsK4yazJhiDgOGfvtDs.EC80jXKWDgDd7kOxPdaLWKihuD4G9ffRzyV6AYbAHMcuNIRmhR7Kn8IYvPyLKTazSr5oMoATSCqCPgeHrUvgmCuqbo_",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:03:35.952Z"
+  },
+  {
+    "id": "1787162500588",
+    "type": "email",
+    "target": "noreply@unstop.news",
+    "subject": "Grab PPIs and INR 45 Lakhs Cash prize with Schneider Electric",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:01:40.588Z"
+  },
+  {
+    "id": "1787162481889",
+    "type": "url",
+    "target": "https://moe_p34i.api-03.moengage.com/v1/emailclick?q=NbjBrVZYg6ZqCVU8aTBxcUuEyVLM_HAtnFVAMLCiMc2pivRRmQ-ufZX8qT33bLQN5RaM1VsHCmUrO4tpw8ofI.6315OObQdhlNMufetv4DDsU1rPdjs757AWpDdgl.zokFLUK4UVL6mzgd6L2.LZYhBDF6H8akCmJhUMuem0et.7c.jeTlZHj.JgfP0jZyTY4Q-.invuu13MnbRuGi9TbrQ0VR8auyvR.Aeg90OycXUUUead7BWqnkmdG8x1ipIfZKRYf4FNkddXQ-ZxePY7Xd5jBzk8sl6MTpZf.fSz0G3lL7IJWMgdV7X6X_8ob4IuoNnp_YFDLFWy3cS5wC7tB9kw-XRkXmjkkkAgM6nYYAXK6Ydi8CW_5k2WDDToHvHNP9cE.-sqnNQMB4sYpPSgbdgavnzAVCrtyd09UvA4RjWtKdLl_a_ZfR0coUCDSmqSMQy14Ibmz3f96JbuZcZbACVInre_Yxz3NeWmgIUmKiLb69deGUoXcHuT5EGzM5t8yJCZ3g1AHuerPhDRwgB6vDA5IGI9ymeYgQQ1Gm2qM1PQ06uT984yw7kFaVbYReIS1wHcUb_Qts9BEKrnp7qbsK4yazJhiDgOGfvtDs.EC80jXKWDgDd7kOxPdaLWKihuD4G9ffRzyV6AYbAHMcuNIRmhR7Kn8IYvPyLKTazSr5oMoATSCqCPgeHrUvgmCuqbo_",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:01:21.889Z"
+  },
+  {
+    "id": "1787162470310",
+    "type": "url",
+    "target": "https://moe_p34i.api-03.moengage.com/v1/emailclick?q=NbjBrVZYg6ZqCVU8aTBxcUuEyVLM_HAtnFVAMLCiMc2pivRRmQ-ufZX8qT33bLQN5RaM1VsHCmUrO4tpw8ofI.6315OObQdhlNMufetv4DDsU1rPdjs757AWpDdgl.zokFLUK4UVL6mzgd6L2.LZYhBDF6H8akCmJhUMuem0et.7c.jeTlZHj.JgfP0jZyTY4Q-.invuu13MnbRuGi9TbrQ0VR8auyvR.Aeg90OycXUUUead7BWqnkmdG8x1ipIfZKRYf4FNkddXQ-ZxePY7Xd5jBzk8sl6MTpZf.fSz0G3lL7IJWMgdV7X6X_8ob4IuoNnp_YFDLFWy3cS5wC7tB9kw-XRkXmjkkkAgM6nYYAXK6Ydi8CW_5k2WDDToHvHNP9cE.-sqnNQMB4sYpPSgbdgavnzAVCrtyd09UvA4RjWtKdLl_a_ZfR0coUCDSmqSMQy14Ibmz3f96JbuZcZbACVInre_Yxz3NeWmgIUmKiLb69deGUoXcHuT5EGzM5t8yJCZ3g1AHuerPhDRwgB6vDA5IGI9ymeYgQQ1Gm2qM1PQ06uT984yw7kFaVbYReIS1wHcUb_Qts9BEKrnp7qbsK4yazJhiDgOGfvtDs.EC80jXKWDgDd7kOxPdaLWKihuD4G9ffRzyV6AYbAHMcuNIRmhR7Kn8IYvPyLKTazSr5oMoATSCqCPgeHrUvgmCuqbo_",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:01:10.310Z"
+  },
+  {
+    "id": "1787162450457",
+    "type": "url",
+    "target": "https://moe_p34i.api-03.moengage.com/v1/emailclick?q=NbjBrVZYg6ZqCVU8aTBxcUuEyVLM_HAtnFVAMLCiMc2pivRRmQ-ufZX8qT33bLQN5RaM1VsHCmUrO4tpw8ofI.6315OObQdhlNMufetv4DDsU1rPdjs757AWpDdgl.zokFLUK4UVL6mzgd6L2.LZYhBDF6H8akCmJhUMuem0et.7c.jeTlZHj.JgfP0jZyTY4Q-.invuu13MnbRuGi9TbrQ0VR8auyvR.Aeg90OycXUUUead7BWqnkmdG8x1ipIfZKRYf4FNkddXQ-ZxePY7Xd5jBzk8sl6MTpZf.fSz0G3lL7IJWMgdV7X6X_8ob4IuoNnp_YFDLFWy3cS5wC7tB9kw-XRkXmjkkkAgM6nYYAXK6Ydi8CW_5k2WDDToHvHNP9cE.-sqnNQMB4sYpPSgbdgavnzAVCrtyd09UvA4RjWtKdLl_a_ZfR0coUCDSmqSMQy14Ibmz3f96JbuZcZbACVInre_Yxz3NeWmgIUmKiLb69deGUoXcHuT5EGzM5t8yJCZ3g1AHuerPhDRwgB6vDA5IGI9ymeYgQQ1Gm2qM1PQ06uT984yw7kFaVbYReIS1wHcUb_Qts9BEKrnp7qbsK4yazJhiDgOGfvtDs.EC80jXKWDgDd7kOxPdaLWKihuD4G9ffRzyV6AYbAHMcuNIRmhR7Kn8IYvPyLKTazSr5oMoATSCqCPgeHrUvgmCuqbo_",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:00:50.457Z"
+  },
+  {
+    "id": "1787162445116",
+    "type": "url",
+    "target": "https://moe_p34i.api-03.moengage.com/v1/emailclick?q=NbjBrVZYg6ZqCVU8aTBxcUuEyVLM_HAtnFVAMLCiMc2pivRRmQ-ufZX8qT33bLQN5RaM1VsHCmUrO4tpw8ofI.6315OObQdhlNMufetv4DDsU1rPdjs757AWpDdgl.zokFLUK4UVL6mzgd6L2.LZYhBDF6H8akCmJhUMuem0et.7c.jeTlZHj.JgfP0jZyTY4Q-.invuu13MnbRuGi9TbrQ0VR8auyvR.Aeg90OycXUUUead7BWqnkmdG8x1ipIfZKRYf4FNkddXQ-ZxePY7Xd5jBzk8sl6MTpZf.fSz0G3lL7IJWMgdV7X6X_8ob4IuoNnp_YFDLFWy3cS5wC7tB9kw-XRkXmjkkkAgM6nYYAXK6Ydi8CW_5k2WDDToHvHNP9cE.-sqnNQMB4sYpPSgbdgavnzAVCrtyd09UvA4RjWtKdLl_a_ZfR0coUCDSmqSMQy14Ibmz3f96JbuZcZbACVInre_Yxz3NeWmgIUmKiLb69deGUoXcHuT5EGzM5t8yJCZ3g1AHuerPhDRwgB6vDA5IGI9ymeYgQQ1Gm2qM1PQ06uT984yw7kFaVbYReIS1wHcUb_Qts9BEKrnp7qbsK4yazJhiDgOGfvtDs.EC80jXKWDgDd7kOxPdaLWKihuD4G9ffRzyV6AYbAHMcuNIRmhR7Kn8IYvPyLKTazSr5oMoATSCqCPgeHrUvgmCuqbo_",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:00:45.116Z"
+  },
+  {
+    "id": "1787162439598",
+    "type": "url",
+    "target": "https://moe_p34i.api-03.moengage.com/v1/emailclick?q=NbjBrVZYg6ZqCVU8aTBxcUuEyVLM_HAtnFVAMLCiMc2pivRRmQ-ufZX8qT33bLQN5RaM1VsHCmUrO4tpw8ofI.6315OObQdhlNMufetv4DDsU1rPdjs757AWpDdgl.zokFLUK4UVL6mzgd6L2.LZYhBDF6H8akCmJhUMuem0et.7c.jeTlZHj.JgfP0jZyTY4Q-.invuu13MnbRuGi9TbrQ0VR8auyvR.Aeg90OycXUUUead7BWqnkmdG8x1ipIfZKRYf4FNkddXQ-ZxePY7Xd5jBzk8sl6MTpZf.fSz0G3lL7IJWMgdV7X6X_8ob4IuoNnp_YFDLFWy3cS5wC7tB9kw-XRkXmjkkkAgM6nYYAXK6Ydi8CW_5k2WDDToHvHNP9cE.-sqnNQMB4sYpPSgbdgavnzAVCrtyd09UvA4RjWtKdLl_a_ZfR0coUCDSmqSMQy14Ibmz3f96JbuZcZbACVInre_Yxz3NeWmgIUmKiLb69deGUoXcHuT5EGzM5t8yJCZ3g1AHuerPhDRwgB6vDA5IGI9ymeYgQQ1Gm2qM1PQ06uT984yw7kFaVbYReIS1wHcUb_Qts9BEKrnp7qbsK4yazJhiDgOGfvtDs.EC80jXKWDgDd7kOxPdaLWKihuD4G9ffRzyV6AYbAHMcuNIRmhR7Kn8IYvPyLKTazSr5oMoATSCqCPgeHrUvgmCuqbo_",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T18:00:39.598Z"
+  },
+  {
+    "id": "1787162354219",
+    "type": "url",
+    "target": "https://moe_p34i.api-03.moengage.com/v1/emailclick?q=NbjBrVZYg6ZqCVU8aTBxcUuEyVLM_HAtnFVAMLCiMc2pivRRmQ-ufZX8qT33bLQN5RaM1VsHCmUrO4tpw8ofI.6315OObQdhlNMufetv4DDsU1rPdjs757AWpDdgl.zokFLUK4UVL6mzgd6L2.LZYhBDF6H8akCmJhUMuem0et.7c.jeTlZHj.JgfP0jZyTY4Q-.invuu13MnbRuGi9TbrQ0VR8auyvR.Aeg90OycXUUUead7BWqnkmdG8x1ipIfZKRYf4FNkddXQ-ZxePY7Xd5jBzk8sl6MTpZf.fSz0G3lL7IJWMgdV7X6X_8ob4IuoNnp_YFDLFWy3cS5wC7tB9kw-XRkXmjkkkAgM6nYYAXK6Ydi8CW_5k2WDDToHvHNP9cE.-sqnNQMB4sYpPSgbdgavnzAVCrtyd09UvA4RjWtKdLl_a_ZfR0coUCDSmqSMQy14Ibmz3f96JbuZcZbACVInre_Yxz3NeWmgIUmKiLb69deGUoXcHuT5EGzM5t8yJCZ3g1AHuerPhDRwgB6vDA5IGI9ymeYgQQ1Gm2qM1PQ06uT984yw7kFaVbYReIS1wHcUb_Qts9BEKrnp7qbsK4yazJhiDgOGfvtDs.EC80jXKWDgDd7kOxPdaLWKihuD4G9ffRzyV6AYbAHMcuNIRmhR7Kn8IYvPyLKTazSr5oMoATSCqCPgeHrUvgmCuqbo_",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T17:59:14.219Z"
+  },
+  {
+    "id": "1787161981954",
+    "type": "url",
+    "target": "https://chatgpt.com/c/6a845de2-e7e8-83ee-b914-cf623626a24e",
+    "score": 20,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      }
+    ],
+    "timestamp": "2026-08-19T17:53:01.954Z"
+  },
+  {
+    "id": "1787161497783",
+    "type": "url",
+    "target": "https://chatgpt.com/c/6a845de2-e7e8-83ee-b914-cf623626a24e",
+    "score": 20,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      }
+    ],
+    "timestamp": "2026-08-19T17:44:57.783Z"
+  },
+  {
+    "id": "1787151480960",
+    "type": "url",
+    "target": "https://chatgpt.com/c/6a845de2-e7e8-83ee-b914-cf623626a24e",
+    "score": 35,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      },
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      }
+    ],
+    "timestamp": "2026-08-19T14:58:00.960Z"
+  },
+  {
+    "id": "1787151071705",
+    "type": "email",
+    "target": "support@paypal-security-alert.xyz",
+    "subject": "URGENT: Your PayPal account will be suspended",
+    "score": 100,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "flags": [
+      {
+        "type": "SENDER_MISMATCH",
+        "message": "Sender claims to represent paypal, but the email domain is \"paypal-security-alert.xyz\"."
+      },
+      {
+        "type": "REPLY_TO_SPOOFING",
+        "message": "Reply-To domain \"random-mail.example\" differs from sender domain \"paypal-security-alert.xyz\"."
+      },
+      {
+        "type": "URGENCY",
+        "message": "Urgency language detected: urgent, immediate action, within 24 hours, suspended, action required."
+      },
+      {
+        "type": "CREDENTIAL_HARVESTING",
+        "message": "Email requests or references multiple sensitive credentials."
+      },
+      {
+        "type": "MALICIOUS_LINK",
+        "message": "1 suspicious link(s) detected in the email."
+      },
+      {
+        "type": "THREAT_LANGUAGE",
+        "message": "Email uses threatening or fear-based security language."
+      }
+    ],
+    "timestamp": "2026-08-19T14:51:11.705Z"
+  },
+  {
+    "id": "1787150466495",
+    "type": "url",
+    "target": "https://chatgpt.com/c/6a845de2-e7e8-83ee-b914-cf623626a24e",
+    "score": 35,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      },
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      }
+    ],
+    "timestamp": "2026-08-19T14:41:06.495Z"
+  },
+  {
+    "id": "1787150465891",
+    "type": "url",
+    "target": "https://chatgpt.com/c/6a85bdae-90d0-83ee-a1ef-018162dad5aa",
+    "score": 35,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      },
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      }
+    ],
+    "timestamp": "2026-08-19T14:41:05.891Z"
+  },
+  {
+    "id": "1787150091423",
+    "type": "url",
+    "target": "https://chatgpt.com/c/6a845de2-e7e8-83ee-b914-cf623626a24e",
+    "score": 35,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      },
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      }
+    ],
+    "timestamp": "2026-08-19T14:34:51.423Z"
+  },
+  {
+    "id": "1787150080410",
+    "type": "url",
+    "target": "https://chatgpt.com/c/6a85bdae-90d0-83ee-a1ef-018162dad5aa",
+    "score": 35,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      },
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      }
+    ],
+    "timestamp": "2026-08-19T14:34:40.410Z"
+  },
+  {
+    "id": "1787150077513",
+    "type": "url",
+    "target": "https://chatgpt.com/c/6a85bdae-90d0-83ee-a1ef-018162dad5aa",
+    "score": 35,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      },
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      }
+    ],
+    "timestamp": "2026-08-19T14:34:37.513Z"
+  },
+  {
+    "id": "1787150057479",
+    "type": "url",
+    "target": "https://new1.hdhub4u.af/?utm=mn1",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:34:17.479Z"
+  },
+  {
+    "id": "1787150045533",
+    "type": "url",
+    "target": "https://hdhub4u.bi/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:34:05.533Z"
+  },
+  {
+    "id": "1787150042449",
+    "type": "url",
+    "target": "https://hdhub4u.bi/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:34:02.449Z"
+  },
+  {
+    "id": "1787150029344",
+    "type": "url",
+    "target": "https://chatgpt.com/",
+    "score": 20,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      }
+    ],
+    "timestamp": "2026-08-19T14:33:49.344Z"
+  },
+  {
+    "id": "1787149937313",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:32:17.313Z"
+  },
+  {
+    "id": "1787149914631",
+    "type": "url",
+    "target": "https://nic.xyz/",
+    "score": 20,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "SUSPICIOUS_TLD",
+        "message": "Suspicious top-level domain detected: .xyz"
+      }
+    ],
+    "timestamp": "2026-08-19T14:31:54.631Z"
+  },
+  {
+    "id": "1787149912094",
+    "type": "url",
+    "target": "https://gen.xyz/blog/2026-quarterly-q1",
+    "score": 20,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "SUSPICIOUS_TLD",
+        "message": "Suspicious top-level domain detected: .xyz"
+      }
+    ],
+    "timestamp": "2026-08-19T14:31:52.094Z"
+  },
+  {
+    "id": "1787149910587",
+    "type": "url",
+    "target": "https://www.name.com/domains/xyz",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:31:50.587Z"
+  },
+  {
+    "id": "1787149907644",
+    "type": "url",
+    "target": "https://www.godaddy.com/en-in/tlds/xyz-domain",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:31:47.644Z"
+  },
+  {
+    "id": "1787149907171",
+    "type": "url",
+    "target": "https://www.godaddy.com/en-in/tlds/xyz-domain",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:31:47.171Z"
+  },
+  {
+    "id": "1787149902897",
+    "type": "url",
+    "target": "https://gen.xyz/blog/2026-quarterly-q1",
+    "score": 20,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "SUSPICIOUS_TLD",
+        "message": "Suspicious top-level domain detected: .xyz"
+      }
+    ],
+    "timestamp": "2026-08-19T14:31:42.897Z"
+  },
+  {
+    "id": "1787149900459",
+    "type": "url",
+    "target": "https://www.name.com/domains/xyz",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:31:40.459Z"
+  },
+  {
+    "id": "1787149894899",
+    "type": "url",
+    "target": "https://www.quora.com/Are-there-examples-of-successful-websites-that-use-an-alternative-Top-Level-Domain-xyz",
+    "score": 15,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      }
+    ],
+    "timestamp": "2026-08-19T14:31:34.899Z"
+  },
+  {
+    "id": "1787149891016",
+    "type": "url",
+    "target": "https://www.inwx.com/en/blog/xyz-for-every-website",
+    "score": 15,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      }
+    ],
+    "timestamp": "2026-08-19T14:31:31.016Z"
+  },
+  {
+    "id": "1787149890386",
+    "type": "url",
+    "target": "https://www.inwx.com/en/blog/xyz-for-every-website",
+    "score": 15,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      }
+    ],
+    "timestamp": "2026-08-19T14:31:30.386Z"
+  },
+  {
+    "id": "1787149887588",
+    "type": "url",
+    "target": "https://gen.xyz/",
+    "score": 20,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "SUSPICIOUS_TLD",
+        "message": "Suspicious top-level domain detected: .xyz"
+      }
+    ],
+    "timestamp": "2026-08-19T14:31:27.588Z"
+  },
+  {
+    "id": "1787149858637",
+    "type": "url",
+    "target": "https://bismayakumarsahu.online/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:30:58.637Z"
+  },
+  {
+    "id": "1787149823227",
+    "type": "url",
+    "target": "https://www.instagram.com/verify__now_/p/DcJasLrDIBC/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:30:23.227Z"
+  },
+  {
+    "id": "1787149821773",
+    "type": "url",
+    "target": "https://www.instagram.com/verifynow_official/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:30:21.773Z"
+  },
+  {
+    "id": "1787149818809",
+    "type": "url",
+    "target": "https://www.instagram.com/verify__now_/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:30:18.809Z"
+  },
+  {
+    "id": "1787149817631",
+    "type": "url",
+    "target": "https://www.google.com/search?sca_esv=cf5c3a640caff83a&biw=1536&bih=776&sxsrf=APpeQntpP81FUm3tSk-iviuB6PKMs0wHaQ:1787149816253&q=instagram+verifynow&spell=1&sa=X&ved=2ahUKEwiv4dTv86yWAxVXbWwGHYQgHXAQkeECKAB6BAgLEAE",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:30:17.631Z"
+  },
+  {
+    "id": "1787149803122",
+    "type": "url",
+    "target": "https://www.magnific.com/icons/blue-tick",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:30:03.122Z"
+  },
+  {
+    "id": "1787149798744",
+    "type": "url",
+    "target": "https://www.google.com/search?q=freebluetick.com&sca_esv=cf5c3a640caff83a&biw=1536&bih=776&sxsrf=APpeQntIkjfjY6KH6Ov7HuZJkv06IRdsdQ%3A1787149762212&ei=wr2Faq3FDIqgseMPpKKmwAY&ved=0ahUKEwitrvLV86yWAxUKUGwGHSSRCWgQ4dUDCBA&uact=5&oq=freebluetick.com&gs_lp=Egxnd3Mtd2l6LXNlcnAiEGZyZWVibHVldGljay5jb20yDBAAGIAEGAoYCxixAzIJEAAYgAQYChgLMgwQABiABBgKGAsYsQMyCRAAGIAEGAoYCzIJEAAYgAQYChgLMgUQABiABDIJEAAYgAQYChgLMgcQABiABBgKMgwQABiABBgKGAsYsQMyBRAAGIAESN4vUOgGWLctcAF4ApABAJgBuAigAaEPqgEFNi0xLjG4AQPIAQD4AQGYAgSgArwPqAITwgIEEAAYR8ICBxAjGOoCGCfCAhAQIxjwBRieBhiiBxjqAhgnwgIXEAAYgAQYigUYkQIY5wYY6gIYtALYAQHCAhAQABgDGI8BGOoCGLQC2AEBwgILEAAYgAQYigUYkQLCAgoQABiABBiKBRhDwgIQEC4YgAQYigUYQxjHARjRA8ICCBAAGIAEGLEDwgIQEAAYgAQYigUYQxixAxiDAcICCxAuGIAEGLEDGIMBmAMI4gMFEgExIEDxBcnnii9c6PYliAYBkAYIugYGCAEQARgBkgcFMi42LTKgB5kTsgcDNi0yuAetD8IHBTItMy4xyAcWgAgB&sclient=gws-wiz-serp",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:29:58.744Z"
+  },
+  {
+    "id": "1787149796997",
+    "type": "url",
+    "target": "https://getgabs.com/whatsapp-blue-tick/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:29:56.997Z"
+  },
+  {
+    "id": "1787149791326",
+    "type": "url",
+    "target": "https://www.meta.com/meta-verified/?srsltid=AfmBOop3HdWussEn8FTYXWmmKCOW0wRp72SuTsm278x_APtbVwaqSJBP",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:29:51.326Z"
+  },
+  {
+    "id": "1787149769740",
+    "type": "url",
+    "target": "https://www.google.com/search?sca_esv=cf5c3a640caff83a&biw=1536&bih=776&sxsrf=APpeQntIkjfjY6KH6Ov7HuZJkv06IRdsdQ:1787149762212&udm=7&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832X6CeY5aSHvaPXpohaS1dducKJ9vW2r5g1d5cMKghneO17pkIDLkifCExdoydOwG8ow-gxBkLPzFTZx_F8KBpZqdzlxKEafZHuPTrGpJyBukrtuH667sbJap2pu1BPO6tXaeCZIBdcrUoSncUuhP7dh_iNsgJzFaxFAHC49x3p9UYf2nsQ&q=name+some+risky+websites&sa=X&ved=2ahUKEwitrvLV86yWAxUKUGwGHSSRCWgQtKgLegQIFxAB",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:29:29.740Z"
+  },
+  {
+    "id": "1787149768504",
+    "type": "url",
+    "target": "https://cert.pl/en/warning-list/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:29:28.504Z"
+  },
+  {
+    "id": "1787149763648",
+    "type": "url",
+    "target": "https://www.google.com/search?sca_esv=cf5c3a640caff83a&biw=1536&bih=776&sxsrf=APpeQntIkjfjY6KH6Ov7HuZJkv06IRdsdQ:1787149762212&q=name+some+risky+websites&spell=1&sa=X&ved=2ahUKEwitrvLV86yWAxUKUGwGHSSRCWgQkeECKAB6BAgPEAE",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:29:23.648Z"
+  },
+  {
+    "id": "1787149749073",
+    "type": "url",
+    "target": "https://www.quickheal.com/blogs/tag/unsafe-websites/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:29:09.073Z"
+  },
+  {
+    "id": "1787149747211",
+    "type": "url",
+    "target": "https://cert.pl/en/warning-list/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:29:07.211Z"
+  },
+  {
+    "id": "1787149745346",
+    "type": "url",
+    "target": "https://www.google.com/search?sca_esv=cf5c3a640caff83a&biw=1536&bih=776&sxsrf=APpeQnvHmEirrOAlS16avf1CqZqyuGMjKQ:1787149743857&q=risky+websites&spell=1&sa=X&ved=2ahUKEwj9-5HN86yWAxUySGwGHRxVAxgQkeECKAB6BAgMEAE",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:29:05.346Z"
+  },
+  {
+    "id": "1787149737487",
+    "type": "url",
+    "target": "https://www.google.com/search?sca_esv=cf5c3a640caff83a&biw=1536&bih=776&sxsrf=APpeQns7Wk6fg6FGYSS8HeywyvtzyzGr6g:1787149735930&q=risky+web+series&spell=1&sa=X&ved=2ahUKEwj3na7J86yWAxUGSGwGHbJdGh8QkeECKAB6BAgQEAE",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:28:57.487Z"
+  },
+  {
+    "id": "1787149726240",
+    "type": "url",
+    "target": "https://www.merriam-webster.com/dictionary/papal",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:28:46.240Z"
+  },
+  {
+    "id": "1787149723586",
+    "type": "url",
+    "target": "https://www.google.com/search?sca_esv=cf5c3a640caff83a&sxsrf=APpeQnu9jzFhpk7-X5c3YPyO03wThpAJzw:1787149721895&q=paypal&spell=1&sa=X&ved=2ahUKEwiV0tXC86yWAxVra2wGHUnNCz0QBSgAegQIDhAB",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:28:43.586Z"
+  },
+  {
+    "id": "1787149709724",
+    "type": "url",
+    "target": "https://xnxx.health/search/xnxx",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:28:29.724Z"
+  },
+  {
+    "id": "1787149707446",
+    "type": "url",
+    "target": "https://xhaccess.com/search/xnxx+hot+sex",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:28:27.446Z"
+  },
+  {
+    "id": "1787149705824",
+    "type": "url",
+    "target": "https://xhamster19.com/tags/xnxx-hard/full-length",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:28:25.824Z"
+  },
+  {
+    "id": "1787149702105",
+    "type": "url",
+    "target": "https://www.xnxx.com/todays-selection",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:28:22.105Z"
+  },
+  {
+    "id": "1787149668281",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/problem-of-the-day",
+    "score": 15,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      }
+    ],
+    "timestamp": "2026-08-19T14:27:48.281Z"
+  },
+  {
+    "id": "1787149665523",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/explore",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:27:45.523Z"
+  },
+  {
+    "id": "1787149664339",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/myCourses",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:27:44.339Z"
+  },
+  {
+    "id": "1787149660423",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/profile/sampurnrattan",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:27:40.423Z"
+  },
+  {
+    "id": "1787149656689",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:27:36.689Z"
+  },
+  {
+    "id": "1787149653964",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/explore",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:27:33.964Z"
+  },
+  {
+    "id": "1787149652184",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/problem-of-the-day",
+    "score": 15,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      }
+    ],
+    "timestamp": "2026-08-19T14:27:32.184Z"
+  },
+  {
+    "id": "1787149650158",
+    "type": "url",
+    "target": "https://www.youtube.com/channel/UC0RhatS1pyxInC00YKjjBqQ",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:27:30.158Z"
+  },
+  {
+    "id": "1787149647737",
+    "type": "url",
+    "target": "https://www.udemy.com/user/geeksforgeeks-2/?srsltid=AfmBOor-4cSrV_pLZqzrG-Lo---9X2Q3j41WucaYaEYkmtGIDoTqYEFm",
+    "score": 15,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      }
+    ],
+    "timestamp": "2026-08-19T14:27:27.737Z"
+  },
+  {
+    "id": "1787149644785",
+    "type": "url",
+    "target": "https://www.facebook.com/geeksforgeeks.org/videos/its-finally-here-gfg-connect-is-live-weve-been-working-on-this-for-a-while-and-i/854588780593398/",
+    "score": 15,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      }
+    ],
+    "timestamp": "2026-08-19T14:27:24.785Z"
+  },
+  {
+    "id": "1787149641483",
+    "type": "url",
+    "target": "https://www.gfgstyle.it/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:27:21.483Z"
+  },
+  {
+    "id": "1787149639654",
+    "type": "url",
+    "target": "https://www.gfgsafety.com/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:27:19.654Z"
+  },
+  {
+    "id": "1787149637189",
+    "type": "url",
+    "target": "https://www.youtube.com/watch?v=f9S0kdeFr_s",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:27:17.189Z"
+  },
+  {
+    "id": "1787149634878",
+    "type": "url",
+    "target": "https://www.facebook.com/geeksforgeeks.org/videos/its-finally-here-gfg-connect-is-live-weve-been-working-on-this-for-a-while-and-i/854588780593398/",
+    "score": 15,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      }
+    ],
+    "timestamp": "2026-08-19T14:27:14.878Z"
+  },
+  {
+    "id": "1787149631659",
+    "type": "url",
+    "target": "https://www.udemy.com/user/geeksforgeeks-2/?srsltid=AfmBOor-4cSrV_pLZqzrG-Lo---9X2Q3j41WucaYaEYkmtGIDoTqYEFm",
+    "score": 15,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      }
+    ],
+    "timestamp": "2026-08-19T14:27:11.659Z"
+  },
+  {
+    "id": "1787149623280",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:27:03.280Z"
+  },
+  {
+    "id": "1787149617739",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:26:57.739Z"
+  },
+  {
+    "id": "1787149612940",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:26:52.940Z"
+  },
+  {
+    "id": "1787149597364",
+    "type": "url",
+    "target": "https://www.geeksforgeeks.org/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:26:37.364Z"
+  },
+  {
+    "id": "1787149508465",
+    "type": "url",
+    "target": "http://localhost:3001/api/stats",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-19T14:25:08.465Z"
+  },
+  {
+    "id": "1787149494631",
+    "type": "url",
+    "target": "https://chatgpt.com/c/6a845de2-e7e8-83ee-b914-cf623626a24e",
+    "score": 35,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "flags": [
+      {
+        "type": "URL_SHORTENER",
+        "message": "URL uses a URL shortening service."
+      },
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "message": "Domain contains an unusually high number of hyphens."
+      }
+    ],
+    "timestamp": "2026-08-19T14:24:54.631Z"
+  },
+  {
+    "id": "1787148000581",
+    "type": "url",
+    "target": "https://paypal1.com",
+    "score": 35,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "flags": [
+      {
+        "type": "TYPOSQUATTING",
+        "message": "Possible paypal impersonation detected. Domain \"paypal1\" is very similar to \"paypal\"."
+      }
+    ],
+    "timestamp": "2026-08-19T14:00:00.581Z"
+  }
+]

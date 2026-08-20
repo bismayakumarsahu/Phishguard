@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PhishGuard | AI-Assisted Phishing Detector</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">🛡</div>
+            <div>
+                <h2>PhishGuard</h2>
+                <span>Threat Intelligence</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html" class="nav-item active">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="pages/scanner.html" class="nav-item">
+                <span>🔗</span>
+                URL Scanner
+            </a>
+
+            <a href="pages/email-analyzer.html" class="nav-item">
+                <span>✉</span>
+                Email Analyzer
+            </a>
+
+            <a href="pages/simulation.html" class="nav-item">
+                <span>⚡</span>
+                Attack Simulation
+            </a>
+
+            <a href="pages/leaderboard.html" class="nav-item">
+                <span>🏆</span>
+                Leaderboard
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="system-status">
+                <span class="status-dot"></span>
+                System Online
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <!-- Top Bar -->
+        <header class="topbar">
+
+            <div>
+                <h1>Security Dashboard</h1>
+                <p>Monitor and analyze phishing threats in real time.</p>
+            </div>
+
+            <div class="topbar-right">
+                <div class="live-status">
+                    <span class="status-dot"></span>
+                    Live Protection
+                </div>
+
+                <div
+    
+    class="profile"
+    id="profileButton"
+    style="cursor: pointer;"
+    title="Account"
+>
+
+    <div
+        class="profile-avatar"
+        id="profileAvatar"
+    >
+        PG
+    </div>
+
+    <span id="profileName">
+        PhishGuard
+    </span>
+
+</div>
+</div>
+
+        </header>
+
+
+        <!-- Statistics -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon blue">🔍</div>
+                <div>
+                    <span>Total Scans</span>
+                    <h2 id="totalScans">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon red">⚠</div>
+                <div>
+                    <span>Threats Detected</span>
+                    <h2 id="threatsDetected">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon green">✓</div>
+                <div>
+                    <span>Safe URLs</span>
+                    <h2 id="safeUrls">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon orange">◉</div>
+                <div>
+                    <span>Protection Rate</span>
+                    <h2 id="protectionRate">100%</h2>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- URL Scanner -->
+        <section class="scanner-card">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Phishing URL Scanner</h2>
+                    <p>Analyze a suspicious URL using PhishGuard's threat detection engine.</p>
+                </div>
+
+                <span class="engine-badge">
+                    ● Detection Engine Active
+                </span>
+            </div>
+
+            <div class="scanner-input">
+
+                <input
+                    type="text"
+                    id="urlInput"
+                    placeholder="Enter suspicious URL, e.g. https://example.com/login"
+                >
+
+                <button id="scanBtn">
+                    Scan URL
+                </button>
+
+            </div>
+
+            <div id="scanResult" class="scan-result hidden">
+
+                <div class="result-header">
+                    <div>
+                        <span class="result-label">Risk Assessment</span>
+                        <h2 id="riskStatus">Analyzing...</h2>
+                    </div>
+
+                    <div class="risk-score">
+                        <span id="riskScore">0</span>
+                        <small>/100</small>
+                    </div>
+                </div>
+
+                <div class="risk-bar">
+                    <div id="riskBar"></div>
+                </div>
+
+                <div class="result-details">
+
+                    <div>
+                        <span>Risk Level</span>
+                        <strong id="riskLevel">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Threats Found</span>
+                        <strong id="threatCount">0</strong>
+                    </div>
+
+                </div>
+
+                <div class="flags">
+                    <h3>Detected Indicators</h3>
+                    <ul id="flagList"></ul>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Bottom Grid -->
+        <section class="dashboard-grid">
+
+            <!-- Attack Chain -->
+            <div class="panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Attack Chain</h2>
+                        <p>Phishing attack progression</p>
+                    </div>
+                </div>
+
+                <div class="attack-chain">
+
+                    <div class="chain-step">
+                        <div class="chain-number">01</div>
+                        <div>
+                            <strong>Suspicious Sender</strong>
+                            <span>Identity manipulation</span>
+                        </div>
+                    </div>
+
+                    <div class="chain-line"></div>
+
+                    <div class="chain-step">
+                        <div class="chain-number">02</div>
+                        <div>
+                            <strong>Urgency</strong>
+                            <span>Creates psychological pressure</span>
+                        </div>
+                    </div>
+
+                    <div class="chain-line"></div>
+
+                    <div class="chain-step">
+                        <div class="chain-number">03</div>
+                        <div>
+                            <strong>Malicious Link</strong>
+                            <span>Redirects victim to fake website</span>
+                        </div>
+                    </div>
+
+                    <div class="chain-line"></div>
+
+                    <div class="chain-step">
+                        <div class="chain-number">04</div>
+                        <div>
+                            <strong>Credential Harvesting</strong>
+                            <span>Attempts to steal credentials</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Recent Activity -->
+            <div class="panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Recent Activity</h2>
+                        <p>Latest security scans</p>
+                    </div>
+                </div>
+
+                <div id="recentActivity" class="activity-list">
+
+                    <div class="empty-state">
+                        <span>🔍</span>
+                        <p>No scans yet</p>
+                        <small>Scan a URL to see activity here.</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

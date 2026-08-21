@@ -3,7 +3,14 @@
     "name": "PhishGuard",
     "version": "1.0.0",
     "description": "AI-assisted phishing URL detection and real-time link protection.",
-    
+
+    "icons": {
+        "16": "logo.png",
+        "32": "logo.png",
+        "48": "logo.png",
+        "128": "logo.png"
+    },
+
     "permissions": [
         "activeTab",
         "storage"
@@ -32,7 +39,5 @@
     "action": {
         "default_popup": "popup.html",
         "default_title": "PhishGuard"
-    },
-
-    "icons": {}
+    }
 }

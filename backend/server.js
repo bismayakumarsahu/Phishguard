@@ -1,3 +1,7 @@
+// ============================================
+// PHISHGUARD API SERVER
+// ============================================
+
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
@@ -5,6 +9,7 @@ const fs = require("fs");
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
 const db = require("./database");
 
 const {
@@ -12,42 +17,74 @@ const {
     analyzeEmail
 } = require("./heuristics");
 
+const {
+    evaluateRisk
+} = require("./risk-engine");
+
+const {
+    checkDomainReputation
+} = require("./threat-intel");
+
+const {
+    analyzePage
+} = require("./behavior-analyzer");
+
+
+// ============================================
+// APP CONFIGURATION
+// ============================================
+
 const app = express();
+
 const PORT = 3001;
 
 const JWT_SECRET =
     process.env.JWT_SECRET ||
     "phishguard-development-secret-change-later";
 
+
 // ============================================
 // DATA STORAGE
 // ============================================
 
-const DATA_DIR = path.join(__dirname, "data");
-const HISTORY_FILE = path.join(
-    DATA_DIR,
-    "scan-history.json"
-);
+const DATA_DIR =
+    path.join(
+        __dirname,
+        "data"
+    );
+
+const HISTORY_FILE =
+    path.join(
+        DATA_DIR,
+        "scan-history.json"
+    );
 
 
-// Create data folder if it doesn't exist
+if (
+    !fs.existsSync(DATA_DIR)
+) {
 
-if (!fs.existsSync(DATA_DIR)) {
-
-    fs.mkdirSync(DATA_DIR, {
-        recursive: true
-    });
+    fs.mkdirSync(
+        DATA_DIR,
+        {
+            recursive: true
+        }
+    );
 
 }
 
 
-// Create history file if it doesn't exist
-
-if (!fs.existsSync(HISTORY_FILE)) {
+if (
+    !fs.existsSync(HISTORY_FILE)
+) {
 
     fs.writeFileSync(
         HISTORY_FILE,
-        JSON.stringify([], null, 2)
+        JSON.stringify(
+            [],
+            null,
+            2
+        )
     );
 
 }
@@ -67,7 +104,9 @@ function readHistory() {
                 "utf8"
             );
 
-        return JSON.parse(data);
+        return JSON.parse(
+            data
+        );
 
     } catch (error) {
 
@@ -113,17 +152,21 @@ function addHistory(record) {
     const history =
         readHistory();
 
-    history.unshift(record);
+    history.unshift(
+        record
+    );
 
-    // Keep latest 1000 scans
-
-    if (history.length > 1000) {
+    if (
+        history.length > 1000
+    ) {
 
         history.length = 1000;
 
     }
 
-    saveHistory(history);
+    saveHistory(
+        history
+    );
 
 }
 
@@ -132,13 +175,21 @@ function addHistory(record) {
 // MIDDLEWARE
 // ============================================
 
-app.use(cors());
+app.use(
+    cors()
+);
 
-app.use(express.json());
+app.use(
+    express.json(
+        {
+            limit: "1mb"
+        }
+    )
+);
 
 
 // ============================================
-// SERVE FRONTEND
+// FRONTEND
 // ============================================
 
 app.use(
@@ -151,24 +202,23 @@ app.use(
 );
 
 
+app.get(
+    "/",
+    (req, res) => {
+
+        res.sendFile(
+            path.join(
+                __dirname,
+                "../frontend/index.html"
+            )
+        );
+
+    }
+);
+
+
 // ============================================
-// HOME PAGE
-// ============================================
-
-app.get("/", (req, res) => {
-
-    res.sendFile(
-        path.join(
-            __dirname,
-            "../frontend/index.html"
-        )
-    );
-
-});
-
-
-// ============================================
-// API HEALTH CHECK
+// API STATUS
 // ============================================
 
 app.get(
@@ -177,13 +227,14 @@ app.get(
 
         res.json({
 
-            status: "online",
+            status:
+                "online",
 
             service:
                 "PhishGuard API",
 
             version:
-                "1.0.0"
+                "3.0.0"
 
         });
 
@@ -192,12 +243,81 @@ app.get(
 
 
 // ============================================
-// URL SCANNER API
+// HELPER:
+// COMBINE URL + THREAT INTELLIGENCE
+// ============================================
+
+async function analyzeURLWithIntelligence(
+    url
+) {
+
+    const heuristicResult =
+        analyzeURL(
+            url
+        );
+
+
+    let threatResult;
+
+
+    try {
+
+        threatResult =
+            await checkDomainReputation(
+                heuristicResult.hostname ||
+                heuristicResult.domain
+            );
+
+    } catch (error) {
+
+        console.error(
+            "Threat intelligence error:",
+            error
+        );
+
+
+        threatResult = {
+
+            success:
+                false,
+
+            reputation:
+                "unknown",
+
+            confidence:
+                "low",
+
+            score:
+                0,
+
+            evidence: [],
+
+            error:
+                error.message
+
+        };
+
+    }
+
+
+    return {
+
+        heuristicResult,
+
+        threatResult
+
+    };
+
+}
+
+
+// ============================================
+// URL SCANNER
 // ============================================
 
 app.post(
     "/api/scan-url",
-    (req, res) => {
+    async (req, res) => {
 
         try {
 
@@ -206,16 +326,21 @@ app.post(
             } = req.body;
 
 
-            // Validate URL
+            // --------------------------------
+            // Validate
+            // --------------------------------
 
             if (
                 !url ||
                 typeof url !== "string"
             ) {
 
-                return res.status(400).json({
+                return res.status(
+                    400
+                ).json({
 
-                    success: false,
+                    success:
+                        false,
 
                     error:
                         "A valid URL is required."
@@ -225,13 +350,126 @@ app.post(
             }
 
 
-            // Analyze URL
+            // --------------------------------
+            // URL + THREAT INTELLIGENCE
+            // --------------------------------
 
-            const result =
-                analyzeURL(url);
+            const {
+
+                heuristicResult,
+
+                threatResult
+
+            } =
+                await analyzeURLWithIntelligence(
+                    url
+                );
 
 
-            // Save scan
+            // --------------------------------
+            // Build threat evidence
+            // --------------------------------
+
+            const threatEvidence =
+                Array.isArray(
+                    threatResult.evidence
+                )
+                    ? threatResult.evidence
+                    : [];
+
+
+            // --------------------------------
+            // Create combined heuristic result
+            //
+            // Threat intelligence is added as
+            // additional evidence.
+            // --------------------------------
+
+            const combinedInput = {
+
+                ...heuristicResult,
+
+                flags: [
+
+                    ...(Array.isArray(
+                        heuristicResult.flags
+                    )
+                        ? heuristicResult.flags
+                        : []),
+
+                    ...threatEvidence
+
+                ],
+
+                categories: [
+
+                    ...(Array.isArray(
+                        heuristicResult.categories
+                    )
+                        ? heuristicResult.categories
+                        : []),
+
+                    ...(threatResult.reputation ===
+                        "malicious"
+                        ? ["THREAT_INTELLIGENCE"]
+                        : []),
+
+                    ...(threatResult.reputation ===
+                        "suspicious"
+                        ? ["THREAT_INTELLIGENCE"]
+                        : [])
+
+                ]
+
+            };
+
+
+            // --------------------------------
+            // RISK ENGINE
+            // --------------------------------
+
+            const riskResult =
+                evaluateRisk(
+                    combinedInput
+                );
+
+
+            // --------------------------------
+            // Final result
+            // --------------------------------
+
+            const result = {
+
+                ...riskResult,
+
+                flags:
+                    riskResult.evidence ||
+                    combinedInput.flags ||
+                    [],
+
+                threatIntelligence: {
+
+                    reputation:
+                        threatResult.reputation,
+
+                    confidence:
+                        threatResult.confidence,
+
+                    score:
+                        threatResult.score,
+
+                    sources:
+                        threatResult.sources ||
+                        []
+
+                }
+
+            };
+
+
+            // --------------------------------
+            // History
+            // --------------------------------
 
             addHistory({
 
@@ -253,8 +491,17 @@ app.post(
                 status:
                     result.status,
 
+                verdict:
+                    result.verdict,
+
+                confidence:
+                    result.confidence,
+
                 flags:
-                    result.flags || [],
+                    result.flags,
+
+                categories:
+                    result.categories,
 
                 timestamp:
                     new Date().toISOString()
@@ -262,15 +509,18 @@ app.post(
             });
 
 
-            // Return result
+            // --------------------------------
+            // Response
+            // --------------------------------
 
             res.json({
 
-                success: true,
+                success:
+                    true,
 
-                url: url,
+                url,
 
-                result: result
+                result
 
             });
 
@@ -283,9 +533,12 @@ app.post(
             );
 
 
-            res.status(500).json({
+            res.status(
+                500
+            ).json({
 
-                success: false,
+                success:
+                    false,
 
                 error:
                     "Internal server error."
@@ -299,7 +552,317 @@ app.post(
 
 
 // ============================================
-// EMAIL ANALYZER API
+// FULL PAGE ANALYSIS
+// ============================================
+//
+// This endpoint accepts page metadata collected
+// by the browser extension.
+//
+// URL-only scanning remains available through
+// /api/scan-url.
+//
+
+app.post(
+    "/api/analyze-page",
+    async (req, res) => {
+
+        try {
+
+            const pageData =
+                req.body;
+
+
+            // --------------------------------
+            // Validate URL
+            // --------------------------------
+
+            if (
+                !pageData ||
+                typeof pageData.url !==
+                    "string"
+            ) {
+
+                return res.status(
+                    400
+                ).json({
+
+                    success:
+                        false,
+
+                    error:
+                        "Page URL is required."
+
+                });
+
+            }
+
+
+            // --------------------------------
+            // URL analysis
+            // --------------------------------
+
+            const {
+
+                heuristicResult,
+
+                threatResult
+
+            } =
+                await analyzeURLWithIntelligence(
+                    pageData.url
+                );
+
+
+            // --------------------------------
+            // PAGE BEHAVIOR
+            // --------------------------------
+
+            const behaviorResult =
+                analyzePage(
+                    pageData
+                );
+
+
+            // --------------------------------
+            // Collect all evidence
+            // --------------------------------
+
+            const urlFlags =
+                Array.isArray(
+                    heuristicResult.flags
+                )
+                    ? heuristicResult.flags
+                    : [];
+
+
+            const threatFlags =
+                Array.isArray(
+                    threatResult.evidence
+                )
+                    ? threatResult.evidence
+                    : [];
+
+
+            const behaviorFlags =
+                Array.isArray(
+                    behaviorResult.signals
+                )
+                    ? behaviorResult.signals
+                    : [];
+
+
+            // --------------------------------
+            // Combined categories
+            // --------------------------------
+
+            const categories =
+                Array.from(
+                    new Set([
+
+                        ...(heuristicResult.categories ||
+                            []),
+
+                        ...(behaviorResult.categories ||
+                            []),
+
+                        ...(threatResult.reputation ===
+                            "malicious"
+                            ? ["THREAT_INTELLIGENCE"]
+                            : []),
+
+                        ...(threatResult.reputation ===
+                            "suspicious"
+                            ? ["THREAT_INTELLIGENCE"]
+                            : [])
+
+                    ])
+                );
+
+
+            // --------------------------------
+            // Combined evidence
+            // --------------------------------
+
+            const combinedFlags = [
+
+                ...urlFlags,
+
+                ...threatFlags,
+
+                ...behaviorFlags
+
+            ];
+
+
+            // --------------------------------
+            // Combined input
+            // --------------------------------
+
+            const combinedInput = {
+
+                ...heuristicResult,
+
+                score:
+                    heuristicResult.score,
+
+                categories,
+
+                flags:
+                    combinedFlags
+
+            };
+
+
+            // --------------------------------
+            // FINAL RISK ENGINE
+            // --------------------------------
+
+            const riskResult =
+                evaluateRisk(
+                    combinedInput
+                );
+
+
+            // --------------------------------
+            // Final response
+            // --------------------------------
+
+            const result = {
+
+                ...riskResult,
+
+                flags:
+                    riskResult.evidence ||
+                    combinedFlags,
+
+                categories,
+
+                threatIntelligence: {
+
+                    reputation:
+                        threatResult.reputation,
+
+                    confidence:
+                        threatResult.confidence,
+
+                    score:
+                        threatResult.score,
+
+                    sources:
+                        threatResult.sources ||
+                        []
+
+                },
+
+                behavior: {
+
+                    score:
+                        behaviorResult.score,
+
+                    verdict:
+                        behaviorResult.verdict,
+
+                    categories:
+                        behaviorResult.categories,
+
+                    signals:
+                        behaviorResult.signals,
+
+                    metrics:
+                        behaviorResult.metrics
+
+                }
+
+            };
+
+
+            // --------------------------------
+            // Save history
+            // --------------------------------
+
+            addHistory({
+
+                id:
+                    Date.now().toString(),
+
+                type:
+                    "page",
+
+                target:
+                    pageData.url,
+
+                score:
+                    result.score,
+
+                level:
+                    result.level,
+
+                status:
+                    result.status,
+
+                verdict:
+                    result.verdict,
+
+                confidence:
+                    result.confidence,
+
+                flags:
+                    result.flags,
+
+                categories:
+                    result.categories,
+
+                timestamp:
+                    new Date().toISOString()
+
+            });
+
+
+            // --------------------------------
+            // Return
+            // --------------------------------
+
+            res.json({
+
+                success:
+                    true,
+
+                url:
+                    pageData.url,
+
+                result
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Page analysis error:",
+                error
+            );
+
+
+            res.status(
+                500
+            ).json({
+
+                success:
+                    false,
+
+                error:
+                    "Page analysis failed."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// EMAIL ANALYZER
 // ============================================
 
 app.post(
@@ -323,8 +886,6 @@ app.post(
             } = req.body;
 
 
-            // Analyze email
-
             const result =
                 analyzeEmail({
 
@@ -341,8 +902,6 @@ app.post(
                 });
 
 
-            // Save email scan
-
             addHistory({
 
                 id:
@@ -356,8 +915,7 @@ app.post(
                     "Unknown sender",
 
                 subject:
-                    subject ||
-                    "",
+                    subject || "",
 
                 score:
                     result.score,
@@ -377,13 +935,12 @@ app.post(
             });
 
 
-            // Return result
-
             res.json({
 
-                success: true,
+                success:
+                    true,
 
-                result: result
+                result
 
             });
 
@@ -396,9 +953,12 @@ app.post(
             );
 
 
-            res.status(500).json({
+            res.status(
+                500
+            ).json({
 
-                success: false,
+                success:
+                    false,
 
                 error:
                     "Email analysis failed."
@@ -412,7 +972,7 @@ app.post(
 
 
 // ============================================
-// SCAN STATISTICS API
+// STATISTICS
 // ============================================
 
 app.get(
@@ -432,36 +992,54 @@ app.get(
             const urlScans =
                 history.filter(
                     item =>
-                        item.type === "url"
+                        item.type ===
+                        "url"
+                ).length;
+
+
+            const pageScans =
+                history.filter(
+                    item =>
+                        item.type ===
+                        "page"
                 ).length;
 
 
             const emailScans =
                 history.filter(
                     item =>
-                        item.type === "email"
+                        item.type ===
+                        "email"
                 ).length;
 
 
             const safeScans =
                 history.filter(
                     item =>
-                        Number(item.score) < 35
+                        Number(
+                            item.score
+                        ) < 35
                 ).length;
 
 
             const suspiciousScans =
                 history.filter(
                     item =>
-                        Number(item.score) >= 35 &&
-                        Number(item.score) < 70
+                        Number(
+                            item.score
+                        ) >= 35 &&
+                        Number(
+                            item.score
+                        ) < 70
                 ).length;
 
 
             const dangerousScans =
                 history.filter(
                     item =>
-                        Number(item.score) >= 70
+                        Number(
+                            item.score
+                        ) >= 70
                 ).length;
 
 
@@ -472,24 +1050,29 @@ app.get(
 
             const protectionRate =
                 totalScans > 0
+
                     ? Math.round(
                         (
                             safeScans /
                             totalScans
                         ) * 100
                     )
+
                     : 100;
 
 
             res.json({
 
-                success: true,
+                success:
+                    true,
 
                 stats: {
 
                     totalScans,
 
                     urlScans,
+
+                    pageScans,
 
                     emailScans,
 
@@ -516,9 +1099,12 @@ app.get(
             );
 
 
-            res.status(500).json({
+            res.status(
+                500
+            ).json({
 
-                success: false,
+                success:
+                    false,
 
                 error:
                     "Unable to load statistics."
@@ -532,7 +1118,7 @@ app.get(
 
 
 // ============================================
-// SCAN HISTORY API
+// HISTORY
 // ============================================
 
 app.get(
@@ -545,16 +1131,23 @@ app.get(
                 readHistory();
 
 
+            const requestedLimit =
+                Number(
+                    req.query.limit
+                ) || 50;
+
+
             const limit =
                 Math.min(
-                    Number(req.query.limit) || 50,
+                    requestedLimit,
                     100
                 );
 
 
             res.json({
 
-                success: true,
+                success:
+                    true,
 
                 count:
                     history.length,
@@ -576,12 +1169,15 @@ app.get(
             );
 
 
-            res.status(500).json({
+            res.status(
+                500
+            ).json({
 
-                success: false,
+                success:
+                    false,
 
                 error:
-                    "Unable to load scan history."
+                    "Unable to load history."
 
             });
 
@@ -601,16 +1197,21 @@ app.delete(
 
         try {
 
-            saveHistory([]);
+            saveHistory(
+                []
+            );
+
 
             res.json({
 
-                success: true,
+                success:
+                    true,
 
                 message:
                     "Scan history cleared."
 
             });
+
 
         } catch (error) {
 
@@ -620,9 +1221,12 @@ app.delete(
             );
 
 
-            res.status(500).json({
+            res.status(
+                500
+            ).json({
 
-                success: false,
+                success:
+                    false,
 
                 error:
                     "Unable to clear history."
@@ -634,8 +1238,9 @@ app.delete(
     }
 );
 
+
 // ============================================
-// REGISTER API
+// REGISTER
 // ============================================
 
 app.post(
@@ -645,23 +1250,29 @@ app.post(
         try {
 
             const {
+
                 name,
+
                 email,
+
                 password
+
             } = req.body;
 
 
-            // Validate name
-
             if (
                 !name ||
-                typeof name !== "string" ||
+                typeof name !==
+                    "string" ||
                 name.trim().length < 2
             ) {
 
-                return res.status(400).json({
+                return res.status(
+                    400
+                ).json({
 
-                    success: false,
+                    success:
+                        false,
 
                     error:
                         "Name must contain at least 2 characters."
@@ -671,16 +1282,18 @@ app.post(
             }
 
 
-            // Validate email
-
             if (
                 !email ||
-                typeof email !== "string"
+                typeof email !==
+                    "string"
             ) {
 
-                return res.status(400).json({
+                return res.status(
+                    400
+                ).json({
 
-                    success: false,
+                    success:
+                        false,
 
                     error:
                         "A valid email is required."
@@ -691,7 +1304,9 @@ app.post(
 
 
             const normalizedEmail =
-                email.trim().toLowerCase();
+                email
+                    .trim()
+                    .toLowerCase();
 
 
             const emailPattern =
@@ -704,9 +1319,12 @@ app.post(
                 )
             ) {
 
-                return res.status(400).json({
+                return res.status(
+                    400
+                ).json({
 
-                    success: false,
+                    success:
+                        false,
 
                     error:
                         "Please enter a valid email address."
@@ -716,17 +1334,19 @@ app.post(
             }
 
 
-            // Validate password
-
             if (
                 !password ||
-                typeof password !== "string" ||
+                typeof password !==
+                    "string" ||
                 password.length < 6
             ) {
 
-                return res.status(400).json({
+                return res.status(
+                    400
+                ).json({
 
-                    success: false,
+                    success:
+                        false,
 
                     error:
                         "Password must contain at least 6 characters."
@@ -736,21 +1356,28 @@ app.post(
             }
 
 
-            // Check existing user
-
             const existingUser =
                 db.prepare(
-                    "SELECT id FROM users WHERE email = ?"
+                    `
+                    SELECT id
+                    FROM users
+                    WHERE email = ?
+                    `
                 ).get(
                     normalizedEmail
                 );
 
 
-            if (existingUser) {
+            if (
+                existingUser
+            ) {
 
-                return res.status(409).json({
+                return res.status(
+                    409
+                ).json({
 
-                    success: false,
+                    success:
+                        false,
 
                     error:
                         "An account with this email already exists."
@@ -760,8 +1387,6 @@ app.post(
             }
 
 
-            // Hash password
-
             const passwordHash =
                 await bcrypt.hash(
                     password,
@@ -769,10 +1394,9 @@ app.post(
                 );
 
 
-            // Create user
-
             const insertUser =
-                db.prepare(`
+                db.prepare(
+                    `
                     INSERT INTO users
                     (
                         name,
@@ -785,20 +1409,28 @@ app.post(
                         ?,
                         ?
                     )
-                `);
+                    `
+                );
 
 
             const result =
                 insertUser.run(
+
                     name.trim(),
+
                     normalizedEmail,
+
                     passwordHash
+
                 );
 
 
-            res.status(201).json({
+            res.status(
+                201
+            ).json({
 
-                success: true,
+                success:
+                    true,
 
                 message:
                     "Account created successfully.",
@@ -827,9 +1459,12 @@ app.post(
             );
 
 
-            res.status(500).json({
+            res.status(
+                500
+            ).json({
 
-                success: false,
+                success:
+                    false,
 
                 error:
                     "Registration failed."
@@ -841,8 +1476,9 @@ app.post(
     }
 );
 
+
 // ============================================
-// LOGIN API
+// LOGIN
 // ============================================
 
 app.post(
@@ -852,21 +1488,25 @@ app.post(
         try {
 
             const {
+
                 email,
+
                 password
+
             } = req.body;
 
-
-            // Validate input
 
             if (
                 !email ||
                 !password
             ) {
 
-                return res.status(400).json({
+                return res.status(
+                    400
+                ).json({
 
-                    success: false,
+                    success:
+                        false,
 
                     error:
                         "Email and password are required."
@@ -877,10 +1517,10 @@ app.post(
 
 
             const normalizedEmail =
-                email.trim().toLowerCase();
+                email
+                    .trim()
+                    .toLowerCase();
 
-
-            // Find user
 
             const user =
                 db.prepare(
@@ -898,11 +1538,16 @@ app.post(
                 );
 
 
-            if (!user) {
+            if (
+                !user
+            ) {
 
-                return res.status(401).json({
+                return res.status(
+                    401
+                ).json({
 
-                    success: false,
+                    success:
+                        false,
 
                     error:
                         "Invalid email or password."
@@ -911,8 +1556,6 @@ app.post(
 
             }
 
-
-            // Compare password
 
             const passwordMatch =
                 await bcrypt.compare(
@@ -921,11 +1564,16 @@ app.post(
                 );
 
 
-            if (!passwordMatch) {
+            if (
+                !passwordMatch
+            ) {
 
-                return res.status(401).json({
+                return res.status(
+                    401
+                ).json({
 
-                    success: false,
+                    success:
+                        false,
 
                     error:
                         "Invalid email or password."
@@ -935,12 +1583,11 @@ app.post(
             }
 
 
-            // Create JWT
-
             const token =
                 jwt.sign(
 
                     {
+
                         userId:
                             user.id,
 
@@ -952,23 +1599,24 @@ app.post(
                     JWT_SECRET,
 
                     {
+
                         expiresIn:
                             "7d"
+
                     }
 
                 );
 
 
-            // Send response
-
             res.json({
 
-                success: true,
+                success:
+                    true,
 
                 message:
                     "Login successful.",
 
-                token: token,
+                token,
 
                 user: {
 
@@ -994,9 +1642,12 @@ app.post(
             );
 
 
-            res.status(500).json({
+            res.status(
+                500
+            ).json({
 
-                success: false,
+                success:
+                    false,
 
                 error:
                     "Login failed."
@@ -1007,17 +1658,22 @@ app.post(
 
     }
 );
+
+
 // ============================================
-// 404 API HANDLER
+// UNKNOWN API ENDPOINT
 // ============================================
 
 app.use(
     "/api",
     (req, res) => {
 
-        res.status(404).json({
+        res.status(
+            404
+        ).json({
 
-            success: false,
+            success:
+                false,
 
             error:
                 "API endpoint not found."
@@ -1057,19 +1713,23 @@ app.listen(
         );
 
         console.log(
-            `URL Scanner: POST /api/scan-url`
+            "URL Scanner: POST /api/scan-url"
         );
 
         console.log(
-            `Email Analyzer: POST /api/analyze-email`
+            "Page Analyzer: POST /api/analyze-page"
         );
 
         console.log(
-            `Statistics: GET /api/stats`
+            "Email Analyzer: POST /api/analyze-email"
         );
 
         console.log(
-            `History: GET /api/history`
+            "Statistics: GET /api/stats"
+        );
+
+        console.log(
+            "History: GET /api/history"
         );
 
         console.log(

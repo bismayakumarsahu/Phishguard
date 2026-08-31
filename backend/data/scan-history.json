@@ -1,5 +1,2503 @@
 [
   {
+    "id": "1788178214897",
+    "type": "page",
+    "target": "https://chatgpt.com/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T12:10:14.897Z"
+  },
+  {
+    "id": "1788178209757",
+    "type": "url",
+    "target": "https://chatgpt.com/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T12:10:09.757Z"
+  },
+  {
+    "id": "1788178189531",
+    "type": "page",
+    "target": "https://www.google.com/search?q=gpt&oq=gpt&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDI5NjRqMGo3qAIAsAIA&sourceid=chrome&source=chrome.ob&ie=UTF-8",
+    "score": 3,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "MANY_HIDDEN_ELEMENTS",
+        "severity": "LOW",
+        "points": 6,
+        "message": "Page contains many hidden elements.",
+        "category": "OBFUSCATION"
+      }
+    ],
+    "categories": [
+      "OBFUSCATION"
+    ],
+    "timestamp": "2026-08-31T12:09:49.531Z"
+  },
+  {
+    "id": "1788178188819",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T12:09:48.819Z"
+  },
+  {
+    "id": "1788150054638",
+    "type": "url",
+    "target": "https://footguards.ca/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T04:20:54.638Z"
+  },
+  {
+    "id": "1788150050155",
+    "type": "page",
+    "target": "https://footguards.ca/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T04:20:50.155Z"
+  },
+  {
+    "id": "1788150042454",
+    "type": "url",
+    "target": "https://footguards.ca/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T04:20:42.454Z"
+  },
+  {
+    "id": "1788150038303",
+    "type": "url",
+    "target": "https://en.wikipedia.org/wiki/Governor_General%27s_Foot_Guards",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T04:20:38.303Z"
+  },
+  {
+    "id": "1788150038172",
+    "type": "page",
+    "target": "https://www.google.com/search?q=ggfg&oq=ggfg&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIJCAQQABgKGIAEMgkIBRAAGAoYgAQyCQgGEAAYChiABDIJCAcQABgKGIAEMgcICBAAGIAEMgcICRAAGIAE0gEIMTY2OGowajeoAgCwAgA&sourceid=chrome&source=chrome.ob&ie=UTF-8",
+    "score": 14,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "LONG_URL",
+        "severity": "LOW",
+        "points": 8,
+        "message": "URL is unusually long and may contain encoded data."
+      },
+      {
+        "type": "EXCESSIVE_EXTERNAL_LINKS",
+        "severity": "LOW",
+        "points": 6,
+        "message": "Page contains a large number of external-domain links.",
+        "category": "PAGE_BEHAVIOR"
+      },
+      {
+        "type": "MANY_HIDDEN_ELEMENTS",
+        "severity": "LOW",
+        "points": 6,
+        "message": "Page contains many hidden elements.",
+        "category": "OBFUSCATION"
+      }
+    ],
+    "categories": [
+      "OBFUSCATION",
+      "PAGE_BEHAVIOR"
+    ],
+    "timestamp": "2026-08-31T04:20:38.172Z"
+  },
+  {
+    "id": "1788150036274",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T04:20:36.274Z"
+  },
+  {
+    "id": "1787583059289",
+    "type": "url",
+    "target": "https://new1.hdhub4u.af/?utm=mn1",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-24T14:50:59.289Z"
+  },
+  {
+    "id": "1787583057809",
+    "type": "page",
+    "target": "https://new1.hdhub4u.af/?utm=mn1",
+    "score": 12,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "FILE_DOWNLOAD_LINK",
+        "severity": "MEDIUM",
+        "points": 15,
+        "message": "4 potentially downloadable file link(s) detected.",
+        "category": "DOWNLOAD_RISK"
+      },
+      {
+        "type": "EXCESSIVE_DOWNLOAD_LINKS",
+        "severity": "MEDIUM",
+        "points": 12,
+        "message": "Page contains many download-related links.",
+        "category": "DOWNLOAD_RISK"
+      }
+    ],
+    "categories": [
+      "DOWNLOAD_RISK"
+    ],
+    "timestamp": "2026-08-24T14:50:57.809Z"
+  },
+  {
+    "id": "1787583052707",
+    "type": "page",
+    "target": "https://hdhub4u.bi/",
+    "score": 3,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "MANY_HIDDEN_ELEMENTS",
+        "severity": "LOW",
+        "points": 6,
+        "message": "Page contains many hidden elements.",
+        "category": "OBFUSCATION"
+      }
+    ],
+    "categories": [
+      "OBFUSCATION"
+    ],
+    "timestamp": "2026-08-24T14:50:52.707Z"
+  },
+  {
+    "id": "1787583050243",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-24T14:50:50.243Z"
+  },
+  {
+    "id": "1787582855563",
+    "type": "page",
+    "target": "https://example.com/paypal-login-example.com/verify",
+    "score": 59,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "verdict": "dangerous",
+    "confidence": "high",
+    "flags": [
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "PHISHING"
+    ],
+    "timestamp": "2026-08-24T14:47:35.563Z"
+  },
+  {
+    "id": "1787582831243",
+    "type": "url",
+    "target": "https://example.com/paypal-login-example.com/verify",
+    "score": 59,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "verdict": "dangerous",
+    "confidence": "high",
+    "flags": [
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "PHISHING"
+    ],
+    "timestamp": "2026-08-24T14:47:11.243Z"
+  },
+  {
+    "id": "1787582816334",
+    "type": "url",
+    "target": "https://example.com/paypal-login-example.com/verify",
+    "score": 59,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "verdict": "dangerous",
+    "confidence": "high",
+    "flags": [
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "PHISHING"
+    ],
+    "timestamp": "2026-08-24T14:46:56.334Z"
+  },
+  {
+    "id": "1787582737735",
+    "type": "url",
+    "target": "https://example.com/paypal-login-example.com/verify",
+    "score": 59,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "verdict": "dangerous",
+    "confidence": "high",
+    "flags": [
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "PHISHING"
+    ],
+    "timestamp": "2026-08-24T14:45:37.735Z"
+  },
+  {
+    "id": "1787582730107",
+    "type": "page",
+    "target": "https://example.com/paypal-login-example.com/verify",
+    "score": 59,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "verdict": "dangerous",
+    "confidence": "high",
+    "flags": [
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "PHISHING"
+    ],
+    "timestamp": "2026-08-24T14:45:30.107Z"
+  },
+  {
+    "id": "1787582574313",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-24T14:42:54.313Z"
+  },
+  {
+    "id": "1787581838534",
+    "type": "url",
+    "target": "https://new1.hdhub4u.af/?utm=mn1",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-24T14:30:38.534Z"
+  },
+  {
+    "id": "1787581834250",
+    "type": "page",
+    "target": "https://new1.hdhub4u.af/?utm=mn1",
+    "score": 12,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "FILE_DOWNLOAD_LINK",
+        "severity": "MEDIUM",
+        "points": 15,
+        "message": "4 potentially downloadable file link(s) detected.",
+        "category": "DOWNLOAD_RISK"
+      },
+      {
+        "type": "EXCESSIVE_DOWNLOAD_LINKS",
+        "severity": "MEDIUM",
+        "points": 12,
+        "message": "Page contains many download-related links.",
+        "category": "DOWNLOAD_RISK"
+      }
+    ],
+    "categories": [
+      "DOWNLOAD_RISK"
+    ],
+    "timestamp": "2026-08-24T14:30:34.250Z"
+  },
+  {
+    "id": "1787581830255",
+    "type": "url",
+    "target": "https://hdhub4u.bi/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-24T14:30:30.255Z"
+  },
+  {
+    "id": "1787581823711",
+    "type": "page",
+    "target": "https://hdhub4u.bi/",
+    "score": 3,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "MANY_HIDDEN_ELEMENTS",
+        "severity": "LOW",
+        "points": 6,
+        "message": "Page contains many hidden elements.",
+        "category": "OBFUSCATION"
+      }
+    ],
+    "categories": [
+      "OBFUSCATION"
+    ],
+    "timestamp": "2026-08-24T14:30:23.711Z"
+  },
+  {
+    "id": "1787581821301",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-24T14:30:21.301Z"
+  },
+  {
+    "id": "1787581715227",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-24T14:28:35.227Z"
+  },
+  {
+    "id": "1787581715182",
+    "type": "page",
+    "target": "https://example.com/paypal-login-example.com/verify",
+    "score": 59,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "verdict": "dangerous",
+    "confidence": "high",
+    "flags": [
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "PHISHING"
+    ],
+    "timestamp": "2026-08-24T14:28:35.182Z"
+  },
+  {
+    "id": "1787581667768",
+    "type": "page",
+    "target": "https://example.com/paypal-login-example.com/verify",
+    "score": 59,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "verdict": "dangerous",
+    "confidence": "high",
+    "flags": [
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "PHISHING"
+    ],
+    "timestamp": "2026-08-24T14:27:47.768Z"
+  },
+  {
+    "id": "1787581667297",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-24T14:27:47.297Z"
+  },
+  {
+    "id": "1787581549836",
+    "type": "page",
+    "target": "https://example.com/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-24T14:25:49.836Z"
+  },
+  {
+    "id": "1787581524452",
+    "type": "page",
+    "target": "https://example.com/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-24T14:25:24.452Z"
+  },
+  {
+    "id": "1787581524236",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-24T14:25:24.236Z"
+  },
+  {
+    "id": "1787581295483",
+    "type": "page",
+    "target": "https://example.com",
+    "score": 28,
+    "level": "Low Risk",
+    "status": "Caution",
+    "verdict": "caution",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "CREDENTIAL_FORM",
+        "severity": "MEDIUM",
+        "points": 12,
+        "message": "Page contains a form requesting credential-related information.",
+        "category": "PHISHING"
+      },
+      {
+        "type": "FILE_DOWNLOAD_LINK",
+        "severity": "MEDIUM",
+        "points": 12,
+        "message": "3 potentially downloadable file link(s) detected.",
+        "category": "DOWNLOAD_RISK"
+      },
+      {
+        "type": "REDIRECT_CHAIN",
+        "severity": "MEDIUM",
+        "points": 10,
+        "message": "Page involved 2 redirect step(s).",
+        "category": "REDIRECT"
+      },
+      {
+        "type": "SENSITIVE_DATA_REQUEST",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Page contains multiple requests for sensitive account or payment information.",
+        "category": "PHISHING"
+      }
+    ],
+    "categories": [
+      "PHISHING",
+      "DOWNLOAD_RISK",
+      "REDIRECT"
+    ],
+    "timestamp": "2026-08-24T14:21:35.483Z"
+  },
+  {
+    "id": "1787581283817",
+    "type": "url",
+    "target": "https://example.com/paypal-login-example.com/verify",
+    "score": 59,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "verdict": "dangerous",
+    "confidence": "high",
+    "flags": [
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "PHISHING"
+    ],
+    "timestamp": "2026-08-24T14:21:23.817Z"
+  },
+  {
+    "id": "1787580638123",
+    "type": "url",
+    "target": "https://example.com/paypal-login-example.com/verify",
+    "score": 59,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "verdict": "dangerous",
+    "confidence": "high",
+    "flags": [
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "PHISHING"
+    ],
+    "timestamp": "2026-08-24T14:10:38.123Z"
+  },
+  {
+    "id": "1787580633157",
+    "type": "url",
+    "target": "https://example.com/paypal-login-example.com/verify",
+    "score": 59,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "verdict": "dangerous",
+    "confidence": "high",
+    "flags": [
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "PHISHING"
+    ],
+    "timestamp": "2026-08-24T14:10:33.157Z"
+  },
+  {
+    "id": "1787580590340",
+    "type": "url",
+    "target": "https://example.com/paypal-login-example.com/verify",
+    "score": 59,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "verdict": "dangerous",
+    "confidence": "high",
+    "flags": [
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "PHISHING"
+    ],
+    "timestamp": "2026-08-24T14:09:50.340Z"
+  },
+  {
+    "id": "1787580590216",
+    "type": "url",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-24T14:09:50.216Z"
+  },
+  {
+    "id": "1787580481029",
+    "type": "url",
+    "target": "https://example.com/paypal-login-example.com/verify",
+    "score": 59,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "verdict": "dangerous",
+    "confidence": "high",
+    "flags": [
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "PHISHING"
+    ],
+    "timestamp": "2026-08-24T14:08:01.029Z"
+  },
+  {
+    "id": "1787579940861",
+    "type": "url",
+    "target": "https://example.com/paypal-login-example.com/verify",
+    "score": 53,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "flags": [
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "timestamp": "2026-08-24T13:59:00.861Z"
+  },
+  {
+    "id": "1787579940205",
+    "type": "url",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "flags": [],
+    "timestamp": "2026-08-24T13:59:00.205Z"
+  },
+  {
+    "id": "1787579631462",
+    "type": "url",
+    "target": "https://example.com/paypal-login-example.com/verify",
+    "score": 53,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "flags": [
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "timestamp": "2026-08-24T13:53:51.462Z"
+  },
+  {
+    "id": "1787579339540",
+    "type": "url",
+    "target": "https://example.com/paypal-login-example.com/verify",
+    "score": 53,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "flags": [
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "timestamp": "2026-08-24T13:48:59.540Z"
+  },
+  {
+    "id": "1787579247352",
+    "type": "url",
+    "target": "https://www.google.com/?zx=1787579245077",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "flags": [],
+    "timestamp": "2026-08-24T13:47:27.352Z"
+  },
+  {
+    "id": "1787579109146",
+    "type": "url",
+    "target": "https://chatgpt.com/c/6a89aba8-419c-83e8-8e01-b5c1dcf7288d",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "flags": [],
+    "timestamp": "2026-08-24T13:45:09.146Z"
+  },
+  {
+    "id": "1787579086885",
+    "type": "url",
+    "target": "https://chatgpt.com/c/6a89aba8-419c-83e8-8e01-b5c1dcf7288d",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "flags": [],
+    "timestamp": "2026-08-24T13:44:46.885Z"
+  },
+  {
+    "id": "1787415151289",
+    "type": "email",
+    "target": "hr@neoskillz.in",
+    "subject": "Internship oppertunity",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-22T16:12:31.290Z"
+  },
+  {
+    "id": "1787321367570",
+    "type": "url",
+    "target": "https://cloud.bluestacks.com/api/getdownloadnow?platform=win&win_version=11&mac_version=&client_uuid=ed15b46b-a0bd-411f-b782-18247312379a&app_pkg=bs10-en&platform_cloud=&preferred_lang=en&utm_source=&utm_medium=&gaCookie=&gclid=&clickid=&msclkid=&affiliateId=&offerId=&transaction_id=&aff_sub=&referrer=&first_landing_page=&download_page_referrer=https%3A%2F%2Fwww.bluestacks.com%2Fdownload.html&utm_campaign=download-en&user_id=&exit_utm_campaign=bsx-install-button-download-page-en&incompatible=false&bluestacks_version=bs5&device_memory=16&device_cpu_cores=12&extra_data=%7B%22deviceDetails%22%3A%22windows%22%2C%22renderer%22%3A%22ANGLE%20(AMD%2C%20AMD%20Radeon%20740M%20Graphics%20(0x00001901)%20Direct3D11%20vs_5_0%20ps_5_0%2C%20D3D11)%22%7D",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:09:27.570Z"
+  },
+  {
+    "id": "1787321362735",
+    "type": "url",
+    "target": "https://www.bluestacks.com/download.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:09:22.735Z"
+  },
+  {
+    "id": "1787321326412",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/watch-dogs-v1-06-329-all-dlcs/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:46.412Z"
+  },
+  {
+    "id": "1787321325475",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/shambles-sons-of-apocalypse/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:45.475Z"
+  },
+  {
+    "id": "1787321324545",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/need-for-speed-heat/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:44.545Z"
+  },
+  {
+    "id": "1787321324136",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/elden-ring-nightreign/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:44.136Z"
+  },
+  {
+    "id": "1787321322856",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/mortal-kombat-11/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:42.856Z"
+  },
+  {
+    "id": "1787321321195",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-black-ops-6/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:41.195Z"
+  },
+  {
+    "id": "1787321319820",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/clair-obscur-expedition-33/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:39.820Z"
+  },
+  {
+    "id": "1787321318060",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/battlefield-6/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:38.060Z"
+  },
+  {
+    "id": "1787321316084",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/lust-n-dead/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:36.084Z"
+  },
+  {
+    "id": "1787321314340",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/forza-horizon-3/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:34.340Z"
+  },
+  {
+    "id": "1787321313921",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/assassins-creed-origins/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:33.921Z"
+  },
+  {
+    "id": "1787321313152",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/palworld/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:33.152Z"
+  },
+  {
+    "id": "1787321310557",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/god-forsaken/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:30.557Z"
+  },
+  {
+    "id": "1787321309563",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/sims-4-deluxe-edition/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:29.563Z"
+  },
+  {
+    "id": "1787321308006",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/doom-the-dark-ages/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:28.006Z"
+  },
+  {
+    "id": "1787321306646",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/dying-light-the-beast/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:26.646Z"
+  },
+  {
+    "id": "1787321306238",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/avatar-frontiers-of-pandora/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:26.238Z"
+  },
+  {
+    "id": "1787321305784",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/entity-the-black-day/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:25.784Z"
+  },
+  {
+    "id": "1787321304362",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/mixtape/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:24.362Z"
+  },
+  {
+    "id": "1787321301151",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/god-of-war/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:21.151Z"
+  },
+  {
+    "id": "1787321297761",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/lego-batman-legacy-of-the-dark-knight/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:17.761Z"
+  },
+  {
+    "id": "1787321295438",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/god-of-war-ragnarok/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:15.438Z"
+  },
+  {
+    "id": "1787321293698",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/ghost-of-tsushima-directors-cut/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:13.698Z"
+  },
+  {
+    "id": "1787321291027",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/resident-evil-4-2023/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:11.027Z"
+  },
+  {
+    "id": "1787321290348",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-modern-warfare-ii/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:10.348Z"
+  },
+  {
+    "id": "1787321289010",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/marvels-spider-man-2/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:09.010Z"
+  },
+  {
+    "id": "1787321284812",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/ea-sports-fc-26/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:04.812Z"
+  },
+  {
+    "id": "1787321282976",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/marvels-spider-man-2/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:02.976Z"
+  },
+  {
+    "id": "1787321282197",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/grand-theft-auto-v/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:02.197Z"
+  },
+  {
+    "id": "1787321281761",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/crimson-desert/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:01.761Z"
+  },
+  {
+    "id": "1787321281197",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/grand-theft-auto-v/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:08:01.197Z"
+  },
+  {
+    "id": "1787321278136",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/popular-repacks-of-the-year/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:07:58.136Z"
+  },
+  {
+    "id": "1787321266234",
+    "type": "url",
+    "target": "https://en.riotpixels.com/games/call-of-duty-modern-warfare-2-ii-2022/screenshots/20/?utm_source=emb-gfx-html&utm_medium=image&utm_campaign=rp-mass",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:07:46.234Z"
+  },
+  {
+    "id": "1787321259973",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-modern-warfare-ii/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:07:39.973Z"
+  },
+  {
+    "id": "1787321253893",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-black-ops-cold-war/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:07:33.893Z"
+  },
+  {
+    "id": "1787321241660",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/hypervisor-guide/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:07:21.660Z"
+  },
+  {
+    "id": "1787321220524",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-black-ops-cold-war/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:07:00.524Z"
+  },
+  {
+    "id": "1787321217461",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-modern-warfare-iii/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:06:57.461Z"
+  },
+  {
+    "id": "1787321214332",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-modern-warfare-iii/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:06:54.332Z"
+  },
+  {
+    "id": "1787321211523",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-black-ops-cold-war/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:06:51.523Z"
+  },
+  {
+    "id": "1787321210012",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-modern-warfare-2-campaign-remastered/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:06:50.012Z"
+  },
+  {
+    "id": "1787321200990",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-modern-warfare-2019/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:06:40.990Z"
+  },
+  {
+    "id": "1787321198634",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-modern-warfare-ii/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:06:38.635Z"
+  },
+  {
+    "id": "1787321190837",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-modern-warfare-iii/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:06:30.837Z"
+  },
+  {
+    "id": "1787321187507",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-black-ops-cold-war/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:06:27.507Z"
+  },
+  {
+    "id": "1787321159250",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/black-myth-wukong/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:05:59.250Z"
+  },
+  {
+    "id": "1787321156072",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/entity-the-black-day/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:05:56.072Z"
+  },
+  {
+    "id": "1787321146422",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/forza-horizon-6/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:05:46.422Z"
+  },
+  {
+    "id": "1787321130458",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/marvels-spider-man-remastered/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:05:30.458Z"
+  },
+  {
+    "id": "1787321129139",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/007-first-light/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:05:29.139Z"
+  },
+  {
+    "id": "1787321128716",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/mafia-the-old-country/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:05:28.716Z"
+  },
+  {
+    "id": "1787321127252",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/shambles-sons-of-apocalypse/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:05:27.252Z"
+  },
+  {
+    "id": "1787321126928",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/grand-theft-auto-v/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:05:26.928Z"
+  },
+  {
+    "id": "1787321054145",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/all-my-repacks-a-z/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:04:14.145Z"
+  },
+  {
+    "id": "1787321050035",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/mixtape/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:04:10.035Z"
+  },
+  {
+    "id": "1787321049611",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/avatar-frontiers-of-pandora/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:04:09.611Z"
+  },
+  {
+    "id": "1787321048505",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/dying-light-the-beast/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:04:08.505Z"
+  },
+  {
+    "id": "1787321045953",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/doom-the-dark-ages/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:04:05.953Z"
+  },
+  {
+    "id": "1787321045528",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/directive-8020/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:04:05.528Z"
+  },
+  {
+    "id": "1787321045100",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/sims-4-deluxe-edition/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:04:05.100Z"
+  },
+  {
+    "id": "1787321042844",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/god-forsaken/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:04:02.844Z"
+  },
+  {
+    "id": "1787321041239",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/gym-manager/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:04:01.239Z"
+  },
+  {
+    "id": "1787321038436",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/assassins-creed-origins/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:58.436Z"
+  },
+  {
+    "id": "1787321037298",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/fifa-23/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:57.298Z"
+  },
+  {
+    "id": "1787321030325",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/reanimal/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:50.325Z"
+  },
+  {
+    "id": "1787321029183",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/fifa-23/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:49.183Z"
+  },
+  {
+    "id": "1787321026729",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/days-gone/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:46.729Z"
+  },
+  {
+    "id": "1787321026201",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/the-relic-first-guardian/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:46.201Z"
+  },
+  {
+    "id": "1787321025709",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/far-cry-5/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:45.709Z"
+  },
+  {
+    "id": "1787321024665",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/ready-or-not/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:44.665Z"
+  },
+  {
+    "id": "1787321023737",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/far-cry-5/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:43.737Z"
+  },
+  {
+    "id": "1787321023328",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/ready-or-not/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:43.328Z"
+  },
+  {
+    "id": "1787321022533",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/far-cry-3-duology/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:42.533Z"
+  },
+  {
+    "id": "1787321021578",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/elden-ring-nightreign/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:41.578Z"
+  },
+  {
+    "id": "1787321020920",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/assassins-creed-3-remastered/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:40.920Z"
+  },
+  {
+    "id": "1787321018282",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/spider-man-shattered-dimensions/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:38.282Z"
+  },
+  {
+    "id": "1787321017395",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/shambles-sons-of-apocalypse/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:37.395Z"
+  },
+  {
+    "id": "1787321011178",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/grand-theft-auto-the-original-trilogy/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:31.178Z"
+  },
+  {
+    "id": "1787320984150",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/updates-list/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:03:04.150Z"
+  },
+  {
+    "id": "1787320858072",
+    "type": "url",
+    "target": "https://en.riotpixels.com/games/naruto-x-boruto-ultimate-ninja-storm-connections/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:00:58.072Z"
+  },
+  {
+    "id": "1787320855614",
+    "type": "url",
+    "target": "https://filecrypt.cc/Container/C2D4309F8A.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:00:55.614Z"
+  },
+  {
+    "id": "1787320854781",
+    "type": "url",
+    "target": "https://en.riotpixels.com/games/naruto-x-boruto-ultimate-ninja-storm-connections/screenshots/5/?utm_source=emb-gfx-html&utm_medium=image&utm_campaign=rp-mass",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:00:54.781Z"
+  },
+  {
+    "id": "1787320854362",
+    "type": "url",
+    "target": "https://en.riotpixels.com/games/naruto-x-boruto-ultimate-ninja-storm-connections/screenshots/2/?utm_source=emb-gfx-html&utm_medium=image&utm_campaign=rp-mass",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:00:54.362Z"
+  },
+  {
+    "id": "1787320823496",
+    "type": "url",
+    "target": "https://en.riotpixels.com/games/naruto-x-boruto-ultimate-ninja-storm-connections/screenshots/6/?utm_source=emb-gfx-html&utm_medium=image&utm_campaign=rp-mass",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:00:23.496Z"
+  },
+  {
+    "id": "1787320809328",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/naruto-x-boruto-ultimate-ninja-storm-connections/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:00:09.328Z"
+  },
+  {
+    "id": "1787320808343",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-duty-black-ops-dlcs-zombies-multiplayer/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:00:08.343Z"
+  },
+  {
+    "id": "1787320806218",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/need-for-speed-heat/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:00:06.218Z"
+  },
+  {
+    "id": "1787320805107",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/roomgirl-paradise/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:00:05.107Z"
+  },
+  {
+    "id": "1787320804312",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/mortal-kombat-11/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:00:04.312Z"
+  },
+  {
+    "id": "1787320803501",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-black-ops-3/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:00:03.501Z"
+  },
+  {
+    "id": "1787320802531",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/mortal-kombat-11/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:00:02.531Z"
+  },
+  {
+    "id": "1787320801942",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-black-ops-3/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T14:00:01.942Z"
+  },
+  {
+    "id": "1787320799967",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/clair-obscur-expedition-33/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:59.967Z"
+  },
+  {
+    "id": "1787320799244",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/batman-arkham-knight-premium-edition/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:59.244Z"
+  },
+  {
+    "id": "1787320794697",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/lust-n-dead/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:54.697Z"
+  },
+  {
+    "id": "1787320793479",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/reanimal/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:53.479Z"
+  },
+  {
+    "id": "1787320791166",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/gym-manager/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:51.166Z"
+  },
+  {
+    "id": "1787320789432",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/grand-theft-auto-the-trilogy-the-definitive-edition/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:49.432Z"
+  },
+  {
+    "id": "1787320787474",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/god-forsaken/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:47.474Z"
+  },
+  {
+    "id": "1787320786397",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/sims-4-deluxe-edition/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:46.397Z"
+  },
+  {
+    "id": "1787320785567",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/atomic-heart-ue/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:45.567Z"
+  },
+  {
+    "id": "1787320784721",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/starfield/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:44.721Z"
+  },
+  {
+    "id": "1787320783294",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/beast-of-reincarnation/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:43.294Z"
+  },
+  {
+    "id": "1787320781605",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/the-first-berserker-khazan/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:41.605Z"
+  },
+  {
+    "id": "1787320778637",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/resident-evil-7-biohazard/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:38.637Z"
+  },
+  {
+    "id": "1787320776935",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/replaced/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:36.935Z"
+  },
+  {
+    "id": "1787320775744",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/need-speed-wanted-limited-edition-v-1-5-0-0-dlcs/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:35.744Z"
+  },
+  {
+    "id": "1787320775163",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/honey-select-2-libido/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:35.163Z"
+  },
+  {
+    "id": "1787320774729",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/death-stranding-2-on-the-beach/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:59:34.729Z"
+  },
+  {
+    "id": "1787320681417",
+    "type": "url",
+    "target": "https://paste.fitgirl-repacks.site/?b60bec5b1cbaf75a#6oSq5JAk5aPZNLwWNSuHiojuJSgjmHFXephNtJtMU5og",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:58:01.417Z"
+  },
+  {
+    "id": "1787320585605",
+    "type": "url",
+    "target": "https://files2.freedownloadmanager.org/6/latest/fdm_x64_setup.exe",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:56:25.605Z"
+  },
+  {
+    "id": "1787320583059",
+    "type": "url",
+    "target": "https://www.freedownloadmanager.org/download.htm",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:56:23.059Z"
+  },
+  {
+    "id": "1787320571137",
+    "type": "url",
+    "target": "https://paste.fitgirl-repacks.site/?b60bec5b1cbaf75a#6oSq5JAk5aPZNLwWNSuHiojuJSgjmHFXephNtJtMU5og",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:56:11.137Z"
+  },
+  {
+    "id": "1787320565546",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/cyberpunk-2077/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:56:05.546Z"
+  },
+  {
+    "id": "1787320564627",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-modern-warfare-2019/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:56:04.627Z"
+  },
+  {
+    "id": "1787320562748",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/mixtape/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:56:02.748Z"
+  },
+  {
+    "id": "1787320560989",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/god-of-war/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:56:00.989Z"
+  },
+  {
+    "id": "1787320559808",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/grand-theft-auto-iv-complete-edition/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:59.808Z"
+  },
+  {
+    "id": "1787320558744",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/cyberpunk-2077/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:58.744Z"
+  },
+  {
+    "id": "1787320556126",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/ghost-of-tsushima-directors-cut/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:56.126Z"
+  },
+  {
+    "id": "1787320551651",
+    "type": "url",
+    "target": "https://en.riotpixels.com/games/call-of-duty-modern-warfare-2-ii-2022/screenshots/6/?utm_source=emb-gfx-html&utm_medium=image&utm_campaign=rp-mass",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:51.651Z"
+  },
+  {
+    "id": "1787320549678",
+    "type": "url",
+    "target": "https://en.riotpixels.com/games/call-of-duty-modern-warfare-2-ii-2022/screenshots/23/?utm_source=emb-gfx-html&utm_medium=image&utm_campaign=rp-mass",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:49.678Z"
+  },
+  {
+    "id": "1787320543718",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-modern-warfare-ii/#",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:43.718Z"
+  },
+  {
+    "id": "1787320537296",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/call-of-duty-modern-warfare-ii/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:37.296Z"
+  },
+  {
+    "id": "1787320535942",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/the-last-of-us-part-1/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:35.942Z"
+  },
+  {
+    "id": "1787320530843",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/assassins-creed-shadows/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:30.843Z"
+  },
+  {
+    "id": "1787320529995",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/007-first-light/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:29.995Z"
+  },
+  {
+    "id": "1787320528922",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/resident-evil-requiem/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:28.922Z"
+  },
+  {
+    "id": "1787320528126",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/grand-theft-auto-v/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:28.126Z"
+  },
+  {
+    "id": "1787320526938",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/black-myth-wukong/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:26.938Z"
+  },
+  {
+    "id": "1787320523897",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/wicked-seed/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:23.897Z"
+  },
+  {
+    "id": "1787320522607",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/pragmata/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:22.607Z"
+  },
+  {
+    "id": "1787320521141",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/mafia-the-old-country/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:21.141Z"
+  },
+  {
+    "id": "1787320519989",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/stellar-blade/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:19.989Z"
+  },
+  {
+    "id": "1787320519306",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/assassins-creed-black-flag-resynced/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:19.306Z"
+  },
+  {
+    "id": "1787320517926",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/honeycome-come-come-party/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:17.926Z"
+  },
+  {
+    "id": "1787320516814",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/honeycome-come-come-party/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:16.814Z"
+  },
+  {
+    "id": "1787320515166",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/lego-batman-legacy-of-the-dark-knight/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:15.166Z"
+  },
+  {
+    "id": "1787320514642",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/god-of-war-ragnarok/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:14.642Z"
+  },
+  {
+    "id": "1787320512750",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/lego-batman-legacy-of-the-dark-knight/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:12.750Z"
+  },
+  {
+    "id": "1787320512342",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/honeycome-come-come-party/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:12.342Z"
+  },
+  {
+    "id": "1787320511353",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/the-last-of-us-part-1/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:11.353Z"
+  },
+  {
+    "id": "1787320510797",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/pragmata/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:10.797Z"
+  },
+  {
+    "id": "1787320510179",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/assassins-creed-shadows/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:10.179Z"
+  },
+  {
+    "id": "1787320509764",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/the-genesis-order/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:09.764Z"
+  },
+  {
+    "id": "1787320503202",
+    "type": "url",
+    "target": "https://fitgirl-repacks.site/popular-repacks-of-the-year/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Safe",
+    "flags": [],
+    "timestamp": "2026-08-21T13:55:03.202Z"
+  },
+  {
     "id": "1787233147333",
     "type": "url",
     "target": "https://www.twilio.com/docs/messaging/tutorials/how-to-send-sms-messages?utm_source=chatgpt.com",

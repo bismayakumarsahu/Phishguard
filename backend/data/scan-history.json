@@ -1,5 +1,2441 @@
 [
   {
+    "id": "1788413703394",
+    "type": "url",
+    "target": "http://localhost:3001/pages/simulation.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:35:03.394Z"
+  },
+  {
+    "id": "1788413702037",
+    "type": "url",
+    "target": "http://localhost:3001/pages/simulation.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:35:02.037Z"
+  },
+  {
+    "id": "1788413699640",
+    "type": "url",
+    "target": "http://localhost:3001/pages/email-analyzer.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:34:59.640Z"
+  },
+  {
+    "id": "1788413698273",
+    "type": "url",
+    "target": "http://localhost:3001/pages/email-analyzer.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:34:58.273Z"
+  },
+  {
+    "id": "1788413641121",
+    "type": "url",
+    "target": "http://localhost:3001/pages/scanner.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:34:01.121Z"
+  },
+  {
+    "id": "1788413639650",
+    "type": "url",
+    "target": "http://localhost:3001/pages/scanner.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:33:59.650Z"
+  },
+  {
+    "id": "1788413639228",
+    "type": "url",
+    "target": "http://localhost:3001/pages/email-analyzer.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:33:59.228Z"
+  },
+  {
+    "id": "1788413637101",
+    "type": "url",
+    "target": "http://localhost:3001/pages/email-analyzer.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:33:57.101Z"
+  },
+  {
+    "id": "1788413633663",
+    "type": "url",
+    "target": "http://localhost:3001/pages/scanner.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:33:53.663Z"
+  },
+  {
+    "id": "1788413632287",
+    "type": "url",
+    "target": "http://localhost:3001/pages/scanner.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:33:52.287Z"
+  },
+  {
+    "id": "1788413615502",
+    "type": "url",
+    "target": "http://localhost:3001/index.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:33:35.502Z"
+  },
+  {
+    "id": "1788413614126",
+    "type": "url",
+    "target": "http://localhost:3001/index.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:33:34.126Z"
+  },
+  {
+    "id": "1788413608897",
+    "type": "url",
+    "target": "http://localhost:3001/pages/login.html",
+    "score": 16,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "PHISHING",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:33:28.897Z"
+  },
+  {
+    "id": "1788413583540",
+    "type": "url",
+    "target": "http://localhost:3001/index.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:33:03.540Z"
+  },
+  {
+    "id": "1788413582183",
+    "type": "url",
+    "target": "http://localhost:3001/index.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:33:02.183Z"
+  },
+  {
+    "id": "1788413578072",
+    "type": "url",
+    "target": "http://localhost:3001/pages/scanner.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:32:58.072Z"
+  },
+  {
+    "id": "1788413576751",
+    "type": "url",
+    "target": "http://localhost:3001/pages/scanner.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:32:56.751Z"
+  },
+  {
+    "id": "1788413561303",
+    "type": "url",
+    "target": "http://localhost:3001/index.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:32:41.303Z"
+  },
+  {
+    "id": "1788413559943",
+    "type": "url",
+    "target": "http://localhost:3001/index.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:32:39.943Z"
+  },
+  {
+    "id": "1788413553335",
+    "type": "url",
+    "target": "http://localhost:3001/pages/login.html",
+    "score": 16,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "PHISHING",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:32:33.335Z"
+  },
+  {
+    "id": "1788413523885",
+    "type": "url",
+    "target": "http://localhost:3001/index.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:32:03.885Z"
+  },
+  {
+    "id": "1788413522439",
+    "type": "url",
+    "target": "http://localhost:3001/index.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:32:02.439Z"
+  },
+  {
+    "id": "1788413521974",
+    "type": "url",
+    "target": "http://localhost:3001/pages/scanner.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:32:01.974Z"
+  },
+  {
+    "id": "1788413520654",
+    "type": "url",
+    "target": "http://localhost:3001/pages/scanner.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:32:00.654Z"
+  },
+  {
+    "id": "1788413511186",
+    "type": "url",
+    "target": "http://localhost:3001/index.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:31:51.186Z"
+  },
+  {
+    "id": "1788413509802",
+    "type": "url",
+    "target": "http://localhost:3001/index.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:31:49.802Z"
+  },
+  {
+    "id": "1788413509487",
+    "type": "url",
+    "target": "http://localhost:3001/pages/scanner.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:31:49.487Z"
+  },
+  {
+    "id": "1788413498303",
+    "type": "url",
+    "target": "http://localhost:3001/pages/scanner.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:31:38.303Z"
+  },
+  {
+    "id": "1788413497208",
+    "type": "url",
+    "target": "http://localhost:3001/pages/email-analyzer.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:31:37.208Z"
+  },
+  {
+    "id": "1788413494407",
+    "type": "url",
+    "target": "http://localhost:3001/pages/simulation.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:31:34.407Z"
+  },
+  {
+    "id": "1788413385478",
+    "type": "url",
+    "target": "https://github.com/bismayakumarsahu/Phishguard/tree/main/backend",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:29:45.478Z"
+  },
+  {
+    "id": "1788413361985",
+    "type": "url",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:29:21.985Z"
+  },
+  {
+    "id": "1788413199911",
+    "type": "url",
+    "target": "http://localhost:3001/index.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:26:39.911Z"
+  },
+  {
+    "id": "1788413195893",
+    "type": "url",
+    "target": "http://localhost:3001/index.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:26:35.893Z"
+  },
+  {
+    "id": "1788413166267",
+    "type": "url",
+    "target": "http://localhost:3001/pages/leaderboard.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:26:06.267Z"
+  },
+  {
+    "id": "1788413164748",
+    "type": "url",
+    "target": "http://localhost:3001/pages/leaderboard.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:26:04.749Z"
+  },
+  {
+    "id": "1788413160981",
+    "type": "url",
+    "target": "http://localhost:3001/pages/simulation.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:26:00.981Z"
+  },
+  {
+    "id": "1788413159588",
+    "type": "url",
+    "target": "http://localhost:3001/pages/simulation.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:25:59.588Z"
+  },
+  {
+    "id": "1788413154767",
+    "type": "url",
+    "target": "http://localhost:3001/pages/email-analyzer.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:25:54.767Z"
+  },
+  {
+    "id": "1788413152623",
+    "type": "url",
+    "target": "http://localhost:3001/pages/email-analyzer.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:25:52.623Z"
+  },
+  {
+    "id": "1788413152034",
+    "type": "url",
+    "target": "http://localhost:3001/pages/scanner.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:25:52.034Z"
+  },
+  {
+    "id": "1788413150255",
+    "type": "url",
+    "target": "http://localhost:3001/pages/scanner.html",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:25:50.255Z"
+  },
+  {
+    "id": "1788413143073",
+    "type": "url",
+    "target": "http://localhost:3001/",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "UNKNOWN"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-09-03T05:25:43.073Z"
+  },
+  {
+    "id": "1788359907413",
+    "type": "page",
+    "target": "https://image.pi7.org/compress-jpeg-to-30kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:38:27.413Z"
+  },
+  {
+    "id": "1788359904935",
+    "type": "url",
+    "target": "https://image.pi7.org/compress-jpeg-to-30kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:38:24.935Z"
+  },
+  {
+    "id": "1788359879431",
+    "type": "url",
+    "target": "https://eu-central.storage.cloudconvert.com/tasks/8f67a9b8-7109-4f93-92a2-6d74c7f5d29f/PHOTO.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cloudconvert-production%2F20260902%2Ffra%2Fs3%2Faws4_request&X-Amz-Date=20260902T143757Z&X-Amz-Expires=86400&X-Amz-Signature=d7e6f85bdfab9f40063d5179be980cfd69bec72e206b6149d870fe089fad79e9&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22PHOTO.jpg%22&response-content-type=image%2Fjpeg&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+    "score": 16,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "MANY_PARAMETERS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "URL contains many query parameters."
+      },
+      {
+        "type": "LONG_URL",
+        "severity": "LOW",
+        "points": 8,
+        "message": "URL is unusually long and may contain encoded data."
+      }
+    ],
+    "categories": [
+      "OBFUSCATION"
+    ],
+    "timestamp": "2026-09-02T14:37:59.431Z"
+  },
+  {
+    "id": "1788359852100",
+    "type": "page",
+    "target": "https://cloudconvert.com/jpg-converter",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:37:32.100Z"
+  },
+  {
+    "id": "1788359850147",
+    "type": "url",
+    "target": "https://cloudconvert.com/jpg-converter",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:37:30.147Z"
+  },
+  {
+    "id": "1788359846912",
+    "type": "page",
+    "target": "https://www.google.com/search?q=convert+to+jpg&oq=convert+to+j&gs_lcrp=EgZjaHJvbWUqEAgAEAAYkQIYsQMYgAQYigUyEAgAEAAYkQIYsQMYgAQYigUyBwgBEAAYgAQyCggCEAAYsQMYgAQyDQgDEAAYkQIYgAQYigUyDQgEEAAYkQIYgAQYigUyBggFEEUYOTINCAYQABiRAhiABBiKBTIMCAcQABgUGIcCGIAEMgcICBAAGIAEMgwICRAAGBQYhwIYgASoAgCwAgA&sourceid=chrome&source=chrome.ob&ie=UTF-8",
+    "score": 11,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "LONG_URL",
+        "severity": "LOW",
+        "points": 8,
+        "message": "URL is unusually long and may contain encoded data."
+      },
+      {
+        "type": "MANY_HIDDEN_ELEMENTS",
+        "severity": "LOW",
+        "points": 6,
+        "message": "Page contains many hidden elements.",
+        "category": "OBFUSCATION"
+      }
+    ],
+    "categories": [
+      "OBFUSCATION"
+    ],
+    "timestamp": "2026-09-02T14:37:26.912Z"
+  },
+  {
+    "id": "1788359841988",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:37:21.988Z"
+  },
+  {
+    "id": "1788359748828",
+    "type": "page",
+    "target": "https://app.indiapost.gov.in/gdscandidate/gdsOnline/apply",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:35:48.828Z"
+  },
+  {
+    "id": "1788359705281",
+    "type": "page",
+    "target": "https://image.pi7.org/compress-jpeg-to-30kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:35:05.281Z"
+  },
+  {
+    "id": "1788359702836",
+    "type": "url",
+    "target": "https://image.pi7.org/compress-jpeg-to-30kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:35:02.836Z"
+  },
+  {
+    "id": "1788359651209",
+    "type": "page",
+    "target": "https://image.pi7.org/compress-jpeg-to-30kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:34:11.209Z"
+  },
+  {
+    "id": "1788359648748",
+    "type": "url",
+    "target": "https://image.pi7.org/compress-jpeg-to-30kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:34:08.748Z"
+  },
+  {
+    "id": "1788359599685",
+    "type": "page",
+    "target": "https://image.pi7.org/compress-jpeg-to-30kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:33:19.685Z"
+  },
+  {
+    "id": "1788359596857",
+    "type": "url",
+    "target": "https://image.pi7.org/compress-jpeg-to-30kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:33:16.857Z"
+  },
+  {
+    "id": "1788359487229",
+    "type": "page",
+    "target": "https://imagy.app/image-aspect-ratio-changer/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:31:27.229Z"
+  },
+  {
+    "id": "1788359485409",
+    "type": "url",
+    "target": "https://imagy.app/image-aspect-ratio-changer/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:31:25.409Z"
+  },
+  {
+    "id": "1788359485238",
+    "type": "page",
+    "target": "https://www.google.com/search?q=image+must+have+5%3A2+(landscape)+aspect+ratio+(%C2%B110%25+tolerance)+converter&oq=Image+must+have+5%3A2+(landscape)+aspect+ratio+(%C2%B110%25+tolerance)+conver&gs_lcrp=EgZjaHJvbWUqBwgBECEYjwIyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAjIHCAMQIRiPAtIBCDU0MTRqMGo3qAIAsAIA&sourceid=chrome&source=chrome.ob&ie=UTF-8",
+    "score": 14,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "LONG_URL",
+        "severity": "LOW",
+        "points": 8,
+        "message": "URL is unusually long and may contain encoded data."
+      },
+      {
+        "type": "EXCESSIVE_EXTERNAL_LINKS",
+        "severity": "LOW",
+        "points": 6,
+        "message": "Page contains a large number of external-domain links.",
+        "category": "PAGE_BEHAVIOR"
+      },
+      {
+        "type": "MANY_HIDDEN_ELEMENTS",
+        "severity": "LOW",
+        "points": 6,
+        "message": "Page contains many hidden elements.",
+        "category": "OBFUSCATION"
+      }
+    ],
+    "categories": [
+      "OBFUSCATION",
+      "PAGE_BEHAVIOR"
+    ],
+    "timestamp": "2026-09-02T14:31:25.238Z"
+  },
+  {
+    "id": "1788359478978",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:31:18.978Z"
+  },
+  {
+    "id": "1788359416658",
+    "type": "page",
+    "target": "https://image.pi7.org/compress-jpeg-to-30kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:30:16.658Z"
+  },
+  {
+    "id": "1788359413883",
+    "type": "url",
+    "target": "https://image.pi7.org/compress-jpeg-to-30kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:30:13.883Z"
+  },
+  {
+    "id": "1788359356485",
+    "type": "page",
+    "target": "https://image.pi7.org/compress-jpeg-to-30kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:29:16.485Z"
+  },
+  {
+    "id": "1788359353584",
+    "type": "url",
+    "target": "https://image.pi7.org/compress-jpeg-to-30kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:29:13.584Z"
+  },
+  {
+    "id": "1788359311376",
+    "type": "page",
+    "target": "https://image.pi7.org/compress-jpeg-to-30kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:28:31.376Z"
+  },
+  {
+    "id": "1788359309890",
+    "type": "url",
+    "target": "https://pi7.org/compressor/photo-compressor-to-30kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:28:29.890Z"
+  },
+  {
+    "id": "1788359307424",
+    "type": "url",
+    "target": "https://jpeg-optimizer.com/compress-jpeg-to-30kb/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:28:27.424Z"
+  },
+  {
+    "id": "1788359305969",
+    "type": "url",
+    "target": "https://imagecompressor.11zon.com/en/compress-jpeg/compress-jpeg-to-30kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:28:25.969Z"
+  },
+  {
+    "id": "1788359304308",
+    "type": "page",
+    "target": "https://www.google.com/search?q=photo+compress+to+30kb&oq=photo+compress+to+30kb&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIMCAEQABgUGIcCGIAEMgcIAhAAGIAEMggIAxAAGBYYHjIICAQQABgWGB4yCAgFEAAYFhgeMggIBhAAGBYYHjIICAcQABgWGB4yCAgIEAAYFhgeMggICRAAGBYYHtIBCTE1Njk1ajBqN6gCALACAA&sourceid=chrome&source=chrome.ob&ie=UTF-8",
+    "score": 11,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "LONG_URL",
+        "severity": "LOW",
+        "points": 8,
+        "message": "URL is unusually long and may contain encoded data."
+      },
+      {
+        "type": "MANY_HIDDEN_ELEMENTS",
+        "severity": "LOW",
+        "points": 6,
+        "message": "Page contains many hidden elements.",
+        "category": "OBFUSCATION"
+      }
+    ],
+    "categories": [
+      "OBFUSCATION"
+    ],
+    "timestamp": "2026-09-02T14:28:24.308Z"
+  },
+  {
+    "id": "1788359293943",
+    "type": "page",
+    "target": "https://www.google.com/search?q=photo+compress+50+to+100+kb&oq=photo+compress+&gs_lcrp=EgZjaHJvbWUqDAgAEAAYFBiHAhiABDIMCAAQABgUGIcCGIAEMg0IARAAGJECGIAEGIoFMg0IAhAAGJECGIAEGIoFMgYIAxBFGDkyBwgEEAAYgAQyDAgFEAAYFBiHAhiABDINCAYQABiRAhiABBiKBTIHCAcQABiABDIHCAgQABiABDIHCAkQABiABKgCALACAA&sourceid=chrome&source=chrome.ob&ie=UTF-8",
+    "score": 11,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "LONG_URL",
+        "severity": "LOW",
+        "points": 8,
+        "message": "URL is unusually long and may contain encoded data."
+      },
+      {
+        "type": "MANY_HIDDEN_ELEMENTS",
+        "severity": "LOW",
+        "points": 6,
+        "message": "Page contains many hidden elements.",
+        "category": "OBFUSCATION"
+      }
+    ],
+    "categories": [
+      "OBFUSCATION"
+    ],
+    "timestamp": "2026-09-02T14:28:13.943Z"
+  },
+  {
+    "id": "1788359291943",
+    "type": "page",
+    "target": "https://www.google.com/search?q=photo+compressor&oq=photo+co&gs_lcrp=EgZjaHJvbWUqCggAEAAYsQMYgAQyCggAEAAYsQMYgAQyDQgBEAAYkQIYgAQYigUyDAgCEAAYQxiABBiKBTINCAMQABiRAhiABBiKBTINCAQQABiRAhiABBiKBTINCAUQABiRAhiABBiKBTIGCAYQRRg5MgcIBxAAGIAEMgcICBAAGI8CMgcICRAAGI8CqAIAsAIA&sourceid=chrome&source=chrome.ob&ie=UTF-8",
+    "score": 11,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "LONG_URL",
+        "severity": "LOW",
+        "points": 8,
+        "message": "URL is unusually long and may contain encoded data."
+      },
+      {
+        "type": "MANY_HIDDEN_ELEMENTS",
+        "severity": "LOW",
+        "points": 6,
+        "message": "Page contains many hidden elements.",
+        "category": "OBFUSCATION"
+      }
+    ],
+    "categories": [
+      "OBFUSCATION"
+    ],
+    "timestamp": "2026-09-02T14:28:11.943Z"
+  },
+  {
+    "id": "1788359287988",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:28:07.988Z"
+  },
+  {
+    "id": "1788358849701",
+    "type": "page",
+    "target": "https://imagecompressor.11zon.com/en/compress-jpg/compress-jpg-to-1000kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:20:49.701Z"
+  },
+  {
+    "id": "1788358846942",
+    "type": "url",
+    "target": "https://imagecompressor.11zon.com/en/compress-jpg/compress-jpg-to-1000kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:20:46.942Z"
+  },
+  {
+    "id": "1788358843618",
+    "type": "url",
+    "target": "https://imagecompressor.11zon.com/en/compress-jpg/compress-jpg-to-1000kb",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:20:43.618Z"
+  },
+  {
+    "id": "1788358839790",
+    "type": "page",
+    "target": "https://www.google.com/search?q=Jpeg+to+jpg+with+bellow+1000+kb&oq=Jpeg+to+jpg+with+bellow+1000+kb&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBCTIyODI1ajBqN6gCALACAA&sourceid=chrome&source=chrome.ob&ie=UTF-8",
+    "score": 3,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "MANY_HIDDEN_ELEMENTS",
+        "severity": "LOW",
+        "points": 6,
+        "message": "Page contains many hidden elements.",
+        "category": "OBFUSCATION"
+      }
+    ],
+    "categories": [
+      "OBFUSCATION"
+    ],
+    "timestamp": "2026-09-02T14:20:39.790Z"
+  },
+  {
+    "id": "1788358819971",
+    "type": "page",
+    "target": "https://www.google.com/search?q=jpeg+to+jpg&oq=Jpeg+t&gs_lcrp=EgZjaHJvbWUqBwgAEAAYgAQyBwgAEAAYgAQyBggBEEUYOTIRCAIQABgKGAsYgwEYsQMYgAQyBwgDEAAYgAQyCwgEEAAYChgLGIAEMgcIBRAAGIAEMgcIBhAAGIAEMgcIBxAAGIAEMgcICBAAGIAEMgcICRAAGIAEqAIAsAIA&sourceid=chrome&source=chrome.ob&ie=UTF-8",
+    "score": 11,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "LONG_URL",
+        "severity": "LOW",
+        "points": 8,
+        "message": "URL is unusually long and may contain encoded data."
+      },
+      {
+        "type": "MANY_HIDDEN_ELEMENTS",
+        "severity": "LOW",
+        "points": 6,
+        "message": "Page contains many hidden elements.",
+        "category": "OBFUSCATION"
+      }
+    ],
+    "categories": [
+      "OBFUSCATION"
+    ],
+    "timestamp": "2026-09-02T14:20:19.971Z"
+  },
+  {
+    "id": "1788358816984",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T14:20:16.984Z"
+  },
+  {
+    "id": "1788357079112",
+    "type": "page",
+    "target": "https://app.indiapost.gov.in/gdscandidate/gdsOnline/dashBoard",
+    "score": 3,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "EXCESSIVE_SCRIPT_TAGS",
+        "severity": "LOW",
+        "points": 6,
+        "message": "Page contains an unusually large number of script tags.",
+        "category": "PAGE_BEHAVIOR"
+      }
+    ],
+    "categories": [
+      "PAGE_BEHAVIOR"
+    ],
+    "timestamp": "2026-09-02T13:51:19.112Z"
+  },
+  {
+    "id": "1788356829778",
+    "type": "page",
+    "target": "https://app.indiapost.gov.in/gdscandidate",
+    "score": 3,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "EXCESSIVE_SCRIPT_TAGS",
+        "severity": "LOW",
+        "points": 6,
+        "message": "Page contains an unusually large number of script tags.",
+        "category": "PAGE_BEHAVIOR"
+      }
+    ],
+    "categories": [
+      "PAGE_BEHAVIOR"
+    ],
+    "timestamp": "2026-09-02T13:47:09.778Z"
+  },
+  {
+    "id": "1788356827679",
+    "type": "url",
+    "target": "https://app.indiapost.gov.in/gdscandidate",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T13:47:07.679Z"
+  },
+  {
+    "id": "1788356798910",
+    "type": "url",
+    "target": "https://app.indiapost.gov.in/gdscandidate",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T13:46:38.910Z"
+  },
+  {
+    "id": "1788356798240",
+    "type": "page",
+    "target": "https://www.indiapost.gov.in/gdsonlineengagement",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T13:46:38.240Z"
+  },
+  {
+    "id": "1788356796329",
+    "type": "page",
+    "target": "https://www.google.com/search?q=indianpost+gov+in+gdsonlineengagement&oq=indianpost.gov.in%2Fgds&gs_lcrp=EgZjaHJvbWUqBggDEAAYHjIGCAAQRRg6MgYIARBFGDkyBggCEAAYHjIGCAMQABgeMgYIBBAAGB7SAQkxOTYwOGowajeoAgCwAgA&sourceid=chrome&source=chrome.ob&ie=UTF-8",
+    "score": 3,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "MANY_HIDDEN_ELEMENTS",
+        "severity": "LOW",
+        "points": 6,
+        "message": "Page contains many hidden elements.",
+        "category": "OBFUSCATION"
+      }
+    ],
+    "categories": [
+      "OBFUSCATION"
+    ],
+    "timestamp": "2026-09-02T13:46:36.329Z"
+  },
+  {
+    "id": "1788356776991",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T13:46:16.991Z"
+  },
+  {
+    "id": "1788356555466",
+    "type": "page",
+    "target": "http://localhost:3001/api/scan-url",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT"
+    ],
+    "timestamp": "2026-09-02T13:42:35.466Z"
+  },
+  {
+    "id": "1788356548026",
+    "type": "url",
+    "target": "http://192.168.1.100/login",
+    "score": 48,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "verdict": "suspicious",
+    "confidence": "medium",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      },
+      {
+        "type": "IP_ADDRESS",
+        "severity": "HIGH",
+        "points": 30,
+        "message": "URL uses an IP address instead of a normal domain."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "DOMAIN",
+      "PHISHING"
+    ],
+    "timestamp": "2026-09-02T13:42:28.026Z"
+  },
+  {
+    "id": "1788356545203",
+    "type": "url",
+    "target": "http://192.168.1.100/login",
+    "score": 48,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "verdict": "suspicious",
+    "confidence": "medium",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      },
+      {
+        "type": "IP_ADDRESS",
+        "severity": "HIGH",
+        "points": 30,
+        "message": "URL uses an IP address instead of a normal domain."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "DOMAIN",
+      "PHISHING"
+    ],
+    "timestamp": "2026-09-02T13:42:25.203Z"
+  },
+  {
+    "id": "1788356480424",
+    "type": "page",
+    "target": "http://localhost:3001/api/scan-url",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT"
+    ],
+    "timestamp": "2026-09-02T13:41:20.424Z"
+  },
+  {
+    "id": "1788356479980",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T13:41:19.980Z"
+  },
+  {
+    "id": "1788356422930",
+    "type": "url",
+    "target": "http://192.168.1.100/login",
+    "score": 48,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "verdict": "suspicious",
+    "confidence": "medium",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      },
+      {
+        "type": "IP_ADDRESS",
+        "severity": "HIGH",
+        "points": 30,
+        "message": "URL uses an IP address instead of a normal domain."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "DOMAIN",
+      "PHISHING"
+    ],
+    "timestamp": "2026-09-02T13:40:22.930Z"
+  },
+  {
+    "id": "1788356409986",
+    "type": "page",
+    "target": "http://localhost:3001/api/status",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT"
+    ],
+    "timestamp": "2026-09-02T13:40:09.986Z"
+  },
+  {
+    "id": "1788355887842",
+    "type": "page",
+    "target": "http://localhost:3001/api/status",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT"
+    ],
+    "timestamp": "2026-09-02T13:31:27.842Z"
+  },
+  {
+    "id": "1788355886994",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T13:31:26.994Z"
+  },
+  {
+    "id": "1788354886245",
+    "type": "url",
+    "target": "http://192.168.1.100/login",
+    "score": 48,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "verdict": "suspicious",
+    "confidence": "medium",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      },
+      {
+        "type": "IP_ADDRESS",
+        "severity": "HIGH",
+        "points": 30,
+        "message": "URL uses an IP address instead of a normal domain."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "DOMAIN",
+      "PHISHING"
+    ],
+    "timestamp": "2026-09-02T13:14:46.245Z"
+  },
+  {
+    "id": "1788354865924",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-02T13:14:25.924Z"
+  },
+  {
+    "id": "1788354843456",
+    "type": "url",
+    "target": "http://localhost:3001/",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT"
+    ],
+    "timestamp": "2026-09-02T13:14:03.456Z"
+  },
+  {
+    "id": "1788354745018",
+    "type": "url",
+    "target": "http://192.168.1.100/login",
+    "score": 48,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "verdict": "suspicious",
+    "confidence": "medium",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      },
+      {
+        "type": "IP_ADDRESS",
+        "severity": "HIGH",
+        "points": 30,
+        "message": "URL uses an IP address instead of a normal domain."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "DOMAIN",
+      "PHISHING"
+    ],
+    "timestamp": "2026-09-02T13:12:25.018Z"
+  },
+  {
+    "id": "1788354735518",
+    "type": "url",
+    "target": "http://192.168.1.100/login",
+    "score": 48,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "verdict": "suspicious",
+    "confidence": "medium",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      },
+      {
+        "type": "IP_ADDRESS",
+        "severity": "HIGH",
+        "points": 30,
+        "message": "URL uses an IP address instead of a normal domain."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "DOMAIN",
+      "PHISHING"
+    ],
+    "timestamp": "2026-09-02T13:12:15.518Z"
+  },
+  {
+    "id": "1788273790040",
+    "type": "page",
+    "target": "http://localhost:3001/",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT"
+    ],
+    "timestamp": "2026-09-01T14:43:10.040Z"
+  },
+  {
+    "id": "1788273786632",
+    "type": "page",
+    "target": "http://localhost:3001/",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT"
+    ],
+    "timestamp": "2026-09-01T14:43:06.632Z"
+  },
+  {
+    "id": "1788273786179",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-09-01T14:43:06.179Z"
+  },
+  {
+    "id": "1788273752081",
+    "type": "page",
+    "target": "http://localhost:3001/api/status",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT"
+    ],
+    "timestamp": "2026-09-01T14:42:32.081Z"
+  },
+  {
+    "id": "1788273746745",
+    "type": "url",
+    "target": "http://localhost:3001/",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT"
+    ],
+    "timestamp": "2026-09-01T14:42:26.745Z"
+  },
+  {
+    "id": "1788273743767",
+    "type": "url",
+    "target": "http://localhost:3001/",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT"
+    ],
+    "timestamp": "2026-09-01T14:42:23.767Z"
+  },
+  {
+    "id": "1788273737069",
+    "type": "page",
+    "target": "http://localhost:3001/",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT"
+    ],
+    "timestamp": "2026-09-01T14:42:17.069Z"
+  },
+  {
+    "id": "1788273735868",
+    "type": "url",
+    "target": "http://localhost:3001/",
+    "score": 7,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      }
+    ],
+    "categories": [
+      "TRANSPORT"
+    ],
+    "timestamp": "2026-09-01T14:42:15.868Z"
+  },
+  {
+    "id": "1788188527532",
+    "type": "url",
+    "target": "https://indiapost.gov.in/gdsonlineengagement",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T15:02:07.532Z"
+  },
+  {
+    "id": "1788188404670",
+    "type": "page",
+    "target": "https://indiapost.gov.in/gdsonlineengagement/pdf/descriptive-notification.pdf",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T15:00:04.670Z"
+  },
+  {
+    "id": "1788188249381",
+    "type": "url",
+    "target": "https://indiapost.gov.in/gdsonlineengagement",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T14:57:29.381Z"
+  },
+  {
+    "id": "1788188247584",
+    "type": "url",
+    "target": "https://indiapost.gov.in/gdsonlineengagement",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T14:57:27.584Z"
+  },
+  {
+    "id": "1788188243693",
+    "type": "url",
+    "target": "https://indiapost.gov.in/gdsonlineengagement",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T14:57:23.693Z"
+  },
+  {
+    "id": "1788188228143",
+    "type": "url",
+    "target": "https://indiapost.gov.in/gdsonlineengagement",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T14:57:08.143Z"
+  },
+  {
+    "id": "1788188223750",
+    "type": "url",
+    "target": "https://indiapost.gov.in/gdsonlineengagement",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T14:57:03.750Z"
+  },
+  {
+    "id": "1788188220969",
+    "type": "url",
+    "target": "https://indiapost.gov.in/gdsonlineengagement",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T14:57:00.969Z"
+  },
+  {
+    "id": "1788178551583",
+    "type": "page",
+    "target": "https://github.com/bismayakumarsahu/Phishguard",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T12:15:51.583Z"
+  },
+  {
+    "id": "1788178548230",
+    "type": "url",
+    "target": "https://github.com/bismayakumarsahu/Phishguard",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T12:15:48.230Z"
+  },
+  {
+    "id": "1788178543651",
+    "type": "page",
+    "target": "https://github.com/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T12:15:43.651Z"
+  },
+  {
+    "id": "1788178535865",
+    "type": "page",
+    "target": "https://www.google.com/search/warmup.html",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [],
+    "timestamp": "2026-08-31T12:15:35.865Z"
+  },
+  {
     "id": "1788178214897",
     "type": "page",
     "target": "https://chatgpt.com/",

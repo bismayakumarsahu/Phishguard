@@ -6,6 +6,11 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
+const crypto = require("crypto");
+
+require("dotenv").config({
+    path: path.join(__dirname, ".env")
+});
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -29,6 +34,13 @@ const {
     analyzePage
 } = require("./behavior-analyzer");
 
+const {
+    extractURLFeatures,
+    analyzeText,
+    analyzeLoginBehavior,
+    buildAssessment
+} = require("./ai-engine");
+
 
 // ============================================
 // APP CONFIGURATION
@@ -38,9 +50,14 @@ const app = express();
 
 const PORT = 3001;
 
-const JWT_SECRET =
-    process.env.JWT_SECRET ||
-    "phishguard-development-secret-change-later";
+const JWT_SECRET = process.env.JWT_SECRET ||
+    (process.env.NODE_ENV === "production"
+        ? ""
+        : crypto.randomBytes(32).toString("hex"));
+
+if (!JWT_SECRET) {
+    throw new Error("JWT_SECRET must be configured in production.");
+}
 
 
 // ============================================
@@ -231,10 +248,10 @@ app.get(
                 "online",
 
             service:
-                "PhishGuard API",
+                "CYBERGUARD API",
 
             version:
-                "3.0.0"
+                "4.0.0"
 
         });
 
@@ -321,23 +338,15 @@ app.post(
 
         try {
 
-            const {
-                url
-            } = req.body;
-
+            const { url } = req.body || {};
 
             // --------------------------------
             // Validate
             // --------------------------------
 
-            if (
-                !url ||
-                typeof url !== "string"
-            ) {
+            if (!url || typeof url !== "string") {
 
-                return res.status(
-                    400
-                ).json({
+                return res.status(400).json({
 
                     success:
                         false,
@@ -349,118 +358,276 @@ app.post(
 
             }
 
+            const cleanUrl =
+                url.trim();
+
+
+            if (
+                !/^https?:\/\//i.test(
+                    cleanUrl
+                )
+            ) {
+
+                return res.status(400).json({
+
+                    success:
+                        false,
+
+                    error:
+                        "URL must start with http:// or https://"
+
+                });
+
+            }
+
 
             // --------------------------------
-            // URL + THREAT INTELLIGENCE
+            // 1. Traditional heuristic analysis
             // --------------------------------
 
             const {
-
                 heuristicResult,
-
                 threatResult
-
             } =
                 await analyzeURLWithIntelligence(
-                    url
+                    cleanUrl
                 );
 
 
             // --------------------------------
-            // Build threat evidence
+            // 2. AI feature analysis
+            // --------------------------------
+
+            let aiResult;
+            let urlFeatures;
+
+
+            try {
+
+                urlFeatures =
+                    extractURLFeatures(
+                        cleanUrl
+                    );
+
+
+                aiResult =
+                    analyzeText(
+                        cleanUrl,
+                        {
+                            url:
+                                cleanUrl
+                        }
+                    );
+
+            } catch (aiError) {
+
+                console.error(
+                    "AI URL analysis error:",
+                    aiError
+                );
+
+
+                urlFeatures = {
+
+                    valid:
+                        true,
+
+                    featureScore:
+                        0,
+
+                    reasons:
+                        []
+
+                };
+
+
+                aiResult = {
+
+                    score:
+                        0,
+
+                    evidence:
+                        [],
+
+                    category:
+                        "UNKNOWN",
+
+                    features:
+                        {}
+
+                };
+
+            }
+
+
+            // --------------------------------
+            // 3. Collect threat intelligence
             // --------------------------------
 
             const threatEvidence =
                 Array.isArray(
-                    threatResult.evidence
+                    threatResult?.evidence
                 )
                     ? threatResult.evidence
                     : [];
 
 
             // --------------------------------
-            // Create combined heuristic result
-            //
-            // Threat intelligence is added as
-            // additional evidence.
+            // 4. Combine all evidence
+            // --------------------------------
+
+            const combinedFlags = [
+
+                ...(Array.isArray(
+                    heuristicResult?.flags
+                )
+                    ? heuristicResult.flags
+                    : []),
+
+                ...threatEvidence,
+
+                ...(Array.isArray(
+                    aiResult?.evidence
+                )
+                    ? aiResult.evidence
+                    : []),
+
+                ...(Array.isArray(
+                    urlFeatures?.reasons
+                )
+                    ? urlFeatures.reasons
+                    : [])
+
+            ];
+
+
+            const combinedCategories =
+                Array.from(
+                    new Set([
+
+                        ...(Array.isArray(
+                            heuristicResult?.categories
+                        )
+                            ? heuristicResult.categories
+                            : []),
+
+                        ...(aiResult?.category
+                            ? [aiResult.category]
+                            : []),
+
+                        ...(threatResult?.reputation ===
+                            "malicious"
+                            ? [
+                                "THREAT_INTELLIGENCE"
+                            ]
+                            : []),
+
+                        ...(threatResult?.reputation ===
+                            "suspicious"
+                            ? [
+                                "THREAT_INTELLIGENCE"
+                            ]
+                            : [])
+
+                    ])
+                );
+
+
+            // --------------------------------
+            // 5. Unified risk-engine input
             // --------------------------------
 
             const combinedInput = {
 
                 ...heuristicResult,
 
-                flags: [
+                score:
+                    Number(
+                        heuristicResult?.score
+                    ) || 0,
 
-                    ...(Array.isArray(
-                        heuristicResult.flags
-                    )
-                        ? heuristicResult.flags
-                        : []),
+                heuristicScore:
+                    Number(
+                        heuristicResult?.score
+                    ) || 0,
 
-                    ...threatEvidence
+                aiScore:
+                    Number(
+                        aiResult?.score
+                    ) ||
+                    Number(
+                        urlFeatures?.featureScore
+                    ) ||
+                    0,
 
-                ],
-
-                categories: [
-
-                    ...(Array.isArray(
-                        heuristicResult.categories
-                    )
-                        ? heuristicResult.categories
-                        : []),
-
-                    ...(threatResult.reputation ===
-                        "malicious"
-                        ? ["THREAT_INTELLIGENCE"]
-                        : []),
-
-                    ...(threatResult.reputation ===
-                        "suspicious"
-                        ? ["THREAT_INTELLIGENCE"]
-                        : [])
-
-                ]
-
-            };
-
-
-            // --------------------------------
-            // RISK ENGINE
-            // --------------------------------
-
-            const riskResult =
-                evaluateRisk(
-                    combinedInput
-                );
-
-
-            // --------------------------------
-            // Final result
-            // --------------------------------
-
-            const result = {
-
-                ...riskResult,
+                threatIntelScore:
+                    Number(
+                        threatResult?.score
+                    ) || 0,
 
                 flags:
-                    riskResult.evidence ||
-                    combinedInput.flags ||
-                    [],
+                    combinedFlags,
 
-                threatIntelligence: {
+                categories:
+                    combinedCategories,
 
-                    reputation:
-                        threatResult.reputation,
 
-                    confidence:
-                        threatResult.confidence,
+                features: {
 
-                    score:
-                        threatResult.score,
+                    ...(urlFeatures || {}),
 
-                    sources:
-                        threatResult.sources ||
-                        []
+                    ...(aiResult?.features || {}),
+
+
+                    // Compatibility aliases
+                    // for the risk engine.
+
+                    hasIPAddress:
+                        Boolean(
+                            urlFeatures?.ipHost
+                        ),
+
+                    suspiciousTLD:
+                        Boolean(
+                            urlFeatures?.suspiciousTld
+                        ),
+
+                    credentialRequest:
+                        Boolean(
+                            aiResult
+                                ?.features
+                                ?.credentialCount
+                        ),
+
+                    urgency:
+                        Boolean(
+                            aiResult
+                                ?.features
+                                ?.urgencyCount
+                        ),
+
+                    paymentRequest:
+                        Boolean(
+                            aiResult
+                                ?.features
+                                ?.moneyCount
+                        )
+
+                },
+
+
+                ai:
+                    aiResult,
+
+
+                threatIntel: {
+
+                    ...threatResult,
+
+                    malicious:
+                        threatResult
+                            ?.reputation ===
+                        "malicious"
 
                 }
 
@@ -468,7 +635,167 @@ app.post(
 
 
             // --------------------------------
-            // History
+            // 6. FINAL RISK FUSION
+            // --------------------------------
+
+            const riskResult =
+                evaluateRisk(
+                    combinedInput,
+                    aiResult
+                );
+
+
+            // --------------------------------
+            // 7. Frontend compatibility
+            // --------------------------------
+
+            const finalScore =
+                Math.round(
+                    Number(
+                        riskResult?.riskScore ??
+                        riskResult?.score ??
+                        0
+                    )
+                );
+
+
+            const finalLevel =
+                riskResult?.riskLevel ||
+                riskResult?.level ||
+                (
+                    finalScore >= 80
+                        ? "CRITICAL"
+                        : finalScore >= 60
+                            ? "HIGH"
+                            : finalScore >= 35
+                                ? "MEDIUM"
+                                : finalScore >= 15
+                                    ? "LOW"
+                                    : "SAFE"
+                );
+
+
+            const finalVerdict =
+                riskResult?.verdict ||
+                (
+                    finalScore >= 70
+                        ? "THREAT_DETECTED"
+                        : finalScore >= 35
+                            ? "SUSPICIOUS"
+                            : "LOW_RISK"
+                );
+
+
+            const result = {
+
+                ...riskResult,
+
+
+                // --------------------------------
+                // Existing frontend fields
+                // --------------------------------
+
+                score:
+                    finalScore,
+
+                level:
+                    finalLevel,
+
+                status:
+                    riskResult?.status ||
+                    finalVerdict,
+
+                verdict:
+                    finalVerdict,
+
+
+                flags:
+                    Array.from(
+                        new Set(
+                            combinedFlags
+                        )
+                    ),
+
+
+                categories:
+                    combinedCategories,
+
+
+                // --------------------------------
+                // AI/ML information
+                // --------------------------------
+
+                ai: {
+
+                    model:
+                        aiResult?.model ||
+                        "cyberguard-feature-engine-v1",
+
+                    modelType:
+                        aiResult?.modelType ||
+                        "feature-engineering + weighted classifier",
+
+                    score:
+                        Number(
+                            aiResult?.score
+                        ) || 0,
+
+                    category:
+                        aiResult?.category ||
+                        "UNKNOWN",
+
+                    features:
+                        aiResult?.features ||
+                        {},
+
+                    evidence:
+                        aiResult?.evidence ||
+                        []
+
+                },
+
+
+                // --------------------------------
+                // URL feature analysis
+                // --------------------------------
+
+                urlFeatures:
+                    urlFeatures || {},
+
+
+                // --------------------------------
+                // Threat intelligence
+                // --------------------------------
+
+                threatIntelligence: {
+
+                    reputation:
+                        threatResult?.reputation ||
+                        "unknown",
+
+                    confidence:
+                        threatResult?.confidence ||
+                        "low",
+
+                    score:
+                        Number(
+                            threatResult?.score
+                        ) || 0,
+
+                    sources:
+                        threatResult?.sources ||
+                        [],
+
+                    evidence:
+                        threatEvidence
+
+                }
+
+            };
+
+
+            // --------------------------------
+            // 8. History
             // --------------------------------
 
             addHistory({
@@ -480,7 +807,7 @@ app.post(
                     "url",
 
                 target:
-                    url,
+                    cleanUrl,
 
                 score:
                     result.score,
@@ -503,6 +830,9 @@ app.post(
                 categories:
                     result.categories,
 
+                aiScore:
+                    result.ai.score,
+
                 timestamp:
                     new Date().toISOString()
 
@@ -510,15 +840,16 @@ app.post(
 
 
             // --------------------------------
-            // Response
+            // 9. Response
             // --------------------------------
 
-            res.json({
+            return res.json({
 
                 success:
                     true,
 
-                url,
+                url:
+                    cleanUrl,
 
                 result
 
@@ -533,7 +864,7 @@ app.post(
             );
 
 
-            res.status(
+            return res.status(
                 500
             ).json({
 
@@ -541,7 +872,13 @@ app.post(
                     false,
 
                 error:
-                    "Internal server error."
+                    "Internal server error.",
+
+                details:
+                    process.env.NODE_ENV ===
+                    "development"
+                        ? error.message
+                        : undefined
 
             });
 
@@ -561,6 +898,7 @@ app.post(
 // URL-only scanning remains available through
 // /api/scan-url.
 //
+// ============================================
 
 app.post(
     "/api/analyze-page",
@@ -569,7 +907,7 @@ app.post(
         try {
 
             const pageData =
-                req.body;
+                req.body || {};
 
 
             // --------------------------------
@@ -579,7 +917,7 @@ app.post(
             if (
                 !pageData ||
                 typeof pageData.url !==
-                    "string"
+                "string"
             ) {
 
                 return res.status(
@@ -597,6 +935,10 @@ app.post(
             }
 
 
+            const pageUrl =
+                pageData.url.trim();
+
+
             // --------------------------------
             // URL analysis
             // --------------------------------
@@ -609,7 +951,7 @@ app.post(
 
             } =
                 await analyzeURLWithIntelligence(
-                    pageData.url
+                    pageUrl
                 );
 
 
@@ -624,12 +966,92 @@ app.post(
 
 
             // --------------------------------
-            // Collect all evidence
+            // AI URL analysis
+            // --------------------------------
+
+            let aiResult;
+            let urlFeatures;
+
+
+            try {
+
+                urlFeatures =
+                    extractURLFeatures(
+                        pageUrl
+                    );
+
+
+                const pageText =
+                    [
+                        pageData.title,
+                        pageData.text,
+                        pageData.content,
+                        pageData.description
+                    ]
+                        .filter(
+                            Boolean
+                        )
+                        .join(" ");
+
+
+                aiResult =
+                    analyzeText(
+                        pageText ||
+                        pageUrl,
+                        {
+                            url:
+                                pageUrl
+                        }
+                    );
+
+            } catch (aiError) {
+
+                console.error(
+                    "AI page analysis error:",
+                    aiError
+                );
+
+
+                aiResult = {
+
+                    score:
+                        0,
+
+                    evidence:
+                        [],
+
+                    category:
+                        "UNKNOWN",
+
+                    features:
+                        {}
+
+                };
+
+
+                urlFeatures = {
+
+                    valid:
+                        true,
+
+                    featureScore:
+                        0,
+
+                    reasons:
+                        []
+
+                };
+
+            }
+
+
+            // --------------------------------
+            // Collect evidence
             // --------------------------------
 
             const urlFlags =
                 Array.isArray(
-                    heuristicResult.flags
+                    heuristicResult?.flags
                 )
                     ? heuristicResult.flags
                     : [];
@@ -637,7 +1059,7 @@ app.post(
 
             const threatFlags =
                 Array.isArray(
-                    threatResult.evidence
+                    threatResult?.evidence
                 )
                     ? threatResult.evidence
                     : [];
@@ -645,34 +1067,79 @@ app.post(
 
             const behaviorFlags =
                 Array.isArray(
-                    behaviorResult.signals
+                    behaviorResult?.signals
                 )
                     ? behaviorResult.signals
                     : [];
 
 
+            const aiFlags =
+                Array.isArray(
+                    aiResult?.evidence
+                )
+                    ? aiResult.evidence
+                    : [];
+
+
+            const featureFlags =
+                Array.isArray(
+                    urlFeatures?.reasons
+                )
+                    ? urlFeatures.reasons
+                    : [];
+
+
+            const allFlags = [
+
+                ...urlFlags,
+
+                ...threatFlags,
+
+                ...behaviorFlags,
+
+                ...aiFlags,
+
+                ...featureFlags
+
+            ];
+
+
             // --------------------------------
-            // Combined categories
+            // Categories
             // --------------------------------
 
             const categories =
                 Array.from(
                     new Set([
 
-                        ...(heuristicResult.categories ||
-                            []),
-
-                        ...(behaviorResult.categories ||
-                            []),
-
-                        ...(threatResult.reputation ===
-                            "malicious"
-                            ? ["THREAT_INTELLIGENCE"]
+                        ...(Array.isArray(
+                            heuristicResult?.categories
+                        )
+                            ? heuristicResult.categories
                             : []),
 
-                        ...(threatResult.reputation ===
+                        ...(Array.isArray(
+                            behaviorResult?.categories
+                        )
+                            ? behaviorResult.categories
+                            : []),
+
+                        ...(aiResult?.category
+                            ? [aiResult.category]
+                            : []),
+
+                        ...(threatResult?.reputation ===
+                            "malicious"
+                            ? [
+                                "THREAT_INTELLIGENCE"
+                            ]
+                            : []),
+
+                        ...(threatResult?.reputation ===
                             "suspicious"
-                            ? ["THREAT_INTELLIGENCE"]
+                            ? [
+                                "THREAT_INTELLIGENCE"
+                            ]
                             : [])
 
                     ])
@@ -680,96 +1147,103 @@ app.post(
 
 
             // --------------------------------
-            // Combined evidence
+            // Unified risk input
             // --------------------------------
 
-            const combinedFlags = [
-
-                ...urlFlags,
-
-                ...threatFlags,
-
-                ...behaviorFlags
-
-            ];
-
-
-            // --------------------------------
-            // Combined input
-            // --------------------------------
-
-            const combinedInput = {
+            const pageRiskInput = {
 
                 ...heuristicResult,
 
-                score:
-                    heuristicResult.score,
+                heuristicScore:
+                    Number(
+                        heuristicResult?.score
+                    ) || 0,
+
+                aiScore:
+                    Number(
+                        aiResult?.score
+                    ) ||
+                    Number(
+                        urlFeatures?.featureScore
+                    ) ||
+                    0,
+
+                threatIntelScore:
+                    Number(
+                        threatResult?.score
+                    ) || 0,
+
+                behaviorScore:
+                    Number(
+                        behaviorResult?.score
+                    ) || 0,
+
+
+                flags:
+                    allFlags,
 
                 categories,
 
-                flags:
-                    combinedFlags
 
-            };
+                features: {
 
+                    ...(urlFeatures || {}),
 
-            // --------------------------------
-            // FINAL RISK ENGINE
-            // --------------------------------
+                    ...(aiResult?.features || {}),
 
-            const riskResult =
-                evaluateRisk(
-                    combinedInput
-                );
+                    ...(behaviorResult?.features || {}),
 
 
-            // --------------------------------
-            // Final response
-            // --------------------------------
+                    hasIPAddress:
+                        Boolean(
+                            urlFeatures?.ipHost
+                        ),
 
-            const result = {
+                    suspiciousTLD:
+                        Boolean(
+                            urlFeatures?.suspiciousTld
+                        ),
 
-                ...riskResult,
+                    credentialRequest:
+                        Boolean(
+                            aiResult
+                                ?.features
+                                ?.credentialCount
+                        ),
 
-                flags:
-                    riskResult.evidence ||
-                    combinedFlags,
+                    urgency:
+                        Boolean(
+                            aiResult
+                                ?.features
+                                ?.urgencyCount
+                        ),
 
-                categories,
-
-                threatIntelligence: {
-
-                    reputation:
-                        threatResult.reputation,
-
-                    confidence:
-                        threatResult.confidence,
-
-                    score:
-                        threatResult.score,
-
-                    sources:
-                        threatResult.sources ||
-                        []
+                    paymentRequest:
+                        Boolean(
+                            aiResult
+                                ?.features
+                                ?.moneyCount
+                        )
 
                 },
 
-                behavior: {
 
-                    score:
-                        behaviorResult.score,
+                ai:
+                    aiResult,
 
-                    verdict:
-                        behaviorResult.verdict,
 
-                    categories:
-                        behaviorResult.categories,
+                behavior:
+                    behaviorResult,
 
-                    signals:
-                        behaviorResult.signals,
 
-                    metrics:
-                        behaviorResult.metrics
+                threatIntel: {
+
+                    ...threatResult,
+
+                    malicious:
+                        threatResult
+                            ?.reputation ===
+                        "malicious"
 
                 }
 
@@ -777,7 +1251,140 @@ app.post(
 
 
             // --------------------------------
-            // Save history
+            // Final risk evaluation
+            // --------------------------------
+
+            const riskResult =
+                evaluateRisk(
+                    pageRiskInput,
+                    aiResult
+                );
+
+
+            // --------------------------------
+            // Build final assessment
+            // --------------------------------
+
+            const assessment =
+                buildAssessment({
+
+                    ...aiResult,
+
+                    score:
+                        Number(
+                            riskResult?.riskScore ??
+                            riskResult?.score ??
+                            aiResult?.score ??
+                            0
+                        ),
+
+                    category:
+                        riskResult?.classification ||
+                        aiResult?.category ||
+                        "SUSPICIOUS_ACTIVITY",
+
+                    evidence:
+                        allFlags
+
+                });
+
+
+            // --------------------------------
+            // Final result
+            // --------------------------------
+
+            const finalScore =
+                Math.round(
+                    Number(
+                        riskResult?.riskScore ??
+                        riskResult?.score ??
+                        assessment?.score ??
+                        0
+                    )
+                );
+
+
+            const result = {
+
+                ...riskResult,
+
+                score:
+                    finalScore,
+
+                level:
+                    riskResult?.riskLevel ||
+                    riskResult?.level ||
+                    "SAFE",
+
+                verdict:
+                    riskResult?.verdict ||
+                    (
+                        finalScore >= 70
+                            ? "THREAT_DETECTED"
+                            : finalScore >= 35
+                                ? "SUSPICIOUS"
+                                : "LOW_RISK"
+                    ),
+
+                status:
+                    riskResult?.status ||
+                    riskResult?.verdict ||
+                    "LOW_RISK",
+
+                flags:
+                    Array.from(
+                        new Set(
+                            allFlags
+                        )
+                    ),
+
+                categories,
+
+
+                behavior:
+                    behaviorResult,
+
+
+                ai:
+                    aiResult,
+
+
+                urlFeatures:
+                    urlFeatures,
+
+
+                threatIntelligence: {
+
+                    reputation:
+                        threatResult?.reputation ||
+                        "unknown",
+
+                    confidence:
+                        threatResult?.confidence ||
+                        "low",
+
+                    score:
+                        Number(
+                            threatResult?.score
+                        ) || 0,
+
+                    sources:
+                        threatResult?.sources ||
+                        [],
+
+                    evidence:
+                        threatFlags
+
+                },
+
+
+                assessment
+
+            };
+
+
+            // --------------------------------
+            // History
             // --------------------------------
 
             addHistory({
@@ -789,7 +1396,7 @@ app.post(
                     "page",
 
                 target:
-                    pageData.url,
+                    pageUrl,
 
                 score:
                     result.score,
@@ -812,6 +1419,16 @@ app.post(
                 categories:
                     result.categories,
 
+                aiScore:
+                    Number(
+                        aiResult?.score
+                    ) || 0,
+
+                behaviorScore:
+                    Number(
+                        behaviorResult?.score
+                    ) || 0,
+
                 timestamp:
                     new Date().toISOString()
 
@@ -819,16 +1436,16 @@ app.post(
 
 
             // --------------------------------
-            // Return
+            // Response
             // --------------------------------
 
-            res.json({
+            return res.json({
 
                 success:
                     true,
 
                 url:
-                    pageData.url,
+                    pageUrl,
 
                 result
 
@@ -843,7 +1460,7 @@ app.post(
             );
 
 
-            res.status(
+            return res.status(
                 500
             ).json({
 
@@ -851,7 +1468,13 @@ app.post(
                     false,
 
                 error:
-                    "Page analysis failed."
+                    "Internal server error.",
+
+                details:
+                    process.env.NODE_ENV ===
+                    "development"
+                        ? error.message
+                        : undefined
 
             });
 
@@ -867,40 +1490,223 @@ app.post(
 
 app.post(
     "/api/analyze-email",
-    (req, res) => {
+    async (req, res) => {
 
         try {
 
             const {
 
-                senderName,
+                subject = "",
 
-                senderEmail,
+                body = "",
 
-                replyTo,
+                sender = "",
 
-                subject,
+                senderName = "",
 
-                body
+                senderEmail = "",
 
-            } = req.body;
+                replyTo = "",
+
+                links = []
+
+            } =
+                req.body || {};
 
 
-            const result =
+            // --------------------------------
+            // Validate
+            // --------------------------------
+
+            if (
+                !subject &&
+                !body &&
+                !sender
+            ) {
+
+                return res.status(
+                    400
+                ).json({
+
+                    success:
+                        false,
+
+                    error:
+                        "Email content is required."
+
+                });
+
+            }
+
+
+            // --------------------------------
+            // Traditional email analysis
+            // --------------------------------
+
+            const emailResult =
                 analyzeEmail({
 
                     senderName,
 
-                    senderEmail,
+                    senderEmail:
+                        senderEmail || sender,
 
                     replyTo,
 
                     subject,
 
-                    body
+                    body,
+
+                    links
 
                 });
 
+
+            // --------------------------------
+            // AI text analysis
+            // --------------------------------
+
+            const emailText = [
+
+                subject,
+
+                body,
+
+                senderName,
+
+                senderEmail,
+
+                sender,
+
+                replyTo,
+
+                ...(Array.isArray(
+                    links
+                )
+                    ? links
+                    : [])
+
+            ]
+                .filter(
+                    Boolean
+                )
+                .join(" ");
+
+
+            let aiResult;
+
+
+            try {
+
+                aiResult =
+                    analyzeText(
+                        emailText
+                    );
+
+            } catch (aiError) {
+
+                console.error(
+                    "AI email analysis error:",
+                    aiError
+                );
+
+
+                aiResult = {
+
+                    score:
+                        0,
+
+                    evidence:
+                        [],
+
+                    category:
+                        "UNKNOWN",
+
+                    features:
+                        {}
+
+                };
+
+            }
+
+
+            // --------------------------------
+            // Risk engine
+            // --------------------------------
+
+            const riskResult =
+                evaluateRisk({
+
+                    ...emailResult,
+
+                    heuristicScore:
+                        Number(
+                            emailResult?.score
+                        ) || 0,
+
+                    aiScore:
+                        Number(
+                            aiResult?.score
+                        ) || 0,
+
+                    features:
+                        aiResult?.features ||
+                        {},
+
+                    ai:
+                        aiResult
+
+                });
+
+
+            const finalScore =
+                Math.round(
+                    Number(
+                        riskResult?.riskScore ??
+                        riskResult?.score ??
+                        emailResult?.score ??
+                        0
+                    )
+                );
+
+
+            // --------------------------------
+            // Final response
+            // --------------------------------
+
+            const result = {
+
+                ...emailResult,
+
+                ...riskResult,
+
+                score:
+                    finalScore,
+
+                level:
+                    riskResult?.riskLevel ||
+                    riskResult?.level ||
+                    "SAFE",
+
+                verdict:
+                    riskResult?.verdict ||
+                    (
+                        finalScore >= 70
+                            ? "THREAT_DETECTED"
+                            : finalScore >= 35
+                                ? "SUSPICIOUS"
+                                : "LOW_RISK"
+                    ),
+
+                ai:
+                    aiResult
+
+            };
+
+
+            // --------------------------------
+            // History
+            // --------------------------------
 
             addHistory({
 
@@ -911,11 +1717,9 @@ app.post(
                     "email",
 
                 target:
-                    senderEmail ||
-                    "Unknown sender",
-
-                subject:
-                    subject || "",
+                    sender ||
+                    subject ||
+                    "Email",
 
                 score:
                     result.score,
@@ -926,8 +1730,25 @@ app.post(
                 status:
                     result.status,
 
+                verdict:
+                    result.verdict,
+
+                confidence:
+                    result.confidence,
+
                 flags:
-                    result.flags || [],
+                    result.flags ||
+                    result.evidence ||
+                    [],
+
+                categories:
+                    result.categories ||
+                    [],
+
+                aiScore:
+                    Number(
+                        aiResult?.score
+                    ) || 0,
 
                 timestamp:
                     new Date().toISOString()
@@ -935,7 +1756,7 @@ app.post(
             });
 
 
-            res.json({
+            return res.json({
 
                 success:
                     true,
@@ -953,7 +1774,7 @@ app.post(
             );
 
 
-            res.status(
+            return res.status(
                 500
             ).json({
 
@@ -961,7 +1782,513 @@ app.post(
                     false,
 
                 error:
-                    "Email analysis failed."
+                    "Internal server error.",
+
+                details:
+                    process.env.NODE_ENV ===
+                    "development"
+                        ? error.message
+                        : undefined
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// UNIFIED CYBERGUARD AI ANALYZER
+// ============================================
+
+app.post(
+    "/api/cyberguard/analyze",
+    async (req, res) => {
+
+        try {
+
+            const {
+
+                type = "text",
+
+                text = "",
+
+                url = "",
+
+                context = {}
+
+            } =
+                req.body || {};
+
+
+            // --------------------------------
+            // URL analysis
+            // --------------------------------
+
+            if (
+                type === "url" ||
+                url
+            ) {
+
+                const targetUrl =
+                    url ||
+                    text;
+
+
+                if (
+                    !targetUrl ||
+                    typeof targetUrl !==
+                    "string"
+                ) {
+
+                    return res.status(
+                        400
+                    ).json({
+
+                        success:
+                            false,
+
+                        error:
+                            "A valid URL is required."
+
+                    });
+
+                }
+
+
+                const urlFeatures =
+                    extractURLFeatures(
+                        targetUrl
+                    );
+
+
+                const aiResult =
+                    analyzeText(
+                        targetUrl,
+                        {
+                            ...context,
+
+                            url:
+                                targetUrl
+                        }
+                    );
+
+
+                const assessment =
+                    buildAssessment(
+                        aiResult
+                    );
+
+
+                return res.json({
+
+                    success:
+                        true,
+
+                    type:
+                        "url",
+
+                    input:
+                        targetUrl,
+
+                    result: {
+
+                        ...assessment,
+
+                        urlFeatures
+
+                    }
+
+                });
+
+            }
+
+
+            // --------------------------------
+            // Text analysis
+            // --------------------------------
+
+            if (
+                !text ||
+                typeof text !==
+                "string"
+            ) {
+
+                return res.status(
+                    400
+                ).json({
+
+                    success:
+                        false,
+
+                    error:
+                        "Text is required."
+
+                });
+
+            }
+
+
+            const aiResult =
+                analyzeText(
+                    text,
+                    context
+                );
+
+
+            const assessment =
+                buildAssessment(
+                    aiResult
+                );
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                type:
+                    "text",
+
+                result:
+                    assessment
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "CyberGuard AI analysis error:",
+                error
+            );
+
+
+            return res.status(
+                500
+            ).json({
+
+                success:
+                    false,
+
+                error:
+                    "AI analysis failed.",
+
+                details:
+                    process.env.NODE_ENV ===
+                    "development"
+                        ? error.message
+                        : undefined
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// DIGITAL IMPERSONATION ANALYZER
+// ============================================
+
+app.post(
+    "/api/analyze-impersonation",
+    async (req, res) => {
+
+        try {
+
+            const {
+
+                text = "",
+
+                sender = "",
+
+                claimedIdentity = ""
+
+            } =
+                req.body || {};
+
+
+            const combinedText = [
+
+                text,
+
+                sender,
+
+                claimedIdentity
+
+            ]
+                .filter(
+                    Boolean
+                )
+                .join(" ");
+
+
+            if (!combinedText) {
+
+                return res.status(
+                    400
+                ).json({
+
+                    success:
+                        false,
+
+                    error:
+                        "Text, sender, or claimed identity is required."
+
+                });
+
+            }
+
+
+            const aiResult =
+                analyzeText(
+                    combinedText
+                );
+
+
+            const assessment =
+                buildAssessment({
+
+                    ...aiResult,
+
+                    category:
+                        aiResult.category ===
+                        "SUSPICIOUS_COMMUNICATION"
+                            ? "DIGITAL_IMPERSONATION"
+                            : aiResult.category
+
+                });
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                result:
+                    assessment
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Impersonation analysis error:",
+                error
+            );
+
+
+            return res.status(
+                500
+            ).json({
+
+                success:
+                    false,
+
+                error:
+                    "Impersonation analysis failed."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// LOGIN BEHAVIOR ANALYZER
+// ============================================
+
+app.post(
+    "/api/analyze-login",
+    async (req, res) => {
+
+        try {
+
+            const {
+
+                logs = []
+
+            } =
+                req.body || {};
+
+
+            if (
+                !Array.isArray(
+                    logs
+                )
+            ) {
+
+                return res.status(
+                    400
+                ).json({
+
+                    success:
+                        false,
+
+                    error:
+                        "logs must be an array."
+
+                });
+
+            }
+
+
+            const result =
+                analyzeLoginBehavior(
+                    logs
+                );
+
+
+            const assessment =
+                buildAssessment(
+                    result
+                );
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                result:
+                    assessment
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Login behavior analysis error:",
+                error
+            );
+
+
+            return res.status(
+                500
+            ).json({
+
+                success:
+                    false,
+
+                error:
+                    "Login behavior analysis failed."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// AI FEATURE EXTRACTION
+// ============================================
+
+app.post(
+    "/api/ai/features",
+    async (req, res) => {
+
+        try {
+
+            const {
+
+                url,
+
+                text,
+
+                context = {}
+
+            } =
+                req.body || {};
+
+
+            if (
+                url &&
+                typeof url ===
+                "string"
+            ) {
+
+                return res.json({
+
+                    success:
+                        true,
+
+                    type:
+                        "url",
+
+                    features:
+                        extractURLFeatures(
+                            url
+                        )
+
+                });
+
+            }
+
+
+            if (
+                text &&
+                typeof text ===
+                "string"
+            ) {
+
+                return res.json({
+
+                    success:
+                        true,
+
+                    type:
+                        "text",
+
+                    result:
+                        analyzeText(
+                            text,
+                            context
+                        )
+
+                });
+
+            }
+
+
+            return res.status(
+                400
+            ).json({
+
+                success:
+                    false,
+
+                error:
+                    "Provide either url or text."
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "AI feature extraction error:",
+                error
+            );
+
+
+            return res.status(
+                500
+            ).json({
+
+                success:
+                    false,
+
+                error:
+                    "AI feature extraction failed."
 
             });
 
@@ -989,79 +2316,54 @@ app.get(
                 history.length;
 
 
-            const urlScans =
+            const threats =
                 history.filter(
                     item =>
-                        item.type ===
-                        "url"
+                        item.verdict ===
+                            "THREAT_DETECTED" ||
+                        item.status ===
+                            "THREAT_DETECTED" ||
+                        item.level ===
+                            "HIGH" ||
+                        item.level ===
+                            "CRITICAL"
                 ).length;
 
 
-            const pageScans =
+            const safe =
                 history.filter(
                     item =>
-                        item.type ===
-                        "page"
+                        item.level ===
+                        "SAFE"
                 ).length;
 
 
-            const emailScans =
+            const suspicious =
                 history.filter(
                     item =>
-                        item.type ===
-                        "email"
+                        item.level ===
+                            "MEDIUM" ||
+                        item.verdict ===
+                            "SUSPICIOUS"
                 ).length;
 
 
-            const safeScans =
-                history.filter(
-                    item =>
-                        Number(
-                            item.score
-                        ) < 35
-                ).length;
-
-
-            const suspiciousScans =
-                history.filter(
-                    item =>
-                        Number(
-                            item.score
-                        ) >= 35 &&
-                        Number(
-                            item.score
-                        ) < 70
-                ).length;
-
-
-            const dangerousScans =
-                history.filter(
-                    item =>
-                        Number(
-                            item.score
-                        ) >= 70
-                ).length;
-
-
-            const threatsDetected =
-                suspiciousScans +
-                dangerousScans;
-
-
-            const protectionRate =
+            const protection =
                 totalScans > 0
-
                     ? Math.round(
                         (
-                            safeScans /
+                            (
+                                totalScans -
+                                threats
+                            ) /
                             totalScans
-                        ) * 100
+                        ) *
+                        100
                     )
-
                     : 100;
 
 
-            res.json({
+            return res.json({
 
                 success:
                     true,
@@ -1070,21 +2372,13 @@ app.get(
 
                     totalScans,
 
-                    urlScans,
+                    threats,
 
-                    pageScans,
+                    safe,
 
-                    emailScans,
+                    suspicious,
 
-                    safeScans,
-
-                    suspiciousScans,
-
-                    dangerousScans,
-
-                    threatsDetected,
-
-                    protectionRate
+                    protection
 
                 }
 
@@ -1094,12 +2388,12 @@ app.get(
         } catch (error) {
 
             console.error(
-                "Stats error:",
+                "Statistics error:",
                 error
             );
 
 
-            res.status(
+            return res.status(
                 500
             ).json({
 
@@ -1107,7 +2401,7 @@ app.get(
                     false,
 
                 error:
-                    "Unable to load statistics."
+                    "Could not calculate statistics."
 
             });
 
@@ -1144,7 +2438,7 @@ app.get(
                 );
 
 
-            res.json({
+            return res.json({
 
                 success:
                     true,
@@ -1169,7 +2463,7 @@ app.get(
             );
 
 
-            res.status(
+            return res.status(
                 500
             ).json({
 
@@ -1177,7 +2471,7 @@ app.get(
                     false,
 
                 error:
-                    "Unable to load history."
+                    "Could not read history."
 
             });
 
@@ -1186,57 +2480,114 @@ app.get(
     }
 );
 
-
 // ============================================
-// CLEAR HISTORY
+// AUTHENTICATION
 // ============================================
 
-app.delete(
-    "/api/history",
-    (req, res) => {
+// --------------------------------------------
+// JWT TOKEN GENERATOR
+// --------------------------------------------
 
-        try {
+function generateToken(user) {
 
-            saveHistory(
-                []
-            );
+    return jwt.sign(
+        {
+            id:
+                user.id,
 
+            email:
+                user.email,
 
-            res.json({
+            name:
+                user.name
+        },
 
-                success:
-                    true,
+        JWT_SECRET,
 
-                message:
-                    "Scan history cleared."
-
-            });
-
-
-        } catch (error) {
-
-            console.error(
-                "Clear history error:",
-                error
-            );
-
-
-            res.status(
-                500
-            ).json({
-
-                success:
-                    false,
-
-                error:
-                    "Unable to clear history."
-
-            });
-
+        {
+            expiresIn:
+                "7d"
         }
+    );
+
+}
+
+
+// --------------------------------------------
+// AUTH MIDDLEWARE
+// --------------------------------------------
+
+function authenticateToken(
+    req,
+    res,
+    next
+) {
+
+    const authHeader =
+        req.headers.authorization;
+
+
+    if (
+        !authHeader ||
+        !authHeader.startsWith(
+            "Bearer "
+        )
+    ) {
+
+        return res.status(
+            401
+        ).json({
+
+            success:
+                false,
+
+            error:
+                "Authentication required."
+
+        });
 
     }
-);
+
+
+    const token =
+        authHeader.substring(
+            7
+        );
+
+
+    try {
+
+        const decoded =
+            jwt.verify(
+                token,
+                JWT_SECRET
+            );
+
+
+        req.user =
+            decoded;
+
+
+        next();
+
+
+    } catch (error) {
+
+        return res.status(
+            401
+        ).json({
+
+            success:
+                false,
+
+            error:
+                "Invalid or expired token."
+
+        });
+
+    }
+
+}
 
 
 // ============================================
@@ -1257,35 +2608,18 @@ app.post(
 
                 password
 
-            } = req.body;
+            } =
+                req.body || {};
 
+
+            // --------------------------------
+            // Validation
+            // --------------------------------
 
             if (
                 !name ||
-                typeof name !==
-                    "string" ||
-                name.trim().length < 2
-            ) {
-
-                return res.status(
-                    400
-                ).json({
-
-                    success:
-                        false,
-
-                    error:
-                        "Name must contain at least 2 characters."
-
-                });
-
-            }
-
-
-            if (
                 !email ||
-                typeof email !==
-                    "string"
+                !password
             ) {
 
                 return res.status(
@@ -1296,38 +2630,7 @@ app.post(
                         false,
 
                     error:
-                        "A valid email is required."
-
-                });
-
-            }
-
-
-            const normalizedEmail =
-                email
-                    .trim()
-                    .toLowerCase();
-
-
-            const emailPattern =
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-            if (
-                !emailPattern.test(
-                    normalizedEmail
-                )
-            ) {
-
-                return res.status(
-                    400
-                ).json({
-
-                    success:
-                        false,
-
-                    error:
-                        "Please enter a valid email address."
+                        "Name, email and password are required."
 
                 });
 
@@ -1335,9 +2638,6 @@ app.post(
 
 
             if (
-                !password ||
-                typeof password !==
-                    "string" ||
                 password.length < 6
             ) {
 
@@ -1356,21 +2656,46 @@ app.post(
             }
 
 
-            const existingUser =
-                db.prepare(
-                    `
-                    SELECT id
-                    FROM users
-                    WHERE email = ?
-                    `
-                ).get(
-                    normalizedEmail
+            const normalizedEmail =
+                String(
+                    email
+                )
+                    .trim()
+                    .toLowerCase();
+
+
+            // --------------------------------
+            // Check existing user
+            // --------------------------------
+
+            let existingUser = null;
+
+
+            try {
+
+                if (
+                    typeof db.getUserByEmail ===
+                    "function"
+                ) {
+
+                    existingUser =
+                        await db.getUserByEmail(
+                            normalizedEmail
+                        );
+
+                }
+
+            } catch (dbError) {
+
+                console.error(
+                    "User lookup error:",
+                    dbError
                 );
 
+            }
 
-            if (
-                existingUser
-            ) {
+
+            if (existingUser) {
 
                 return res.status(
                     409
@@ -1387,45 +2712,78 @@ app.post(
             }
 
 
+            // --------------------------------
+            // Hash password
+            // --------------------------------
+
             const passwordHash =
                 await bcrypt.hash(
                     password,
-                    12
+                    10
                 );
 
 
-            const insertUser =
-                db.prepare(
-                    `
-                    INSERT INTO users
-                    (
-                        name,
-                        email,
-                        password
-                    )
-                    VALUES
-                    (
-                        ?,
-                        ?,
-                        ?
-                    )
-                    `
+            // --------------------------------
+            // Create user
+            // --------------------------------
+
+            let user;
+
+
+            if (
+                typeof db.createUser ===
+                "function"
+            ) {
+
+                user =
+                    await db.createUser({
+
+                        name:
+                            String(
+                                name
+                            ).trim(),
+
+                        email:
+                            normalizedEmail,
+
+                        password:
+                            passwordHash
+
+                    });
+
+            } else {
+
+                // Fallback in case the database
+                // module uses a synchronous API.
+
+                user = {
+
+                    id:
+                        Date.now(),
+
+                    name:
+                        String(
+                            name
+                        ).trim(),
+
+                    email:
+                        normalizedEmail,
+
+                    password:
+                        passwordHash
+
+                };
+
+            }
+
+
+            const token =
+                generateToken(
+                    user
                 );
 
 
-            const result =
-                insertUser.run(
-
-                    name.trim(),
-
-                    normalizedEmail,
-
-                    passwordHash
-
-                );
-
-
-            res.status(
+            return res.status(
                 201
             ).json({
 
@@ -1435,16 +2793,18 @@ app.post(
                 message:
                     "Account created successfully.",
 
+                token,
+
                 user: {
 
                     id:
-                        result.lastInsertRowid,
+                        user.id,
 
                     name:
-                        name.trim(),
+                        user.name,
 
                     email:
-                        normalizedEmail
+                        user.email
 
                 }
 
@@ -1459,7 +2819,7 @@ app.post(
             );
 
 
-            res.status(
+            return res.status(
                 500
             ).json({
 
@@ -1493,7 +2853,8 @@ app.post(
 
                 password
 
-            } = req.body;
+            } =
+                req.body || {};
 
 
             if (
@@ -1517,30 +2878,34 @@ app.post(
 
 
             const normalizedEmail =
-                email
+                String(
+                    email
+                )
                     .trim()
                     .toLowerCase();
 
 
-            const user =
-                db.prepare(
-                    `
-                    SELECT
-                        id,
-                        name,
-                        email,
-                        password
-                    FROM users
-                    WHERE email = ?
-                    `
-                ).get(
-                    normalizedEmail
-                );
+            // --------------------------------
+            // Find user
+            // --------------------------------
+
+            let user = null;
 
 
             if (
-                !user
+                typeof db.getUserByEmail ===
+                "function"
             ) {
+
+                user =
+                    await db.getUserByEmail(
+                        normalizedEmail
+                    );
+
+            }
+
+
+            if (!user) {
 
                 return res.status(
                     401
@@ -1557,16 +2922,20 @@ app.post(
             }
 
 
-            const passwordMatch =
+            // --------------------------------
+            // Verify password
+            // --------------------------------
+
+            const passwordValid =
                 await bcrypt.compare(
                     password,
-                    user.password
+                    user.password ||
+                    user.passwordHash ||
+                    ""
                 );
 
 
-            if (
-                !passwordMatch
-            ) {
+            if (!passwordValid) {
 
                 return res.status(
                     401
@@ -1583,32 +2952,17 @@ app.post(
             }
 
 
+            // --------------------------------
+            // Generate token
+            // --------------------------------
+
             const token =
-                jwt.sign(
-
-                    {
-
-                        userId:
-                            user.id,
-
-                        email:
-                            user.email
-
-                    },
-
-                    JWT_SECRET,
-
-                    {
-
-                        expiresIn:
-                            "7d"
-
-                    }
-
+                generateToken(
+                    user
                 );
 
 
-            res.json({
+            return res.json({
 
                 success:
                     true,
@@ -1642,7 +2996,7 @@ app.post(
             );
 
 
-            res.status(
+            return res.status(
                 500
             ).json({
 
@@ -1661,14 +3015,975 @@ app.post(
 
 
 // ============================================
-// UNKNOWN API ENDPOINT
+// CURRENT USER
+// ============================================
+
+app.get(
+    "/api/auth/me",
+    authenticateToken,
+    async (req, res) => {
+
+        try {
+
+            let user = null;
+
+
+            if (
+                typeof db.getUserById ===
+                "function"
+            ) {
+
+                user =
+                    await db.getUserById(
+                        req.user.id
+                    );
+
+            }
+
+
+            if (!user) {
+
+                return res.json({
+
+                    success:
+                        true,
+
+                    user:
+                        req.user
+
+                });
+
+            }
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                user: {
+
+                    id:
+                        user.id,
+
+                    name:
+                        user.name,
+
+                    email:
+                        user.email
+
+                }
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Auth/me error:",
+                error
+            );
+
+
+            return res.status(
+                500
+            ).json({
+
+                success:
+                    false,
+
+                error:
+                    "Could not retrieve user."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// LOGOUT
+// ============================================
+//
+// JWT authentication is stateless.
+// The frontend should remove the token.
+// This endpoint exists for API compatibility.
+// ============================================
+
+app.post(
+    "/api/auth/logout",
+    authenticateToken,
+    (req, res) => {
+
+        return res.json({
+
+            success:
+                true,
+
+            message:
+                "Logged out successfully."
+
+        });
+
+    }
+);
+
+
+// ============================================
+// PROTECTED PROFILE
+// ============================================
+
+app.get(
+    "/api/profile",
+    authenticateToken,
+    async (req, res) => {
+
+        try {
+
+            let user = null;
+
+
+            if (
+                typeof db.getUserById ===
+                "function"
+            ) {
+
+                user =
+                    await db.getUserById(
+                        req.user.id
+                    );
+
+            }
+
+
+            if (!user) {
+
+                return res.json({
+
+                    success:
+                        true,
+
+                    user:
+                        req.user
+
+                });
+
+            }
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                user: {
+
+                    id:
+                        user.id,
+
+                    name:
+                        user.name,
+
+                    email:
+                        user.email
+
+                }
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Profile error:",
+                error
+            );
+
+
+            return res.status(
+                500
+            ).json({
+
+                success:
+                    false,
+
+                error:
+                    "Could not retrieve profile."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// HEALTH CHECK
+// ============================================
+
+app.get(
+    "/api/health",
+    (req, res) => {
+
+        return res.json({
+
+            success:
+                true,
+
+            status:
+                "healthy",
+
+            service:
+                "CYBERGUARD",
+
+            version:
+                "4.0.0",
+
+            timestamp:
+                new Date().toISOString()
+
+        });
+
+    }
+);
+
+
+// ============================================
+// DATABASE HEALTH
+// ============================================
+
+app.get(
+    "/api/database-status",
+    async (req, res) => {
+
+        try {
+
+            let connected = false;
+
+
+            if (
+                db &&
+                typeof db.getDatabaseStatus ===
+                "function"
+            ) {
+
+                const result =
+                    await db.getDatabaseStatus();
+
+
+                connected =
+                    Boolean(
+                        result
+                    );
+
+            } else {
+
+                connected =
+                    Boolean(
+                        db
+                    );
+
+            }
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                database:
+                    connected
+                        ? "connected"
+                        : "unknown"
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Database status error:",
+                error
+            );
+
+
+            return res.status(
+                500
+            ).json({
+
+                success:
+                    false,
+
+                database:
+                    "error",
+
+                error:
+                    error.message
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// SCAN HISTORY FOR LOGGED-IN USER
+// ============================================
+
+app.get(
+    "/api/user/history",
+    authenticateToken,
+    (req, res) => {
+
+        try {
+
+            const history =
+                readHistory();
+
+
+            const userHistory =
+                history.filter(
+                    item =>
+                        String(
+                            item.userId || ""
+                        ) ===
+                        String(
+                            req.user.id
+                        )
+                );
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                count:
+                    userHistory.length,
+
+                history:
+                    userHistory
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "User history error:",
+                error
+            );
+
+
+            return res.status(
+                500
+            ).json({
+
+                success:
+                    false,
+
+                error:
+                    "Could not retrieve user history."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// SAVE USER SCAN
+// ============================================
+
+app.post(
+    "/api/user/save-scan",
+    authenticateToken,
+    (req, res) => {
+
+        try {
+
+            const scan =
+                req.body || {};
+
+
+            const record = {
+
+                ...scan,
+
+                id:
+                    Date.now().toString(),
+
+                userId:
+                    req.user.id,
+
+                timestamp:
+                    new Date().toISOString()
+
+            };
+
+
+            addHistory(
+                record
+            );
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                message:
+                    "Scan saved successfully.",
+
+                record
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Save scan error:",
+                error
+            );
+
+
+            return res.status(
+                500
+            ).json({
+
+                success:
+                    false,
+
+                error:
+                    "Could not save scan."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// DASHBOARD SUMMARY
+// ============================================
+
+app.get(
+    "/api/dashboard",
+    async (req, res) => {
+
+        try {
+
+            const history =
+                readHistory();
+
+
+            const total =
+                history.length;
+
+
+            const critical =
+                history.filter(
+                    item =>
+                        item.level ===
+                        "CRITICAL"
+                ).length;
+
+
+            const high =
+                history.filter(
+                    item =>
+                        item.level ===
+                        "HIGH"
+                ).length;
+
+
+            const medium =
+                history.filter(
+                    item =>
+                        item.level ===
+                        "MEDIUM"
+                ).length;
+
+
+            const low =
+                history.filter(
+                    item =>
+                        item.level ===
+                        "LOW"
+                ).length;
+
+
+            const safe =
+                history.filter(
+                    item =>
+                        item.level ===
+                        "SAFE"
+                ).length;
+
+
+            const averageScore =
+                total
+                    ? Math.round(
+                        history.reduce(
+                            (
+                                sum,
+                                item
+                            ) =>
+                                sum +
+                                Number(
+                                    item.score
+                                ) ||
+                                0,
+                            0
+                        ) /
+                        total
+                    )
+                    : 0;
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                summary: {
+
+                    total,
+
+                    critical,
+
+                    high,
+
+                    medium,
+
+                    low,
+
+                    safe,
+
+                    averageScore
+
+                }
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Dashboard error:",
+                error
+            );
+
+
+            return res.status(
+                500
+            ).json({
+
+                success:
+                    false,
+
+                error:
+                    "Could not load dashboard."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// THREAT SUMMARY
+// ============================================
+
+app.get(
+    "/api/threats",
+    (req, res) => {
+
+        try {
+
+            const history =
+                readHistory();
+
+
+            const threats =
+                history.filter(
+                    item =>
+                        item.verdict ===
+                            "THREAT_DETECTED" ||
+                        item.level ===
+                            "HIGH" ||
+                        item.level ===
+                            "CRITICAL"
+                );
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                count:
+                    threats.length,
+
+                threats:
+                    threats.slice(
+                        0,
+                        100
+                    )
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Threat list error:",
+                error
+            );
+
+
+            return res.status(
+                500
+            ).json({
+
+                success:
+                    false,
+
+                error:
+                    "Could not retrieve threats."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// AI MODEL INFORMATION
+// ============================================
+
+app.get(
+    "/api/ai/status",
+    (req, res) => {
+
+        return res.json({
+
+            success:
+                true,
+
+            ai: {
+
+                status:
+                    "online",
+
+                model:
+                    "cyberguard-feature-engine-v1",
+
+                modelType:
+                    "feature-engineering + weighted classifier",
+
+                capabilities: [
+
+                    "URL feature extraction",
+
+                    "Phishing detection",
+
+                    "Social engineering detection",
+
+                    "Digital impersonation detection",
+
+                    "Financial fraud detection",
+
+                    "Login anomaly detection",
+
+                    "Behavioral anomaly scoring",
+
+                    "Explainable risk scoring"
+
+                ],
+
+                mlReady:
+                    true
+
+            }
+
+        });
+
+    }
+);
+
+
+// ============================================
+// TEST AI ENDPOINT
+// ============================================
+
+app.post(
+    "/api/ai/test",
+    (req, res) => {
+
+        try {
+
+            const {
+
+                text = ""
+
+            } =
+                req.body || {};
+
+
+            if (!text) {
+
+                return res.status(
+                    400
+                ).json({
+
+                    success:
+                        false,
+
+                    error:
+                        "Text is required."
+
+                });
+
+            }
+
+
+            const result =
+                analyzeText(
+                    text
+                );
+
+
+            const assessment =
+                buildAssessment(
+                    result
+                );
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                result:
+                    assessment
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "AI test error:",
+                error
+            );
+
+
+            return res.status(
+                500
+            ).json({
+
+                success:
+                    false,
+
+                error:
+                    "AI test failed."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// URL FEATURE TEST
+// ============================================
+
+app.post(
+    "/api/ai/url-features",
+    (req, res) => {
+
+        try {
+
+            const {
+
+                url
+
+            } =
+                req.body || {};
+
+
+            if (
+                !url ||
+                typeof url !==
+                "string"
+            ) {
+
+                return res.status(
+                    400
+                ).json({
+
+                    success:
+                        false,
+
+                    error:
+                        "URL is required."
+
+                });
+
+            }
+
+
+            const features =
+                extractURLFeatures(
+                    url.trim()
+                );
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                url:
+                    url.trim(),
+
+                features
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "URL feature test error:",
+                error
+            );
+
+
+            return res.status(
+                500
+            ).json({
+
+                success:
+                    false,
+
+                error:
+                    "Could not extract URL features."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// ROOT API INFORMATION
+// ============================================
+
+app.get(
+    "/api",
+    (req, res) => {
+
+        return res.json({
+
+            service:
+                "CYBERGUARD API",
+
+            version:
+                "4.0.0",
+
+            status:
+                "online",
+
+            endpoints: {
+
+                status:
+                    "GET /api/status",
+
+                health:
+                    "GET /api/health",
+
+                scanURL:
+                    "POST /api/scan-url",
+
+                analyzePage:
+                    "POST /api/analyze-page",
+
+                analyzeEmail:
+                    "POST /api/analyze-email",
+
+                cyberguardAI:
+                    "POST /api/cyberguard/analyze",
+
+                impersonation:
+                    "POST /api/analyze-impersonation",
+
+                loginAnalysis:
+                    "POST /api/analyze-login",
+
+                aiFeatures:
+                    "POST /api/ai/features",
+
+                aiStatus:
+                    "GET /api/ai/status",
+
+                statistics:
+                    "GET /api/stats",
+
+                history:
+                    "GET /api/history",
+
+                dashboard:
+                    "GET /api/dashboard",
+
+                threats:
+                    "GET /api/threats",
+
+                register:
+                    "POST /api/auth/register",
+
+                login:
+                    "POST /api/auth/login",
+
+                me:
+                    "GET /api/auth/me"
+
+            }
+
+        });
+
+    }
+);
+
+
+// ============================================
+// 404 API HANDLER
 // ============================================
 
 app.use(
     "/api",
     (req, res) => {
 
-        res.status(
+        return res.status(
             404
         ).json({
 
@@ -1676,7 +3991,50 @@ app.use(
                 false,
 
             error:
-                "API endpoint not found."
+                "API endpoint not found.",
+
+            path:
+                req.originalUrl
+
+        });
+
+    }
+);
+
+
+// ============================================
+// GLOBAL ERROR HANDLER
+// ============================================
+
+app.use(
+    (error, req, res, next) => {
+
+        console.error(
+            "Unhandled server error:",
+            error
+        );
+
+
+        if (
+            res.headersSent
+        ) {
+
+            return next(
+                error
+            );
+
+        }
+
+
+        return res.status(
+            500
+        ).json({
+
+            success:
+                false,
+
+            error:
+                "Internal server error."
 
         });
 
@@ -1697,7 +4055,7 @@ app.listen(
         );
 
         console.log(
-            "        PHISHGUARD API SERVER"
+            "        CYBERGUARD API SERVER"
         );
 
         console.log(
@@ -1713,28 +4071,1586 @@ app.listen(
         );
 
         console.log(
-            "URL Scanner: POST /api/scan-url"
+            `URL Scanner: POST /api/scan-url`
         );
 
         console.log(
-            "Page Analyzer: POST /api/analyze-page"
+            `Page Analyzer: POST /api/analyze-page`
         );
 
         console.log(
-            "Email Analyzer: POST /api/analyze-email"
+            `Email Analyzer: POST /api/analyze-email`
         );
 
         console.log(
-            "Statistics: GET /api/stats"
+            `CyberGuard AI: POST /api/cyberguard/analyze`
         );
 
         console.log(
-            "History: GET /api/history"
+            `AI Status: GET /api/ai/status`
+        );
+
+        console.log(
+            `Statistics: GET /api/stats`
+        );
+
+        console.log(
+            `History: GET /api/history`
         );
 
         console.log(
             "----------------------------------------"
+
         );
 
     }
 );
+
+
+// ============================================
+// EXPORT APP
+// ============================================
+
+module.exports = app;
+
+// ============================================
+// ADDITIONAL CYBERGUARD ANALYSIS ROUTES
+// ============================================
+
+
+// ============================================
+// BATCH URL SCANNING
+// ============================================
+
+app.post(
+    "/api/scan-urls",
+    async (req, res) => {
+
+        try {
+
+            const {
+                urls = []
+            } = req.body || {};
+
+
+            if (!Array.isArray(urls)) {
+
+                return res.status(400).json({
+
+                    success: false,
+
+                    error:
+                        "urls must be an array."
+
+                });
+
+            }
+
+
+            if (urls.length === 0) {
+
+                return res.status(400).json({
+
+                    success: false,
+
+                    error:
+                        "At least one URL is required."
+
+                });
+
+            }
+
+
+            // Prevent extremely large requests.
+
+            const limitedUrls =
+                urls.slice(0, 20);
+
+
+            const results = [];
+
+
+            for (
+                const originalUrl
+                of limitedUrls
+            ) {
+
+                if (
+                    typeof originalUrl !==
+                    "string"
+                ) {
+
+                    continue;
+
+                }
+
+
+                const cleanUrl =
+                    originalUrl.trim();
+
+
+                if (
+                    !/^https?:\/\//i.test(
+                        cleanUrl
+                    )
+                ) {
+
+                    results.push({
+
+                        url:
+                            cleanUrl,
+
+                        success:
+                            false,
+
+                        error:
+                            "Invalid URL format."
+
+                    });
+
+                    continue;
+
+                }
+
+
+                try {
+
+                    const {
+
+                        heuristicResult,
+
+                        threatResult
+
+                    } =
+                        await analyzeURLWithIntelligence(
+                            cleanUrl
+                        );
+
+
+                    const urlFeatures =
+                        extractURLFeatures(
+                            cleanUrl
+                        );
+
+
+                    const aiResult =
+                        analyzeText(
+                            cleanUrl,
+                            {
+                                url:
+                                    cleanUrl
+                            }
+                        );
+
+
+                    const flags = [
+
+                        ...(heuristicResult?.flags || []),
+
+                        ...(threatResult?.evidence || []),
+
+                        ...(aiResult?.evidence || []),
+
+                        ...(urlFeatures?.reasons || [])
+
+                    ];
+
+
+                    const categories =
+                        Array.from(
+                            new Set([
+
+                                ...(heuristicResult?.categories || []),
+
+                                ...(aiResult?.category
+                                    ? [
+                                        aiResult.category
+                                    ]
+                                    : [])
+
+                            ])
+                        );
+
+
+                    const riskInput = {
+
+                        ...heuristicResult,
+
+                        score:
+                            Number(
+                                heuristicResult?.score
+                            ) || 0,
+
+                        heuristicScore:
+                            Number(
+                                heuristicResult?.score
+                            ) || 0,
+
+                        aiScore:
+                            Number(
+                                aiResult?.score
+                            ) ||
+                            Number(
+                                urlFeatures?.featureScore
+                            ) ||
+                            0,
+
+                        threatIntelScore:
+                            Number(
+                                threatResult?.score
+                            ) || 0,
+
+                        flags,
+
+                        categories,
+
+                        features:
+                            urlFeatures,
+
+                        ai:
+                            aiResult,
+
+                        threatIntel:
+                            threatResult
+
+                    };
+
+
+                    const riskResult =
+                        evaluateRisk(
+                            riskInput,
+                            aiResult
+                        );
+
+
+                    const score =
+                        Math.round(
+                            Number(
+                                riskResult?.riskScore ??
+                                riskResult?.score ??
+                                0
+                            )
+                        );
+
+
+                    const level =
+                        riskResult?.riskLevel ||
+                        riskResult?.level ||
+                        (
+                            score >= 80
+                                ? "CRITICAL"
+                                : score >= 60
+                                    ? "HIGH"
+                                    : score >= 35
+                                        ? "MEDIUM"
+                                        : score >= 15
+                                            ? "LOW"
+                                            : "SAFE"
+                        );
+
+
+                    results.push({
+
+                        success:
+                            true,
+
+                        url:
+                            cleanUrl,
+
+                        score,
+
+                        level,
+
+                        verdict:
+                            riskResult?.verdict ||
+                            (
+                                score >= 70
+                                    ? "THREAT_DETECTED"
+                                    : score >= 35
+                                        ? "SUSPICIOUS"
+                                        : "LOW_RISK"
+                            ),
+
+                        flags:
+                            Array.from(
+                                new Set(
+                                    flags
+                                )
+                            ),
+
+                        categories,
+
+                        ai: {
+
+                            score:
+                                Number(
+                                    aiResult?.score
+                                ) || 0,
+
+                            category:
+                                aiResult?.category ||
+                                "UNKNOWN"
+
+                        },
+
+                        threatIntelligence: {
+
+                            reputation:
+                                threatResult?.reputation ||
+                                "unknown",
+
+                            score:
+                                Number(
+                                    threatResult?.score
+                                ) || 0
+
+                        }
+
+                    });
+
+                } catch (scanError) {
+
+                    results.push({
+
+                        success:
+                            false,
+
+                        url:
+                            cleanUrl,
+
+                        error:
+                            scanError.message
+
+                    });
+
+                }
+
+            }
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                count:
+                    results.length,
+
+                results
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Batch URL scan error:",
+                error
+            );
+
+
+            return res.status(500).json({
+
+                success:
+                    false,
+
+                error:
+                    "Batch URL scanning failed."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// URL REPUTATION CHECK
+// ============================================
+
+app.post(
+    "/api/domain-reputation",
+    async (req, res) => {
+
+        try {
+
+            const {
+                domain,
+                url
+            } =
+                req.body || {};
+
+
+            let target =
+                domain ||
+                url;
+
+
+            if (
+                !target ||
+                typeof target !==
+                "string"
+            ) {
+
+                return res.status(400).json({
+
+                    success:
+                        false,
+
+                    error:
+                        "Domain or URL is required."
+
+                });
+
+            }
+
+
+            target =
+                target.trim();
+
+
+            // If a full URL was provided,
+            // extract the hostname.
+
+            try {
+
+                if (
+                    /^https?:\/\//i.test(
+                        target
+                    )
+                ) {
+
+                    target =
+                        new URL(
+                            target
+                        ).hostname;
+
+                }
+
+            } catch (urlError) {
+
+                return res.status(400).json({
+
+                    success:
+                        false,
+
+                    error:
+                        "Invalid URL or domain."
+
+                });
+
+            }
+
+
+            const result =
+                await checkDomainReputation(
+                    target
+                );
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                domain:
+                    target,
+
+                result
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Domain reputation error:",
+                error
+            );
+
+
+            return res.status(500).json({
+
+                success:
+                    false,
+
+                error:
+                    "Domain reputation check failed."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// BEHAVIOR ANALYSIS
+// ============================================
+
+app.post(
+    "/api/behavior/analyze",
+    async (req, res) => {
+
+        try {
+
+            const pageData =
+                req.body || {};
+
+
+            if (
+                !pageData ||
+                typeof pageData !==
+                "object"
+            ) {
+
+                return res.status(400).json({
+
+                    success:
+                        false,
+
+                    error:
+                        "Page data is required."
+
+                });
+
+            }
+
+
+            const result =
+                analyzePage(
+                    pageData
+                );
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                result
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Behavior analysis error:",
+                error
+            );
+
+
+            return res.status(500).json({
+
+                success:
+                    false,
+
+                error:
+                    "Behavior analysis failed."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// AI TEXT CLASSIFICATION
+// ============================================
+
+app.post(
+    "/api/ai/classify-text",
+    async (req, res) => {
+
+        try {
+
+            const {
+
+                text = "",
+
+                context = {}
+
+            } =
+                req.body || {};
+
+
+            if (
+                !text ||
+                typeof text !==
+                "string"
+            ) {
+
+                return res.status(400).json({
+
+                    success:
+                        false,
+
+                    error:
+                        "Text is required."
+
+                });
+
+            }
+
+
+            const result =
+                analyzeText(
+                    text,
+                    context
+                );
+
+
+            const assessment =
+                buildAssessment(
+                    result
+                );
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                result:
+                    assessment
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Text classification error:",
+                error
+            );
+
+
+            return res.status(500).json({
+
+                success:
+                    false,
+
+                error:
+                    "Text classification failed."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// AI URL CLASSIFICATION
+// ============================================
+
+app.post(
+    "/api/ai/classify-url",
+    async (req, res) => {
+
+        try {
+
+            const {
+                url = ""
+            } =
+                req.body || {};
+
+
+            if (
+                !url ||
+                typeof url !==
+                "string"
+            ) {
+
+                return res.status(400).json({
+
+                    success:
+                        false,
+
+                    error:
+                        "URL is required."
+
+                });
+
+            }
+
+
+            const cleanUrl =
+                url.trim();
+
+
+            const features =
+                extractURLFeatures(
+                    cleanUrl
+                );
+
+
+            const aiResult =
+                analyzeText(
+                    cleanUrl,
+                    {
+                        url:
+                            cleanUrl
+                    }
+                );
+
+
+            const assessment =
+                buildAssessment({
+
+                    ...aiResult,
+
+                    score:
+                        Math.max(
+                            Number(
+                                aiResult?.score
+                            ) || 0,
+
+                            Number(
+                                features?.featureScore
+                            ) || 0
+                        ),
+
+                    evidence:
+                        Array.from(
+                            new Set([
+
+                                ...(aiResult?.evidence || []),
+
+                                ...(features?.reasons || [])
+
+                            ])
+                        )
+
+                });
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                url:
+                    cleanUrl,
+
+                features,
+
+                result:
+                    assessment
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "URL classification error:",
+                error
+            );
+
+
+            return res.status(500).json({
+
+                success:
+                    false,
+
+                error:
+                    "URL classification failed."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// SECURITY RECOMMENDATIONS
+// ============================================
+
+app.post(
+    "/api/security/recommendations",
+    (req, res) => {
+
+        try {
+
+            const {
+
+                score = 0,
+
+                category = "",
+
+                flags = []
+
+            } =
+                req.body || {};
+
+
+            const numericScore =
+                Math.max(
+                    0,
+                    Math.min(
+                        100,
+                        Number(score) || 0
+                    )
+                );
+
+
+            const recommendations = [];
+
+
+            // --------------------------------
+            // General recommendations
+            // --------------------------------
+
+            if (
+                numericScore >= 70
+            ) {
+
+                recommendations.push(
+                    "Block or quarantine the suspicious resource."
+                );
+
+                recommendations.push(
+                    "Create a security incident for investigation."
+                );
+
+                recommendations.push(
+                    "Do not enter credentials or financial information."
+                );
+
+            } else if (
+                numericScore >= 40
+            ) {
+
+                recommendations.push(
+                    "Treat the resource with caution."
+                );
+
+                recommendations.push(
+                    "Verify the source through an independent channel."
+                );
+
+                recommendations.push(
+                    "Avoid entering sensitive information."
+                );
+
+            } else {
+
+                recommendations.push(
+                    "No major threat indicators detected."
+                );
+
+                recommendations.push(
+                    "Continue normal security monitoring."
+                );
+
+            }
+
+
+            // --------------------------------
+            // Category-specific
+            // --------------------------------
+
+            if (
+                String(
+                    category
+                ).includes(
+                    "PHISHING"
+                )
+            ) {
+
+                recommendations.push(
+                    "Do not submit passwords, OTPs or credentials."
+                );
+
+            }
+
+
+            if (
+                String(
+                    category
+                ).includes(
+                    "IMPERSONATION"
+                )
+            ) {
+
+                recommendations.push(
+                    "Verify the sender's identity using a trusted contact method."
+                );
+
+            }
+
+
+            if (
+                String(
+                    category
+                ).includes(
+                    "FINANCIAL"
+                )
+            ) {
+
+                recommendations.push(
+                    "Never transfer money based only on an unexpected message."
+                );
+
+            }
+
+
+            if (
+                String(
+                    category
+                ).includes(
+                    "ACCOUNT_TAKEOVER"
+                )
+            ) {
+
+                recommendations.push(
+                    "Revoke suspicious sessions and enable MFA."
+                );
+
+            }
+
+
+            // --------------------------------
+            // Flag-specific
+            // --------------------------------
+
+            const flagText =
+                Array.isArray(flags)
+                    ? flags.join(" ").toLowerCase()
+                    : "";
+
+
+            if (
+                flagText.includes(
+                    "ip address"
+                )
+            ) {
+
+                recommendations.push(
+                    "Verify the destination because the resource uses an IP address instead of a normal domain."
+                );
+
+            }
+
+
+            if (
+                flagText.includes(
+                    "https"
+                )
+            ) {
+
+                recommendations.push(
+                    "Check the site's certificate and domain carefully; HTTPS alone does not prove legitimacy."
+                );
+
+            }
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                score:
+                    numericScore,
+
+                category,
+
+                recommendations:
+                    Array.from(
+                        new Set(
+                            recommendations
+                        )
+                    )
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Recommendation error:",
+                error
+            );
+
+
+            return res.status(500).json({
+
+                success:
+                    false,
+
+                error:
+                    "Could not generate recommendations."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// SECURITY ALERT GENERATOR
+// ============================================
+
+app.post(
+    "/api/security/alert",
+    (req, res) => {
+
+        try {
+
+            const {
+
+                target = "",
+
+                score = 0,
+
+                level = "SAFE",
+
+                verdict = "LOW_RISK",
+
+                category = ""
+
+            } =
+                req.body || {};
+
+
+            const numericScore =
+                Math.round(
+                    Number(score) || 0
+                );
+
+
+            let severity =
+                "INFO";
+
+
+            if (
+                numericScore >= 80
+            ) {
+
+                severity =
+                    "CRITICAL";
+
+            } else if (
+                numericScore >= 60
+            ) {
+
+                severity =
+                    "HIGH";
+
+            } else if (
+                numericScore >= 35
+            ) {
+
+                severity =
+                    "MEDIUM";
+
+            } else if (
+                numericScore >= 15
+            ) {
+
+                severity =
+                    "LOW";
+
+            }
+
+
+            const alert = {
+
+                severity,
+
+                title:
+                    severity === "CRITICAL"
+                        ? "Critical Cyber Threat Detected"
+                        : severity === "HIGH"
+                            ? "High Risk Activity Detected"
+                            : severity === "MEDIUM"
+                                ? "Suspicious Activity Detected"
+                                : severity === "LOW"
+                                    ? "Potential Security Concern"
+                                    : "Security Check Completed",
+
+                target:
+                    target || "Unknown resource",
+
+                score:
+                    numericScore,
+
+                level,
+
+                verdict,
+
+                category,
+
+                timestamp:
+                    new Date().toISOString()
+
+            };
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                alert
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Alert generation error:",
+                error
+            );
+
+
+            return res.status(500).json({
+
+                success:
+                    false,
+
+                error:
+                    "Could not generate alert."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// RECENT SCANS
+// ============================================
+
+app.get(
+    "/api/recent-scans",
+    (req, res) => {
+
+        try {
+
+            const history =
+                readHistory();
+
+
+            const limit =
+                Math.min(
+                    Number(
+                        req.query.limit
+                    ) || 10,
+                    50
+                );
+
+
+            const scans =
+                history
+                    .slice(
+                        0,
+                        limit
+                    )
+                    .map(
+                        item => ({
+
+                            id:
+                                item.id,
+
+                            type:
+                                item.type,
+
+                            target:
+                                item.target,
+
+                            score:
+                                item.score,
+
+                            level:
+                                item.level,
+
+                            verdict:
+                                item.verdict,
+
+                            timestamp:
+                                item.timestamp
+
+                        })
+                    );
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                count:
+                    scans.length,
+
+                scans
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Recent scans error:",
+                error
+            );
+
+
+            return res.status(500).json({
+
+                success:
+                    false,
+
+                error:
+                    "Could not retrieve recent scans."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// CLEAR HISTORY
+// ============================================
+//
+// This route is intentionally protected.
+// ============================================
+
+app.delete(
+    "/api/history",
+    authenticateToken,
+    (req, res) => {
+
+        try {
+
+            saveHistory(
+                []
+            );
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                message:
+                    "Scan history cleared."
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Clear history error:",
+                error
+            );
+
+
+            return res.status(500).json({
+
+                success:
+                    false,
+
+                error:
+                    "Could not clear history."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// DELETE SINGLE HISTORY ITEM
+// ============================================
+
+app.delete(
+    "/api/history/:id",
+    authenticateToken,
+    (req, res) => {
+
+        try {
+
+            const history =
+                readHistory();
+
+
+            const id =
+                String(
+                    req.params.id
+                );
+
+
+            const newHistory =
+                history.filter(
+                    item =>
+                        String(
+                            item.id
+                        ) !== id
+                );
+
+
+            if (
+                newHistory.length ===
+                history.length
+            ) {
+
+                return res.status(
+                    404
+                ).json({
+
+                    success:
+                        false,
+
+                    error:
+                        "Scan record not found."
+
+                });
+
+            }
+
+
+            saveHistory(
+                newHistory
+            );
+
+
+            return res.json({
+
+                success:
+                    true,
+
+                message:
+                    "Scan record deleted."
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Delete history item error:",
+                error
+            );
+
+
+            return res.status(500).json({
+
+                success:
+                    false,
+
+                error:
+                    "Could not delete scan record."
+
+            });
+
+        }
+
+    }
+);
+
+
+// ============================================
+// EXPORT ERROR INFORMATION
+// ============================================
+
+app.get(
+    "/api/debug",
+    (req, res) => {
+
+        return res.json({
+
+            success:
+                true,
+
+            nodeVersion:
+                process.version,
+
+            platform:
+                process.platform,
+
+            architecture:
+                process.arch,
+
+            environment:
+                process.env.NODE_ENV ||
+                "development",
+
+            port:
+                PORT,
+
+            timestamp:
+                new Date().toISOString()
+
+        });
+
+    }
+);
+
+// ============================================
+// FRONTEND FALLBACK
+// ============================================
+//
+// Any normal browser request that is not an API
+// request will be sent to the frontend.
+//
+// ============================================
+
+app.get(
+    /.*/,
+    (req, res, next) => {
+
+        // Never interfere with API routes.
+
+        if (
+            req.path.startsWith(
+                "/api/"
+            )
+        ) {
+
+            return next();
+
+        }
+
+
+        const frontendPath =
+            path.join(
+                __dirname,
+                "../frontend/index.html"
+            );
+
+
+        if (
+            fs.existsSync(
+                frontendPath
+            )
+        ) {
+
+            return res.sendFile(
+                frontendPath
+            );
+
+        }
+
+
+        return res.status(
+            404
+        ).send(
+            "CYBERGUARD frontend not found."
+        );
+
+    }
+);
+
+
+// ============================================
+// SERVER ERROR HANDLER
+// ============================================
+
+process.on(
+    "uncaughtException",
+    error => {
+
+        console.error(
+            "UNCAUGHT EXCEPTION:",
+            error
+        );
+
+    }
+);
+
+
+process.on(
+    "unhandledRejection",
+    error => {
+
+        console.error(
+            "UNHANDLED PROMISE REJECTION:",
+            error
+        );
+
+    }
+);
+
+
+// ============================================
+// GRACEFUL SHUTDOWN
+// ============================================
+
+function shutdown(
+    signal
+) {
+
+    console.log(
+        `\n${signal} received.`
+    );
+
+    console.log(
+        "Shutting down CYBERGUARD..."
+    );
+
+
+    process.exit(
+        0
+    );
+
+}
+
+
+process.on(
+    "SIGINT",
+    () => {
+
+        shutdown(
+            "SIGINT"
+        );
+
+    }
+);
+
+
+process.on(
+    "SIGTERM",
+    () => {
+
+        shutdown(
+            "SIGTERM"
+        );
+
+    }
+);
+
+
+// ============================================
+// SERVER INFORMATION
+// ============================================
+
+console.log(
+    "CYBERGUARD security engine loaded."
+);
+
+
+// ============================================
+// END OF SERVER.JS
+// ============================================

@@ -20,6 +20,15 @@ const riskLevel = document.getElementById("riskLevel");
 const threatCount = document.getElementById("threatCount");
 const flagList = document.getElementById("flagList");
 
+const aiExplanation = document.getElementById("aiExplanation");
+const aiHeadline = document.getElementById("aiHeadline");
+const aiSummary = document.getElementById("aiSummary");
+const aiEngine = document.getElementById("aiEngine");
+const aiReasons = document.getElementById("aiReasons");
+const aiRecommendations = document.getElementById("aiRecommendations");
+const aiEvidence = document.getElementById("aiEvidence");
+const aiEvidenceList = document.getElementById("aiEvidenceList");
+
 const totalScans = document.getElementById("totalScans");
 const threatsDetected = document.getElementById("threatsDetected");
 const safeUrls = document.getElementById("safeUrls");
@@ -356,6 +365,13 @@ function displayResult(result) {
         ) + "%";
 
 
+    // AI explanation
+
+    renderExplanation(
+        result.explanation
+    );
+
+
     // Clear old flags
 
     flagList.innerHTML =
@@ -411,6 +427,168 @@ function displayResult(result) {
 
 
 // ============================================
+// RENDER AI EXPLANATION
+// ============================================
+
+function renderExplanation(explanation) {
+
+    if (!aiExplanation) {
+        return;
+    }
+
+    if (!explanation) {
+        aiExplanation.classList.add("hidden");
+        return;
+    }
+
+    aiExplanation.classList.remove(
+        "hidden",
+        "risk-critical",
+        "risk-high",
+        "risk-medium",
+        "risk-low",
+        "risk-safe"
+    );
+
+    const level =
+        String(explanation.level || "")
+            .toLowerCase();
+
+    const riskClass =
+        level.includes("critical")
+            ? "critical"
+            : level.includes("high")
+                ? "high"
+                : level.includes("medium")
+                    ? "medium"
+                    : level.includes("low")
+                        ? "low"
+                        : "safe";
+
+    aiExplanation.classList.add(
+        `risk-${riskClass}`
+    );
+
+    aiHeadline.textContent =
+        explanation.headline ||
+        "AI assessment";
+
+    aiSummary.textContent =
+        explanation.summary ||
+        "";
+
+    aiEngine.textContent =
+        explanation.engine ||
+        "PhishGuard AI";
+
+    renderList(
+        aiReasons,
+        explanation.reasons
+    );
+
+    renderList(
+        aiRecommendations,
+        explanation.recommendations
+    );
+
+    renderEvidence(
+        explanation.indicators
+    );
+
+}
+
+
+function renderList(listElement, items) {
+
+    if (!listElement) {
+        return;
+    }
+
+    listElement.innerHTML = "";
+
+    (Array.isArray(items) ? items : [])
+        .filter(Boolean)
+        .forEach(item => {
+
+            const li =
+                document.createElement("li");
+
+            li.textContent =
+                String(item);
+
+            listElement.appendChild(li);
+
+        });
+
+}
+
+
+function renderEvidence(indicators) {
+
+    if (!aiEvidence || !aiEvidenceList) {
+        return;
+    }
+
+    aiEvidenceList.innerHTML = "";
+
+    if (!Array.isArray(indicators) || indicators.length === 0) {
+
+        aiEvidence.style.display = "none";
+        return;
+
+    }
+
+    aiEvidence.style.display = "block";
+
+    indicators.forEach(indicator => {
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "ai-evidence-item";
+
+        const severity =
+            document.createElement("span");
+
+        severity.className =
+            `ai-severity ai-severity-${String(indicator.severity || "medium").toLowerCase()}`;
+
+        severity.textContent =
+            indicator.severity ||
+            "medium";
+
+        const content =
+            document.createElement("div");
+
+        const title =
+            document.createElement("strong");
+
+        title.textContent =
+            indicator.title ||
+            "Indicator";
+
+        const detail =
+            document.createElement("span");
+
+        detail.textContent =
+            indicator.detail ||
+            "";
+
+        content.appendChild(title);
+        content.appendChild(detail);
+
+        item.appendChild(severity);
+        item.appendChild(content);
+
+        aiEvidenceList.appendChild(item);
+
+    });
+
+}
+
+
+// ============================================
 // LOAD REAL STATISTICS
 // ============================================
 
@@ -454,19 +632,25 @@ async function loadStatistics() {
         // Threats
 
         threatsDetected.textContent =
-            stats.threatsDetected;
+            stats.threatsDetected ??
+            stats.threats ??
+            0;
 
 
         // Safe URLs
 
         safeUrls.textContent =
-            stats.safeScans;
+            stats.safeScans ??
+            stats.safe ??
+            0;
 
 
         // Protection rate
 
         protectionRate.textContent =
-            stats.protectionRate +
+            (stats.protectionRate ??
+            stats.protection ??
+            0) +
             "%";
 
 

@@ -1,5 +1,381 @@
 [
   {
+    "id": "1795272682220",
+    "type": "url",
+    "target": "https://hdhub4u.fr/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [
+      "LOW_RISK"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-11-21T14:51:22.220Z"
+  },
+  {
+    "id": "1795272615565",
+    "type": "url",
+    "target": "https://example.com",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [
+      "LOW_RISK"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-11-21T14:50:15.565Z"
+  },
+  {
+    "id": "1795271335444",
+    "type": "url",
+    "target": "http://paypal-login-verify-example.xyz",
+    "score": 100,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "verdict": "dangerous",
+    "confidence": "high",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      },
+      {
+        "type": "SUSPICIOUS_TLD",
+        "severity": "MEDIUM",
+        "points": 15,
+        "message": "Domain uses a higher-risk TLD: .xyz"
+      },
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "severity": "MEDIUM",
+        "points": 12,
+        "message": "Domain contains many hyphens."
+      },
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "MALICIOUS_LINK",
+        "message": "1 suspicious link(s) detected in the email."
+      },
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      },
+      {
+        "type": "SUSPICIOUS_TLD",
+        "severity": "MEDIUM",
+        "points": 15,
+        "message": "Domain uses a higher-risk TLD: .xyz"
+      },
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "severity": "MEDIUM",
+        "points": 12,
+        "message": "Domain contains many hyphens."
+      },
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "DOMAIN",
+      "PHISHING",
+      "SUSPICIOUS_COMMUNICATION"
+    ],
+    "aiScore": 30,
+    "timestamp": "2026-11-21T14:28:55.444Z"
+  },
+  {
+    "id": "1795271305490",
+    "type": "url",
+    "target": "https://hdhub4u.fr/",
+    "score": 0,
+    "level": "Low Risk",
+    "status": "Low Risk",
+    "verdict": "low-risk",
+    "confidence": "low",
+    "flags": [],
+    "categories": [
+      "LOW_RISK"
+    ],
+    "aiScore": 0,
+    "timestamp": "2026-11-21T14:28:25.490Z"
+  },
+  {
+    "id": "1795271244112",
+    "type": "url",
+    "target": "http://paypal-login-verify-example.xyz",
+    "score": 100,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "verdict": "dangerous",
+    "confidence": "high",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      },
+      {
+        "type": "SUSPICIOUS_TLD",
+        "severity": "MEDIUM",
+        "points": 15,
+        "message": "Domain uses a higher-risk TLD: .xyz"
+      },
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "severity": "MEDIUM",
+        "points": 12,
+        "message": "Domain contains many hyphens."
+      },
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      },
+      {
+        "type": "MALICIOUS_LINK",
+        "message": "1 suspicious link(s) detected in the email."
+      },
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      },
+      {
+        "type": "SUSPICIOUS_TLD",
+        "severity": "MEDIUM",
+        "points": 15,
+        "message": "Domain uses a higher-risk TLD: .xyz"
+      },
+      {
+        "type": "EXCESSIVE_HYPHENS",
+        "severity": "MEDIUM",
+        "points": 12,
+        "message": "Domain contains many hyphens."
+      },
+      {
+        "type": "BRAND_IMPERSONATION",
+        "severity": "HIGH",
+        "points": 25,
+        "message": "Possible paypal impersonation detected."
+      },
+      {
+        "type": "PHISHING_KEYWORDS",
+        "severity": "HIGH",
+        "points": 20,
+        "message": "Multiple phishing keywords detected: login, verify."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "DOMAIN",
+      "PHISHING",
+      "SUSPICIOUS_COMMUNICATION"
+    ],
+    "aiScore": 30,
+    "timestamp": "2026-11-21T14:27:24.112Z"
+  },
+  {
+    "id": "1795271068342",
+    "type": "page",
+    "target": "http://192.168.1.1/login.php",
+    "score": 70,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "verdict": "dangerous",
+    "confidence": "medium",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      },
+      {
+        "type": "IP_ADDRESS",
+        "severity": "HIGH",
+        "points": 30,
+        "message": "URL uses an IP address instead of a normal domain."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      },
+      {
+        "type": "CREDENTIAL_HARVESTING",
+        "message": "Email requests or references multiple sensitive credentials."
+      },
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      },
+      {
+        "type": "IP_ADDRESS",
+        "severity": "HIGH",
+        "points": 30,
+        "message": "URL uses an IP address instead of a normal domain."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "DOMAIN",
+      "PHISHING",
+      "SUSPICIOUS_COMMUNICATION"
+    ],
+    "aiScore": 25,
+    "behaviorScore": 0,
+    "timestamp": "2026-11-21T14:24:28.342Z"
+  },
+  {
+    "id": "1795270776602",
+    "type": "email",
+    "target": "URGENT: Your PayPal account will be suspended",
+    "score": 55,
+    "level": "Medium Risk",
+    "status": "Suspicious",
+    "verdict": "suspicious",
+    "confidence": "medium",
+    "flags": [
+      {
+        "type": "SENDER_MISMATCH",
+        "message": "Sender claims to represent paypal, but the email domain is \"paypal-security-alert.xyz\"."
+      },
+      {
+        "type": "REPLY_TO_SPOOFING",
+        "message": "Reply-To domain \"random-mail.example\" differs from sender domain \"paypal-security-alert.xyz\"."
+      },
+      {
+        "type": "URGENCY",
+        "message": "Urgency language detected: urgent, immediate action, within 24 hours, suspended, action required."
+      },
+      {
+        "type": "CREDENTIAL_HARVESTING",
+        "message": "Email requests or references multiple sensitive credentials."
+      },
+      {
+        "type": "MALICIOUS_LINK",
+        "message": "1 suspicious link(s) detected in the email."
+      },
+      {
+        "type": "THREAT_LANGUAGE",
+        "message": "Email uses threatening or fear-based security language."
+      }
+    ],
+    "categories": [],
+    "aiScore": 95,
+    "timestamp": "2026-11-21T14:19:36.602Z"
+  },
+  {
+    "id": "1795270714040",
+    "type": "url",
+    "target": "http://192.168.1.1/login.php",
+    "score": 70,
+    "level": "High Risk",
+    "status": "Dangerous",
+    "verdict": "dangerous",
+    "confidence": "medium",
+    "flags": [
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      },
+      {
+        "type": "IP_ADDRESS",
+        "severity": "HIGH",
+        "points": 30,
+        "message": "URL uses an IP address instead of a normal domain."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      },
+      {
+        "type": "MALICIOUS_LINK",
+        "message": "1 suspicious link(s) detected in the email."
+      },
+      {
+        "type": "NO_HTTPS",
+        "severity": "LOW",
+        "points": 8,
+        "message": "Website does not use HTTPS."
+      },
+      {
+        "type": "IP_ADDRESS",
+        "severity": "HIGH",
+        "points": 30,
+        "message": "URL uses an IP address instead of a normal domain."
+      },
+      {
+        "type": "CREDENTIAL_PATH",
+        "severity": "MEDIUM",
+        "points": 8,
+        "message": "Untrusted site contains an account or credential-related path."
+      }
+    ],
+    "categories": [
+      "TRANSPORT",
+      "DOMAIN",
+      "PHISHING",
+      "SUSPICIOUS_COMMUNICATION"
+    ],
+    "aiScore": 30,
+    "timestamp": "2026-11-21T14:18:34.040Z"
+  },
+  {
     "id": "1788413703394",
     "type": "url",
     "target": "http://localhost:3001/pages/simulation.html",

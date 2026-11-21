@@ -462,6 +462,64 @@
 
                 <div id="indicators"></div>
 
+
+                <section
+                    id="aiExplanation"
+                    class="ai-explanation hidden"
+                >
+
+                    <div class="ai-explanation-head">
+
+                        <div>
+                            <span class="ai-badge">
+                                ✦ AI EXPLANATION
+                            </span>
+
+                            <h2
+                                id="aiHeadline"
+                                class="ai-headline"
+                            ></h2>
+                        </div>
+
+                        <span
+                            id="aiEngine"
+                            class="result-label"
+                        ></span>
+
+                    </div>
+
+                    <p
+                        id="aiSummary"
+                        class="ai-summary"
+                    ></p>
+
+                    <div class="ai-columns">
+
+                        <div class="ai-column">
+                            <h4>Why this result</h4>
+                            <ul id="aiReasons"></ul>
+                        </div>
+
+                        <div class="ai-column">
+                            <h4>What to do next</h4>
+                            <ul
+                                id="aiRecommendations"
+                                class="ai-recommendations"
+                            ></ul>
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="aiEvidence"
+                        class="ai-evidence"
+                    >
+                        <h4>Key indicators</h4>
+                        <div id="aiEvidenceList"></div>
+                    </div>
+
+                </section>
+
             </div>
 
         </div>
@@ -497,6 +555,30 @@
 
         const indicators =
             document.getElementById("indicators");
+
+        const aiExplanation =
+            document.getElementById("aiExplanation");
+
+        const aiHeadline =
+            document.getElementById("aiHeadline");
+
+        const aiSummary =
+            document.getElementById("aiSummary");
+
+        const aiEngine =
+            document.getElementById("aiEngine");
+
+        const aiReasons =
+            document.getElementById("aiReasons");
+
+        const aiRecommendations =
+            document.getElementById("aiRecommendations");
+
+        const aiEvidence =
+            document.getElementById("aiEvidence");
+
+        const aiEvidenceList =
+            document.getElementById("aiEvidenceList");
 
         const errorMessage =
             document.getElementById("errorMessage");
@@ -688,6 +770,13 @@
                 scanResult.score + "%";
 
 
+            // AI explanation
+
+            renderExplanation(
+                scanResult.explanation
+            );
+
+
             // Indicators
 
             indicators.innerHTML = "";
@@ -757,6 +846,171 @@
 
                 }
             );
+
+        }
+
+
+        // ========================================
+        // AI EXPLANATION
+        // ========================================
+
+        function renderExplanation(explanation) {
+
+            if (!aiExplanation) {
+                return;
+            }
+
+            if (!explanation) {
+                aiExplanation.classList.add("hidden");
+                return;
+            }
+
+            aiExplanation.classList.remove(
+                "hidden",
+                "risk-critical",
+                "risk-high",
+                "risk-medium",
+                "risk-low",
+                "risk-safe"
+            );
+
+            const level =
+                String(explanation.level || "")
+                    .toLowerCase();
+
+            const riskClass =
+                level.includes("critical")
+                    ? "critical"
+                    : level.includes("high")
+                        ? "high"
+                        : level.includes("medium")
+                            ? "medium"
+                            : level.includes("low")
+                                ? "low"
+                                : "safe";
+
+            aiExplanation.classList.add(
+                `risk-${riskClass}`
+            );
+
+            aiHeadline.textContent =
+                explanation.headline ||
+                "AI assessment";
+
+            aiSummary.textContent =
+                explanation.summary ||
+                "";
+
+            aiEngine.textContent =
+                explanation.engine ||
+                "PhishGuard AI";
+
+            renderExplanationList(
+                aiReasons,
+                explanation.reasons
+            );
+
+            renderExplanationList(
+                aiRecommendations,
+                explanation.recommendations
+            );
+
+            renderExplanationEvidence(
+                explanation.indicators
+            );
+
+        }
+
+
+        function renderExplanationList(listElement, items) {
+
+            if (!listElement) {
+                return;
+            }
+
+            listElement.innerHTML = "";
+
+            (Array.isArray(items) ? items : [])
+                .filter(Boolean)
+                .forEach(item => {
+
+                    const li =
+                        document.createElement("li");
+
+                    li.textContent =
+                        String(item);
+
+                    listElement.appendChild(li);
+
+                });
+
+        }
+
+
+        function renderExplanationEvidence(indicators) {
+
+            if (!aiEvidence || !aiEvidenceList) {
+                return;
+            }
+
+            aiEvidenceList.innerHTML = "";
+
+            if (
+                !Array.isArray(indicators) ||
+                indicators.length === 0
+            ) {
+                aiEvidence.style.display = "none";
+                return;
+            }
+
+            aiEvidence.style.display = "block";
+
+            indicators.forEach(indicator => {
+
+                const item =
+                    document.createElement("div");
+
+                item.className =
+                    "ai-evidence-item";
+
+                const severity =
+                    document.createElement("span");
+
+                severity.className =
+                    "ai-severity ai-severity-" +
+                    String(indicator.severity || "medium")
+                        .toLowerCase();
+
+                severity.textContent =
+                    indicator.severity ||
+                    "medium";
+
+                const content =
+                    document.createElement("div");
+
+                const title =
+                    document.createElement("strong");
+
+                title.textContent =
+                    indicator.title ||
+                    "Indicator";
+
+                const detail =
+                    document.createElement("span");
+
+                detail.textContent =
+                    indicator.detail ||
+                    "";
+
+                content.appendChild(title);
+                content.appendChild(detail);
+
+                item.appendChild(severity);
+                item.appendChild(content);
+
+                aiEvidenceList.appendChild(item);
+
+            });
 
         }
 

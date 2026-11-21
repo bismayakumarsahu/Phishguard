@@ -41,6 +41,10 @@ const {
     buildAssessment
 } = require("./ai-engine");
 
+const {
+    buildScanExplanation
+} = require("./explanation-engine");
+
 
 // ============================================
 // APP CONFIGURATION
@@ -795,7 +799,21 @@ app.post(
 
 
             // --------------------------------
-            // 8. History
+            // 8. Plain-English AI explanation
+            // --------------------------------
+
+            result.explanation =
+                buildScanExplanation(
+                    result,
+                    {
+                        type: "url",
+                        url: cleanUrl
+                    }
+                );
+
+
+            // --------------------------------
+            // 9. History
             // --------------------------------
 
             addHistory({
@@ -840,7 +858,7 @@ app.post(
 
 
             // --------------------------------
-            // 9. Response
+            // 10. Response
             // --------------------------------
 
             return res.json({
@@ -1384,6 +1402,20 @@ app.post(
 
 
             // --------------------------------
+            // Plain-English AI explanation
+            // --------------------------------
+
+            result.explanation =
+                buildScanExplanation(
+                    result,
+                    {
+                        type: "page",
+                        url: pageUrl
+                    }
+                );
+
+
+            // --------------------------------
             // History
             // --------------------------------
 
@@ -1702,6 +1734,19 @@ app.post(
                     aiResult
 
             };
+
+
+            // --------------------------------
+            // Plain-English AI explanation
+            // --------------------------------
+
+            result.explanation =
+                buildScanExplanation(
+                    result,
+                    {
+                        type: "email"
+                    }
+                );
 
 
             // --------------------------------
@@ -2316,35 +2361,74 @@ app.get(
                 history.length;
 
 
+            // --------------------------------
+            // Categorize using BOTH the
+            // numeric score (0-100) and the
+            // textual verdict/level produced
+            // by the risk engine. Different
+            // engines use different casing,
+            // so normalize everything here.
+            // --------------------------------
+
             const threats =
                 history.filter(
                     item =>
+                        Number(item.score) >= 70 ||
+                        item.verdict ===
+                            "dangerous" ||
                         item.verdict ===
                             "THREAT_DETECTED" ||
+                        item.status ===
+                            "Dangerous" ||
                         item.status ===
                             "THREAT_DETECTED" ||
                         item.level ===
                             "HIGH" ||
                         item.level ===
-                            "CRITICAL"
+                            "CRITICAL" ||
+                        item.level ===
+                            "High Risk"
                 ).length;
 
 
             const safe =
                 history.filter(
                     item =>
+                        item.verdict ===
+                            "low-risk" ||
+                        item.verdict ===
+                            "LOW_RISK" ||
+                        item.status ===
+                            "Safe" ||
+                        item.status ===
+                            "Low Risk" ||
                         item.level ===
-                        "SAFE"
+                            "SAFE" ||
+                        item.level ===
+                            "Low Risk" ||
+                        Number(item.score) < 20
                 ).length;
 
 
             const suspicious =
                 history.filter(
                     item =>
+                        Number(item.score) >= 40 &&
+                        Number(item.score) < 70 ||
+                        item.verdict ===
+                            "suspicious" ||
+                        item.verdict ===
+                            "SUSPICIOUS" ||
+                        item.verdict ===
+                            "caution" ||
+                        item.status ===
+                            "Suspicious" ||
+                        item.status ===
+                            "Caution" ||
                         item.level ===
                             "MEDIUM" ||
-                        item.verdict ===
-                            "SUSPICIOUS"
+                        item.level ===
+                            "Medium Risk"
                 ).length;
 
 
@@ -2378,7 +2462,20 @@ app.get(
 
                     suspicious,
 
-                    protection
+                    protection,
+
+                    // Aliases so the dashboard
+                    // can read either naming
+                    // convention.
+
+                    threatsDetected:
+                        threats,
+
+                    safeScans:
+                        safe,
+
+                    protectionRate:
+                        protection
 
                 }
 
@@ -3491,61 +3588,69 @@ app.get(
                 history.length;
 
 
+            // Categorize by numeric score so that
+            // both the risk-engine ("High Risk")
+            // and AI-engine ("HIGH") outputs are
+            // handled consistently.
+
             const critical =
                 history.filter(
                     item =>
-                        item.level ===
-                        "CRITICAL"
+                        Number(item.score) >= 80
                 ).length;
 
 
             const high =
                 history.filter(
                     item =>
-                        item.level ===
-                        "HIGH"
+                        Number(item.score) >= 60 &&
+                        Number(item.score) < 80
                 ).length;
 
 
             const medium =
                 history.filter(
                     item =>
-                        item.level ===
-                        "MEDIUM"
+                        Number(item.score) >= 35 &&
+                        Number(item.score) < 60
                 ).length;
 
 
             const low =
                 history.filter(
                     item =>
-                        item.level ===
-                        "LOW"
+                        Number(item.score) >= 15 &&
+                        Number(item.score) < 35
                 ).length;
 
 
             const safe =
                 history.filter(
                     item =>
-                        item.level ===
-                        "SAFE"
+                        Number(item.score) < 15
                 ).length;
+
+
+            const totalScore =
+                history.reduce(
+                    (
+                        sum,
+                        item
+                    ) =>
+                        sum +
+                        (
+                            Number(
+                                item.score
+                            ) || 0
+                        ),
+                    0
+                );
 
 
             const averageScore =
                 total
                     ? Math.round(
-                        history.reduce(
-                            (
-                                sum,
-                                item
-                            ) =>
-                                sum +
-                                Number(
-                                    item.score
-                                ) ||
-                                0,
-                            0
-                        ) /
+                        totalScore /
                         total
                     )
                     : 0;
@@ -3620,12 +3725,19 @@ app.get(
             const threats =
                 history.filter(
                     item =>
+                        Number(item.score) >= 70 ||
+                        item.verdict ===
+                            "dangerous" ||
                         item.verdict ===
                             "THREAT_DETECTED" ||
+                        item.status ===
+                            "Dangerous" ||
                         item.level ===
                             "HIGH" ||
                         item.level ===
-                            "CRITICAL"
+                            "CRITICAL" ||
+                        item.level ===
+                            "High Risk"
                 );
 
 
@@ -3976,70 +4088,14 @@ app.get(
 
 
 // ============================================
-// 404 API HANDLER
+// NOTE:
+// The API 404 handler and the global error
+// handler are registered at the very end of
+// this file, AFTER every route has been
+// declared. Registering them here would make
+// all subsequently declared routes
+// unreachable.
 // ============================================
-
-app.use(
-    "/api",
-    (req, res) => {
-
-        return res.status(
-            404
-        ).json({
-
-            success:
-                false,
-
-            error:
-                "API endpoint not found.",
-
-            path:
-                req.originalUrl
-
-        });
-
-    }
-);
-
-
-// ============================================
-// GLOBAL ERROR HANDLER
-// ============================================
-
-app.use(
-    (error, req, res, next) => {
-
-        console.error(
-            "Unhandled server error:",
-            error
-        );
-
-
-        if (
-            res.headersSent
-        ) {
-
-            return next(
-                error
-            );
-
-        }
-
-
-        return res.status(
-            500
-        ).json({
-
-            success:
-                false,
-
-            error:
-                "Internal server error."
-
-        });
-
-    }
-);
 
 
 // ============================================
@@ -5559,6 +5615,77 @@ app.get(
         ).send(
             "CYBERGUARD frontend not found."
         );
+
+    }
+);
+
+
+// ============================================
+// 404 API HANDLER
+// ============================================
+//
+// Registered last so that every /api route
+// declared above is matched first.
+// ============================================
+
+app.use(
+    "/api",
+    (req, res) => {
+
+        return res.status(
+            404
+        ).json({
+
+            success:
+                false,
+
+            error:
+                "API endpoint not found.",
+
+            path:
+                req.originalUrl
+
+        });
+
+    }
+);
+
+
+// ============================================
+// GLOBAL ERROR HANDLER
+// ============================================
+
+app.use(
+    (error, req, res, next) => {
+
+        console.error(
+            "Unhandled server error:",
+            error
+        );
+
+
+        if (
+            res.headersSent
+        ) {
+
+            return next(
+                error
+            );
+
+        }
+
+
+        return res.status(
+            500
+        ).json({
+
+            success:
+                false,
+
+            error:
+                "Internal server error."
+
+        });
 
     }
 );
